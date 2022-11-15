@@ -3,13 +3,14 @@
 **Features**
 
 - The arch way
-- BTRFS
+- btrfs
 
 ## Partitioning
 
 GPT; name the partition `by-partlabel`, not `by-label`.
 
-![Partition layout](https://user-images.githubusercontent.com/26322692/201986476-5f3e357c-467a-413f-9096-df2d8c6ca9f9.png)
+![Partition layout](https://user-images.githubusercontent.com/26322692/201990527-a9e993cc-1ec3-43f1-909a-baa675221f9b.png)
+
 
 ### EFI: 550 MiB
 
@@ -26,4 +27,32 @@ GPT; name the partition `by-partlabel`, not `by-label`.
 
 ### swap: beginning + end
 
-Possible to enable hibernation.
+Possible to enable hibernation. Turn on for `genfstab`:
+```bash
+swapon PARTLABEL=swap
+swapon PARTLABEL=swapend
+```
+
+### system: btrfs
+
+We mostly follows https://wiki.archlinux.org/title/User:Altercation/Bullet_Proof_Arch_Install#Create_and_mount_BTRFS_subvolumes
+
+However, we make use of `PARTLABEL` instead of `LABEL`, e.g.
+
+```bash
+mount -t btrfs PARTLABEL=system /mnt
+
+## unmount, create subvols, then:
+
+mount -t btrfs -o subvol=@root,$o_btrfs PARTLABEL=system /mnt
+mount -t btrfs -o subvol=@home,$o_btrfs PARTLABEL=system /mnt/home
+mount -t btrfs -o subvol=@snapshots,$o_btrfs PARTLABEL=system /mnt/.snapshots
+```
+
+For dual boot support,
+```
+mount --mkdir PARTLABEL=EFI /mnt/boot/efi
+```
+
+
+
