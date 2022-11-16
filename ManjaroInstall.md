@@ -92,3 +92,15 @@ LABEL=swap          	none      	swap      	defaults,pri=100	0 0
 LABEL=swapend       	none      	swap      	defaults,pri=10	0 0
 ```
 
+## chroot
+
+```
+manjaro-chroot /mnt
+```
+Use `passwd` to set root password.
+Add `pts/0` and more to `/etc/securetty` for root login.
+```
+systemd-nspawn --boot -D /mnt
+```
+Nice!
+
