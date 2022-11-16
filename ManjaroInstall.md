@@ -7,9 +7,12 @@
 
 ## Partitioning
 
-GPT; name the partition `by-partlabel`, not `by-label`.
+GPT; name the partition `by-partlabel` and `by-label`. 
+`by-partlabel` is newer and brief. 
+`by-label` names are tweaked for compatibility. 
+See: https://wiki.archlinux.org/title/Persistent_block_device_naming
 
-![Partition layout](https://user-images.githubusercontent.com/26322692/201990527-a9e993cc-1ec3-43f1-909a-baa675221f9b.png)
+![Partition layout](https://user-images.githubusercontent.com/26322692/202075182-109bfb56-b130-4050-8dbe-17284f14494a.png)
 
 
 ### EFI: 550 MiB
@@ -27,7 +30,7 @@ GPT; name the partition `by-partlabel`, not `by-label`.
 
 ### swap: beginning + end
 
-Possible to enable hibernation. Turn on for `genfstab`:
+Possible to enable hibernation. Turn on for `fstabgen`:
 ```bash
 swapon PARTLABEL=swap
 swapon PARTLABEL=swapend
@@ -40,19 +43,52 @@ We mostly follows https://wiki.archlinux.org/title/User:Altercation/Bullet_Proof
 However, we make use of `PARTLABEL` instead of `LABEL`, e.g.
 
 ```bash
+
+o=defaults,x-mount.mkdir
+o_btrfs=$o,compress=lzo,ssd,noatime
+
 mount -t btrfs PARTLABEL=system /mnt
 
-## unmount, create subvols, then:
+umount -R /mnt ## recursive
+
+## create btrfs subvols, then:
 
 mount -t btrfs -o subvol=@root,$o_btrfs PARTLABEL=system /mnt
 mount -t btrfs -o subvol=@home,$o_btrfs PARTLABEL=system /mnt/home
 mount -t btrfs -o subvol=@snapshots,$o_btrfs PARTLABEL=system /mnt/.snapshots
-```
-
-For dual boot support,
-```
+## for (dual) boot support
 mount --mkdir PARTLABEL=EFI /mnt/boot/efi
 ```
 
+## Bootstrapping Manjaro
+Here we follow https://amaikinono.github.io/install-minimal-manjaro.html
+Two kernels:
+- linux419: very stable
+- linux515: latest LTS
 
+## fstab
+Use LABEL (remember to `swapon`, and mount correctly with `$o_btrfs`):
+```
+fstabgen -L /mnt >> /mnt/etc/fstab
+```
+Tweaked result (UUID censored, tweak swap priority https://wiki.archlinux.org/title/Swap#Priority):
+```
+# /dev/sda1 UUID=
+LABEL=BOOTEFI       	/boot/efi 	vfat      	rw,relatime,fmask=0022,dmask=0022,codepage=437,iocharset=ascii,shortname=mixed,utf8,errors=remount-ro	0 0
+
+# /dev/sda3 UUID=
+LABEL=btrsystem     	/         	btrfs     	rw,noatime,compress=lzo,ssd,space_cache=v2,subvolid=257,subvol=/@root,subvol=@root	0 0
+
+# /dev/sda3 UUID=
+LABEL=btrsystem     	/home     	btrfs     	rw,noatime,compress=lzo,ssd,space_cache=v2,subvolid=258,subvol=/@home,subvol=@home	0 0
+
+# /dev/sda3 UUID=
+LABEL=btrsystem     	/.snapshots	btrfs     	rw,noatime,compress=lzo,ssd,space_cache=v2,subvolid=259,subvol=/@snapshots,subvol=@snapshots	0 0
+
+# /dev/sda2 UUID=
+LABEL=swap          	none      	swap      	defaults,pri=100	0 0
+
+# /dev/sda4 UUID=
+LABEL=swapend       	none      	swap      	defaults,pri=10	0 0
+```
 
