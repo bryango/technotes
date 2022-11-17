@@ -119,6 +119,10 @@ passwd bryan
 ```
 
 Install `sudo`, then:
+
+```
+pacman -S vim which
+```
 ```
 cd /etc/sudoers.d
 visudo 10-installer
@@ -138,9 +142,14 @@ Go back to chroot for more setup:
 manjaro-chroot /mnt
 ```
 
+## locale
+
+Select and do `locale-gen`.
+It seems that the kernel want this.
+
 ## grub
 
-`pacman -Syu grub os-prober efibootmgr`
+`pacman -Syu grub os-prober efibootmgr btrfs-progs`
 
 https://wiki.manjaro.org/index.php/GRUB/Restore_the_GRUB_Bootloader
 
@@ -153,4 +162,6 @@ grub-mkconfig -o /boot/grub/grub.cfg
 # /etc/default/grub
 GRUB_DISABLE_OS_PROBER=false
 ```
+
+Reinstall kernels.
 
