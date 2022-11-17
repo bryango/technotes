@@ -61,7 +61,7 @@ mount --mkdir PARTLABEL=EFI /mnt/boot/efi
 ```
 
 ## Bootstrapping Manjaro
-Here we follow https://amaikinono.github.io/install-minimal-manjaro.html
+From now on we mostly follow https://amaikinono.github.io/install-minimal-manjaro.html#install-base-packages
 Two kernels:
 - linux419: very stable
 - linux515: latest LTS
@@ -103,4 +103,54 @@ Add `pts/0` and more to `/etc/securetty` for root login.
 systemd-nspawn --boot -D /mnt
 ```
 Nice!
+
+Go back to chroot for more setup:
+```
+manjaro-chroot /mnt
+```
+
+## Users, Passwords, Sudo
+
+https://wiki.archlinux.org/title/Users_and_groups
+
+```
+useradd -m -G wheel bryan
+passwd bryan
+```
+
+Install `sudo`, then:
+```
+cd /etc/sudoers.d
+visudo 10-installer
+```
+https://wiki.archlinux.org/title/Sudo#Example_entries
+```
+%wheel  ALL=(ALL:ALL)  ALL
+```
+Try it:
+```
+systemd-nspawn --boot -D /mnt
+```
+Nice!
+
+Go back to chroot for more setup:
+```
+manjaro-chroot /mnt
+```
+
+## grub
+
+`pacman -Syu grub os-prober efibootmgr`
+
+https://wiki.manjaro.org/index.php/GRUB/Restore_the_GRUB_Bootloader
+
+```
+grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=manjaro --recheck
+grub-mkconfig -o /boot/grub/grub.cfg
+```
+
+```
+# /etc/default/grub
+GRUB_DISABLE_OS_PROBER=false
+```
 
