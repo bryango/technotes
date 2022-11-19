@@ -124,8 +124,11 @@ LABEL=swapend       	none      	swap      	defaults,pri=10	0 0
 ```
 manjaro-chroot /mnt
 ```
-Use `passwd` to set root password. <br>
-Add `pts/0` and more to `/etc/securetty` for root login [[Altercation]]. <br>
+Sometime `manjaro-chroot -a` will work automatically, but not always.
+
+- Use `passwd` to set root password. <br>
+- Add `pts/0` and more to `/etc/securetty` for root login [[Altercation]]. <br>
+
 Test our minimal install:
 ```
 systemd-nspawn --boot -D /mnt
@@ -177,8 +180,12 @@ pacman -Syu grub os-prober efibootmgr
 ```
 
 https://wiki.manjaro.org/index.php/GRUB/Restore_the_GRUB_Bootloader
+
+- Note that we are using **EFI**
+- Here we've specified `--bootloader-id=btrjaro`
+
 ```
-grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=manjaro --recheck  ## --removable [[ManjaroArchWay]]
+grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=btrjaro --recheck  ## --removable [[ManjaroArchWay]]
 grub-mkconfig -o /boot/grub/grub.cfg
 ```
 
