@@ -217,3 +217,21 @@ grub-mkconfig -o /boot/grub/grub.cfg
 GRUB_DISABLE_OS_PROBER=false
 ```
 Reinstall kernels & boot!
+
+## minimal packages
+
+```
+$ pacman -Qe
+base 3-2
+base-devel-meta 2022.10.06-1  ## sudo, which
+btrfs-progs 6.0.1-1
+efibootmgr 18-1
+grub 2.06.r261.g2f4430cc0-3
+intel-ucode 20221108-1
+linux419 4.19.265-1
+linux419-headers 4.19.265-1
+linux515 5.15.78-1
+linux515-headers 5.15.78-1
+os-prober 1.81-1
+vim 9.0.0814-1
+```
