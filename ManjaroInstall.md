@@ -14,7 +14,7 @@
   * Manjaro: [[ManjaroArchWay]]
   * Btrfs: see also https://github.com/egara/arch-btrfs-installation.
 
-All commands are run with `root`. Be EXTREMELY CAREFUL!
+All commands are run with `root`. Be **EXTREMELY CAREFUL!**
 
 ## Partitioning
 
@@ -92,7 +92,8 @@ Use `basestrap`, and install some kernels (maybe do this later?):
 
 ## fstab
 
-Use `LABEL` (remember to `swapon`, and mount correctly with `$o_btrfs`):
+Remember to `swapon`, and mount correctly with `$o_btrfs`. <br>
+Use `LABEL` for compatibility:
 ```
 fstabgen -L /mnt >> /mnt/etc/fstab
 ```
@@ -124,15 +125,12 @@ LABEL=swapend       	none      	swap      	defaults,pri=10	0 0
 manjaro-chroot /mnt
 ```
 Use `passwd` to set root password. <br>
-Add `pts/0` and more to `/etc/securetty` for root login.
-
-Test our minimal install [[Altercation]]:
+Add `pts/0` and more to `/etc/securetty` for root login [[Altercation]]. <br>
+Test our minimal install:
 ```
 systemd-nspawn --boot -D /mnt
 ```
-Nice!
-
-Go back to chroot for more setup:
+_Nice!_ Go back to chroot for more setup:
 ```
 manjaro-chroot /mnt
 ```
@@ -141,7 +139,7 @@ Add some very basic packages:
 pacman -S vim sudo which btrfs-progs
 ```
 
-## Users & sudo
+## users & sudo
 
 https://wiki.archlinux.org/title/Users_and_groups
 
@@ -153,6 +151,7 @@ visudo 10-installer
 ```
 https://wiki.archlinux.org/title/Sudo#Example_entries
 ```sudoers
+## /etc/sudoers.d/10-installer
 %wheel  ALL=(ALL:ALL)  ALL
 ```
 
@@ -160,16 +159,14 @@ Try to login as `bryan` and `sudo`:
 ```bash
 systemd-nspawn --boot -D /mnt
 ```
-Nice!
-
-Go back to chroot for more setup:
+_Nice!_ Go back to chroot for more setup:
 ```bash
 manjaro-chroot /mnt
 ```
 
 ## locale
 
-See [[Arch]] or [[Altercation]]. We only need to select and do `locale-gen` for now. It seems that the kernel want this.
+See [[Arch]] or [[Altercation]]. We only need to do `locale-gen` for now. It seems that the kernel want this.
 
 ## grub
 
@@ -181,7 +178,7 @@ pacman -Syu grub os-prober efibootmgr
 
 https://wiki.manjaro.org/index.php/GRUB/Restore_the_GRUB_Bootloader
 ```
-grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=manjaro --recheck
+grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=manjaro --recheck  ## --removable [[ManjaroArchWay]]
 grub-mkconfig -o /boot/grub/grub.cfg
 ```
 
@@ -189,6 +186,4 @@ grub-mkconfig -o /boot/grub/grub.cfg
 # /etc/default/grub
 GRUB_DISABLE_OS_PROBER=false
 ```
-
-Reinstall kernels!
-
+Reinstall kernels & boot!
