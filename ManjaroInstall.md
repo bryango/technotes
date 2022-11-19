@@ -137,9 +137,9 @@ _Nice!_ Go back to chroot for more setup:
 ```
 manjaro-chroot /mnt
 ```
-Add some very basic packages:
+Add some basic packages:
 ```
-pacman -S vim sudo which btrfs-progs
+pacman -S vim sudo which btrfs-progs intel-ucode
 ```
 
 ## users & sudo
@@ -170,6 +170,16 @@ manjaro-chroot /mnt
 ## locale
 
 See [[Arch]] or [[Altercation]]. We only need to do `locale-gen` for now. It seems that the kernel want this.
+
+## initramfs
+
+Use modern `systemd` HOOKS [[Altercation]]. <br>
+See also https://wiki.archlinux.org/title/Mkinitcpio
+
+```
+## /etc/mkinitcpio.conf
+HOOKS=(base systemd autodetect sd-vconsole modconf keyboard block filesystems btrfs fsck)
+```
 
 ## grub
 
