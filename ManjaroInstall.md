@@ -139,8 +139,21 @@ manjaro-chroot /mnt
 ```
 Add some basic packages:
 ```
-pacman -S vim sudo which btrfs-progs intel-ucode
+pacman -S vim btrfs-progs intel-ucode
 ```
+
+## base-devel(-meta)
+
+Some very important packages are in the `base-devel` group. <br>
+One can simply install an equivalent meta-package: https://aur.archlinux.org/packages/base-devel-meta
+
+Unfortunately this is AUR only. <br>
+One can build it in the host and then transfer it to the guest.
+
+Alternatively, simply:
+- `pacman -S sudo which` for now, or
+- `pacman -S base-devel`
+
 
 ## users & sudo
 
