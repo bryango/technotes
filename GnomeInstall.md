@@ -37,3 +37,6 @@ pacman -S networkmanager nm-connection-editor
 More specifically,
 - `pacman -S mesa lib32-mesa vulkan-intel`
 - Add `DefaultSession=gnome-xorg.desktop` to the `[daemon]` section of `/etc/gdm/custom.conf`
+
+**Edit:** `DefaultSession` doesn't seem to work. <br>
+Fortunately pick Xorg once and GDM will seem to remember it.
