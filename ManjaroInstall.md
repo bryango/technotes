@@ -218,7 +218,7 @@ GRUB_DISABLE_OS_PROBER=false
 ```
 Reinstall kernels & boot!
 
-## minimal packages
+## summary
 
 ```
 $ pacman -Qe
@@ -235,3 +235,6 @@ linux515-headers 5.15.78-1
 os-prober 1.81-1
 vim 9.0.0814-1
 ```
+
+Boot into the new system. <br>
+Proceed to [GnomeInstall.md](./GnomeInstall.md) for basic & GUI setup.
