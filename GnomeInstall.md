@@ -40,3 +40,24 @@ More specifically,
 
 **Edit:** `DefaultSession` doesn't seem to work. <br>
 Fortunately pick Xorg once and GDM will seem to remember it.
+
+## Trackers
+
+I really hate them!
+```
+systemctl --user mask tracker-miner-fs-3.service
+```
+Edit `~/.config/autostart/tracker-miner-fs-3.desktop`
+```desktop
+[Desktop Entry]
+Name=Tracker File System Miner
+## ...
+## ignore some lines
+## add the following lines:
+## >>>
+X-GNOME-Autostart-enabled=false
+X-GNOME-HiddenUnderSystemd=true
+Hidden=true
+```
+It seems that this is enough. <br>
+For a more extreme measure, see https://gist.github.com/vancluever/d34b41eb77e6d077887c
