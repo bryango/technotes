@@ -207,15 +207,31 @@ https://wiki.manjaro.org/index.php/GRUB/Restore_the_GRUB_Bootloader
 - Note that we are using **EFI**
 - Here we've specified `--bootloader-id=btrjaro`
 
-```
-grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=btrjaro --recheck  ## --removable [[ManjaroArchWay]]
+```bash
+grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=btrjaro --recheck --removable
+# ... `--removable` is necessary for me, see [[ManjaroArchWay]] and below
 grub-mkconfig -o /boot/grub/grub.cfg
 ```
+
+### About `--removable`
+
+This is necessary for me with the Samsung Notebook 9:
+
+> https://wiki.archlinux.org/title/GRUB
+> 
+> Some UEFI firmwares require a bootable file at a known location before they will show UEFI NVRAM boot entries. If this is the case, grub-install will claim efibootmgr has added an entry to boot GRUB, however the entry will not show up in the VisualBIOS boot order selector. The solution is to install GRUB at the default/fallback boot path (i.e. using `--removable`)
+> 
+> If you use the option --removable then GRUB will be installed to esp/EFI/BOOT/BOOTX64.EFI (or esp/EFI/BOOT/BOOTIA32.EFI for the i386-efi target) and you will have the additional ability of being able to boot from the drive in case EFI variables are reset or you move the drive to another computer. Usually you can do this by selecting the drive itself similar to how you would using BIOS. If dual booting with Windows, be aware Windows usually places an EFI executable there, but its only purpose is to recreate the UEFI boot entry for Windows. If you are installing GRUB on a Mac, you will have to use this option.
 
 ```bash
 # /etc/default/grub
 GRUB_DISABLE_OS_PROBER=false
+
+GRUB_SAVEDEFAULT=false
+GRUB_DEFAULT=0
+# ... see: https://forum.manjaro.org/t/grub-error-sparse-file-not-allowed/20267
 ```
+
 Reinstall kernels & boot!
 
 ## summary
