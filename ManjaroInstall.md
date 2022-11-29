@@ -1,4 +1,4 @@
-# Installing Manjaro, on Btrfs, in the Arch way
+# Installing Manjaro, the Arch way, on Btrfs
 
 ### Major References
 
