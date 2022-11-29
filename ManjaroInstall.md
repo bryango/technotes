@@ -53,6 +53,16 @@ swapon PARTLABEL=swap
 swapon PARTLABEL=swapend
 ```
 
+Later we can set up hibernation, following https://wiki.archlinux.org/title/Power_management/Suspend_and_hibernate. Basically,
+
+```bash
+# /etc/default/grub
+GRUB_CMDLINE_LINUX_DEFAULT="resume=PARTLABEL=swapend"
+# Note that _DEFAULT is for normal mode only.
+```
+
+Provided that `systemd` HOOKS are set up in `/etc/mkinitcpio.conf`, as described below.
+
 ### (btr)system: btrfs
 
 > We mostly follows [[Altercation]]. <br>
@@ -97,7 +107,6 @@ Use `LABEL` for compatibility:
 ```
 fstabgen -L /mnt >> /mnt/etc/fstab
 ```
-Tweak swap priority: https://wiki.archlinux.org/title/Swap#Priority. <br>
 Tweaked result (UUID censored):
 ```
 # /dev/sda1 UUID=
@@ -118,6 +127,8 @@ LABEL=swap          	none      	swap      	defaults,pri=100	0 0
 # /dev/sda4 UUID=
 LABEL=swapend       	none      	swap      	defaults,pri=10	0 0
 ```
+
+Swap priority tweaked with `pri=`. Note that `swapend` has a low priority and is mainly used for hibernation. See https://wiki.archlinux.org/title/Swap#Priority.
 
 ## chroot & nspawn
 
@@ -230,6 +241,10 @@ GRUB_DISABLE_OS_PROBER=false
 GRUB_SAVEDEFAULT=false
 GRUB_DEFAULT=0
 # ... see: https://forum.manjaro.org/t/grub-error-sparse-file-not-allowed/20267
+
+GRUB_CMDLINE_LINUX_DEFAULT="resume=PARTLABEL=swapend"
+# Note that _DEFAULT is for normal mode only. To include recovery mode,
+GRUB_CMDLINE_LINUX="fbcon=scrollback:256k"
 ```
 
 Reinstall kernels & boot!
