@@ -25,3 +25,14 @@ dconf load / < dconf-dump.conf
 pactree
 pactree --reverse
 ```
+
+## make a file immutable
+
+```bash
+sudo chattr +i # <file>
+```
+
+**Example:** miktex falsely installs `~/.miktex/texmfs/install/tex/latex/jknappen/ubbold.fd`, a problem described here:
+> https://tex.stackexchange.com/questions/164299/missing-character-1-in-font-bbold11
+
+To blacklist the file, simply create an empty `ubbold.fd` and then lock it with `chattr +i`. 
