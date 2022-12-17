@@ -26,8 +26,10 @@ dconf load / < dconf-dump.conf
 ### check dependencies
 
 ```bash
-pactree
-pactree --reverse
+pactree --color --sync # for sync database
+              # --optional=0
+              # --depth=1
+pactree --color --reverse # for packages that depends on it
 ```
 
 ### obtain pgp key
