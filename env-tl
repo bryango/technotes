@@ -1,0 +1,29 @@
+#!/bin/bash
+# texlive wrapper
+
+this_script=env-tl
+called_as=$(basename "$0")
+
+### remove miktex from $PATH
+### ... see: ~/.shrc
+
+miktex_path_grep=miktex
+
+if [[ "$(echo "$PATH" | wc -l)" -eq 1 ]];  # sanity check
+then
+    PATH=$( \
+        tr ':' '\n' <<< "$PATH" \
+        | grep -v "$miktex_path_grep" \
+        | tr '\n' ':'
+    )
+    PATH=${PATH%:}
+    >&2 echo "PATH=$PATH"
+    export PATH
+fi
+
+if [[ $called_as == "$this_script" ]]; then
+    exec "$@"
+else
+    # next in $PATH
+    exec "$(which -a "$called_as" | grep -v "$0" | head -1)" "$@"
+fi
