@@ -21,9 +21,18 @@ then
     export PATH
 fi
 
+# next in $PATH
+# ... not $0
+# ... not system: /usr/bin/
+target_exclude() {
+    which -a "$called_as" \
+    | grep -v -E "$*|/usr/bin/" \
+    | head -1
+}
+
 if [[ $called_as == "$this_script" ]]; then
     exec "$@"
 else
-    # next in $PATH
-    exec "$(which -a "$called_as" | grep -v "$0" | head -1)" "$@"
+    exec "$(target_exclude "$0")" "$@"
 fi
+
