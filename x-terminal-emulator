@@ -1,0 +1,24 @@
+#!/bin/bash
+# open terminal: with tilix
+
+# glib has terminals hard coded
+# see `known_terminals` at https://github.com/GNOME/glib/blob/main/gio/gdesktopappinfo.c
+# see also https://gitlab.gnome.org/GNOME/glib/-/issues/338
+
+# add `-e` if called as `xdg-terminal-exec`
+if [[ $(basename "$0") == "xdg-terminal-exec" ]]; then
+    args=(-e "$@")
+fi
+
+# expand the '--' symbol
+args=("$@")
+for idx in "${!args[@]}"; do
+    [[ ${args[$idx]} == '--' ]] && args[$idx]='-e'
+done
+
+# debug
+>&2 echo "### called as: [ $0 ]"
+>&2 echo "### ${#args[@]} args: [ ${args[*]} ]"
+
+tilix --action=app-new-session "${args[@]}" &> /dev/null & disown
+exec tilix --focus-window
