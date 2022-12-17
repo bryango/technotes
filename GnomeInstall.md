@@ -38,8 +38,7 @@ More specifically,
 - `pacman -S mesa lib32-mesa vulkan-intel`
 - Add `DefaultSession=gnome-xorg.desktop` to the `[daemon]` section of `/etc/gdm/custom.conf`
 
-**Edit:** `DefaultSession` doesn't seem to work. <br>
-Fortunately pick Xorg once and GDM will seem to remember it.
+**Edit:** `DefaultSession` doesn't seem to work. Fortunately, pick Xorg once and it seems that GDM will remember it.
 
 ## Trackers
 
@@ -61,3 +60,17 @@ Hidden=true
 ```
 It seems that this is enough. <br>
 For a more extreme measure, see https://gist.github.com/vancluever/d34b41eb77e6d077887c
+
+## Color profile
+
+The automatic color profile is weirdly purple on my laptop. `sRGB` seems to be the right one. Note that for the new profile to take effect, some apps (including firefox) need to be restarted. 
+
+## Terminals
+
+Default terminal emulators are hard coded in glib. This is the terminal that gnome uses to open the `.desktop` files (those including the setting `Terminal=true`). I've hence created a default terminal wrapper for tilix to fool glib; see [`x-terminal-emulator`](/x-terminal-emulator). For it to work, symlink:
+
+```bash
+gnome-terminal -> xdg-terminal-exec -> x-terminal-emulator
+```
+
+Eventually the symlink for `gnome-terminal` will no longer be necessary, as `xdg-terminal-exec` becomes standard. See the links to the glib repo in [`x-terminal-emulator`](/x-terminal-emulator) for more details. 
