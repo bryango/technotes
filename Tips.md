@@ -2,6 +2,14 @@
 
 This is the place to dump various snippets.
 
+## naming conventions
+
+https://en.wikipedia.org/wiki/Naming_convention_(programming)
+
+- use `lowercase` for frequently used items, to minize <kbd>Shift</kbd> ing
+- use `CamelCase` to maximize readability, use `camelCase` if necessary
+- prefer `-` over `_`, also to minize <kbd>Shift</kbd> ing
+
 ## git partial clone
 
 See https://github.blog/2020-12-21-get-up-to-speed-with-partial-clone-and-shallow-clone/
