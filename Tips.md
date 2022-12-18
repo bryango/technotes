@@ -54,3 +54,14 @@ sudo tailscale up --advertise-exit-node \
                 # --exit-node=...  ## find in `tailscale status`
                 # --advertise-routes=...
 ```
+
+## firefox google sign-in
+
+I cannot sign in with my google account on firefox. I cannot figure out why. However, there is a workaround:
+- get the URL for the sign-in page and open it in another brower
+- get the returned URL and then do a manual redirect in the original sign-in page, using the javascript console
+
+```js
+window.location.replace("...")
+```
+The sign-in should proceed with no issue!
