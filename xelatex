@@ -1,0 +1,94 @@
+#!/bin/python3
+# use tectonic for xelatex
+
+import argparse
+import os
+
+# https://docs.python.org/3/library/argparse.html
+parser = argparse.ArgumentParser(
+    prog='xelatex',
+    description='xelatex compatible cli for tectonic',
+    epilog='See man:pdftex(1) and man:xetex(1) for more information.',
+    argument_default=argparse.SUPPRESS,  # no default
+    add_help=False
+)
+
+# https://man.archlinux.org/man/extra/texlive-bin/pdflatex.1.en
+# https://man.archlinux.org/man/extra/texlive-bin/xetex.1.en
+# tectonic -X compile --help
+# tectonic -Zhelp
+
+add_arg = parser.add_argument_group('FLAGS').add_argument
+printhelp   = add_arg('-h',            action='store_true')  # noqa: E241
+shellescape = add_arg('-shell-escape', action='store_true')  # noqa: E241
+nopdf       = add_arg('-no-pdf',       action='store_true')  # noqa: E241
+
+# customized defaults
+arg_opts = { 'default': True, 'action': 'store_false' }
+aux     = add_arg('-no-aux',   dest='aux',     **arg_opts)  # noqa: E241
+logs    = add_arg('-no-log',   dest='logs',    **arg_opts)  # noqa: E241
+chatter = add_arg('-no-print', dest='chatter', **arg_opts)  # noqa: E241
+
+add_arg = parser.add_argument_group('OPTIONS').add_argument
+synctex   = add_arg('-synctex', type=int, default=15)
+format    = add_arg('-fmt')
+papersize = add_arg('-papersize')
+outdir    = add_arg('-output-directory')
+
+add_arg = parser.add_argument_group('IGNORED').add_argument
+add_arg('-interaction')
+
+# parse and prepare for translation
+(kwargs, args) = parser.parse_known_args()
+kwargs = vars(kwargs)
+# print(kwargs)
+
+args_translated = []
+
+
+def translate_arg(arg_action: argparse.Action,
+                  arg: str, value: str = None) -> None:
+    if arg_action.dest not in kwargs:
+        return
+
+    if value is None:
+        if kwargs[arg_action.dest] is True:     # add a flag w/o value
+            value = ''
+        elif kwargs[arg_action.dest] is False:  # remove a flag
+            value = ''
+            arg = ''
+        else:
+            value = kwargs[arg_action.dest]
+
+    global args_translated
+    args_translated.extend([*arg.split(), *str(value).split()])
+
+
+if printhelp.dest in kwargs:
+    parser.print_help()
+    exit()
+
+if synctex.dest in kwargs:
+    translate_arg(synctex, f'--synctex={kwargs[synctex.dest]}', '')
+
+translate_arg(nopdf, '--outfmt', 'xdv')
+translate_arg(outdir, '--outdir')
+translate_arg(format, '--format')
+translate_arg(papersize, '-Z paper-size')
+translate_arg(shellescape, '-Z shell-escape')
+
+# customized defaults
+translate_arg(aux, '--keep-intermediates')
+translate_arg(logs, '--keep-logs')
+translate_arg(chatter, '--print')
+
+args = [ *'tectonic -X compile --pass tex'.split(),
+         *args_translated,
+         *args ]
+
+print(args)
+os.execlp(args[0], *args)
+
+### example:
+# env TEXINPUTS="./pkg:" xelatex -synctex=15 -no-log -shell-escape %.tex
+# env TEXINPUTS="./pkg:" tectonic -X compile --pass tex --synctex=15 --keep-intermediates -Z shell-escape %.tex  # noqa: E501
