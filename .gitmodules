@@ -1,0 +1,3 @@
+[submodule "cheznous"]
+	path = cheznous
+	url = git@github.com:bryango/cheznous.git
