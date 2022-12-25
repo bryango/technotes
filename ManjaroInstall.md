@@ -89,7 +89,7 @@ mount -t btrfs -o subvol=@snapshots,$o_btrfs PARTLABEL=system /mnt/.snapshots
 mount --mkdir PARTLABEL=EFI /mnt/boot/efi  ## /efi for (dual) boot support [[ManjaroArchWay]]
 ```
 
-Mount script available [here](/mount-sys.sh). Run with `root`. BE CAREFUL!
+Mount script available [here](/cheznous/apps/utils/mount-sys.sh). Run with `root`. BE CAREFUL!
 
 ## Bootstrapping Manjaro
 
