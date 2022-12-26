@@ -67,10 +67,10 @@ The automatic color profile is weirdly purple on my laptop. `sRGB` seems to be t
 
 ## Terminals
 
-Default terminal emulators are hard coded in glib. This is the terminal that gnome uses to open the `.desktop` files (those including the setting `Terminal=true`). I've hence created a default terminal wrapper for tilix to fool glib; see [`x-terminal-emulator`](/cheznous/bin/x-terminal-emulator). For it to work, symlink:
+Default terminal emulators are hard coded in glib. This is the terminal that gnome uses to open the `.desktop` files (those including the setting `Terminal=true`). I've hence created a default terminal wrapper for tilix to fool glib; see [`~/bin/x-terminal-emulator`](https://github.com/bryango/cheznous/blob/-/bin/x-terminal-emulator). For it to work, symlink:
 
 ```bash
 gnome-terminal -> xdg-terminal-exec -> x-terminal-emulator
 ```
 
-Eventually the symlink for `gnome-terminal` will no longer be necessary, as `xdg-terminal-exec` becomes standard. See the links to the glib repo in [`x-terminal-emulator`](/cheznous/bin/x-terminal-emulator) for more details. 
+Eventually the symlink for `gnome-terminal` will no longer be necessary, as `xdg-terminal-exec` becomes standard. See the links to the glib repo in [`x-terminal-emulator`](https://github.com/bryango/cheznous/blob/-/bin/x-terminal-emulator) for more details. 

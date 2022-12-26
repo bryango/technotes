@@ -10,7 +10,7 @@ tectonic (xelatex) > miktex (pdflatex, ...) > tlmgr (--usermode, infra-only)
 
 ## `xelatex -> tectonic`
 
-I've written a wrapper script with python's argparse. See [](/cheznous/bin/xelatex). 
+I've written a wrapper script with python's argparse. See [`~/bin/xelatex`](https://github.com/bryango/cheznous/blob/-/bin/xelatex). 
 
 ## `$PATH` sequence
 
@@ -28,7 +28,7 @@ $HOME/apps/texlive/latest/bin/x86_64-linux
 
 ## Launch tlmgr without interference from miktex
 
-See [`env-tl`](/cheznous/bin/env-tl). Link `tlmgr -> env-tl` in `$PATH` and run `tlmgr` directly.
+See [`~/bin/env-tl`](https://github.com/bryango/cheznous/blob/-/bin/env-tl). Link `tlmgr -> env-tl` in `$PATH` and run `tlmgr` directly.
 
 ## Let miktex know about the tlmgr tree
 
