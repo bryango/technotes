@@ -1,6 +1,0 @@
-[submodule "cheznous"]
-	path = cheznous
-	url = git@github.com:bryango/cheznous.git
-[submodule "chezroot"]
-	path = chezroot
-	url = git@github.com:bryango/chezroot.git
