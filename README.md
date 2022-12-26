@@ -2,8 +2,9 @@
 
 My notes about tech. This note-taking repo is inspired by [WhymustIhaveaname/Notes](https://github.com/WhymustIhaveaname/Notes). 
 
-- Small tips are found in [Tips.md](./Tips.md). 
+- Small tips are found in [**Tips.md**](./Tips.md). 
 - Finished notes are indexed here. 
+- Useful scripts are found in [**cheznous**](https://github.com/bryango/cheznous) and [**chezroot**](https://github.com/bryango/chezroot).
 - Work in progress are simply scattered in the repo. 
 
 ## [Installing Manjaro, the Arch way, on Btrfs](./ManjaroInstall.md)
