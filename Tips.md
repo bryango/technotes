@@ -81,3 +81,18 @@ The sign-in should proceed with no issue!
 - To refresh the rules, follow the wiki: https://wiki.archlinux.org/title/Audit_framework. 
 - For more on the rules, see: https://man.archlinux.org/man/auditctl.8.en. 
 
+## firewalld
+
+To me `firewalld` _feels_ like the best choice for modern firewall configurations.
+
+- It _feels_ more powerful than `ufw`
+- It works with the next gen `nftables`
+- It has nice integrations with NetworkManager
+- It has an official GUI
+- It has a nice CLI with zsh completions
+- It is actively maintained by Fedora / Red Hat
+
+To drop incomings by default,
+```bash
+sudo firewall-cmd --set-default-zone=drop
+```
