@@ -73,3 +73,11 @@ I cannot sign in with my google account on firefox. I cannot figure out why. How
 window.location.replace("...")
 ```
 The sign-in should proceed with no issue!
+
+## dmesg: no audits
+
+`audit` spams dmesg. To exclude unneeded messages, see [`chezroot: /etc/audit/rules.d/quiet.rules`](https://github.com/bryango/chezroot/blob/master/etc/audit/rules.d/quiet.rules)
+
+- To refresh the rules, follow the wiki: https://wiki.archlinux.org/title/Audit_framework. 
+- For more on the rules, see: https://man.archlinux.org/man/auditctl.8.en. 
+
