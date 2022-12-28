@@ -19,6 +19,13 @@ git clone --filter=blob:none # --single-branch --branch=...
 git submodule update --init --filter=blob:none --recursive
 ```
 
+## gitignore
+
+```gitignore
+# ignore itself so it will not be committed
+/.gitignore
+```
+
 ## dconf
 
 Check `dconf help`
