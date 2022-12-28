@@ -8,9 +8,11 @@ tectonic (xelatex) > miktex (pdflatex, ...) > tlmgr (--usermode, infra-only)
                                             > pacman (texlive-{bin,installer})
 ```
 
-## `xelatex -> tectonic`
+## `xelatex-tectonic`
 
-I've written a wrapper script with python's argparse. See [`~/bin/xelatex`](https://github.com/bryango/cheznous/blob/-/bin/xelatex). 
+A wrapper script to parse `xelatex` flags and pass to `tectonic`, written with python's argparse. See [`~/bin/xelatex-tectonic`](https://github.com/bryango/cheznous/blob/-/bin/xelatex-tectonic). I was hoping to replace `xelatex` completely with `tectonic`. 
+
+Unfortunately, `tectonic` is not perfect yet (see e.g. https://github.com/tectonic-typesetting/tectonic/issues/859), so for now I've switched to `xelatex -> miktex-xetex`. 
 
 ## `$PATH` sequence
 
