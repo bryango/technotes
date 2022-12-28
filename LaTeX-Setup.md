@@ -4,15 +4,19 @@
 - **Result:** fallback chain:
 ```bash
 tectonic (xelatex) > miktex (pdflatex, ...) > tlmgr (--usermode, infra-only)
-                   > nix (biber)            > pacman (biber)
-                                            > pacman (texlive-{bin,installer})
+                   > nix (biber)            > pacman (texlive-{bin,installer})
 ```
 
 ## `xelatex-tectonic`
 
 A wrapper script to parse `xelatex` flags and pass to `tectonic`, written with python's argparse. See [`~/bin/xelatex-tectonic`](https://github.com/bryango/cheznous/blob/-/bin/xelatex-tectonic). I was hoping to replace `xelatex` completely with `tectonic`. 
 
-Unfortunately, `tectonic` is not perfect yet (see e.g. https://github.com/tectonic-typesetting/tectonic/issues/859), so for now I've switched to `xelatex -> miktex-xetex`. 
+Unfortunately, `tectonic` is not perfect yet:
+- https://github.com/tectonic-typesetting/tectonic/issues/859: pipe input not available
+- https://github.com/tectonic-typesetting/tectonic/issues/893: biber version mismatch, described below
+- slow download speed in some regions
+
+So for now I've switched to `xelatex -> miktex-xetex`. 
 
 ## `$PATH` sequence
 
@@ -28,19 +32,28 @@ $HOME/apps/texlive/latest/bin/x86_64-linux
 # ... unrelated entries removed
 ```
 
-## Launch tlmgr without interference from miktex
+## launch tlmgr without interference from miktex
 
 See [`~/bin/env-tl`](https://github.com/bryango/cheznous/blob/-/bin/env-tl). Link `tlmgr -> env-tl` in `$PATH` and run `tlmgr` directly.
 
-## Let miktex know about the tlmgr tree
+## let miktex know about the tlmgr tree
 
 Add `texlive/latest/texmf-dist/` to `$TEXMF` in miktex console. See:
 - https://miktex.org/faq/local-additions
 - https://miktex.org/kb/texmf-roots
 
-## Fix file conflicts in miktex
+## fix file conflicts in miktex
 
 Miktex falsely installs `~/.miktex/texmfs/install/tex/latex/jknappen/ubbold.fd`, a problem described here:
 > https://tex.stackexchange.com/questions/164299/missing-character-1-in-font-bbold11
 
 To blacklist the file, simply create an empty `ubbold.fd` and then lock it with `sudo chattr +i`. 
+
+## biber issues
+
+`biber` is tightly coupled with `biblatex`. See https://github.com/plk/biber/issues/427. 
+
+- one can use `nix` to install a matching biber release. 
+- ... or, simply use `miktex` which should include matching versions.
+
+`biber` also wants `libcrypt.so.1`, which is not installed by default. This seems to be an Arch issue; the solution is provided [here](https://stackoverflow.com/questions/71171446/biber-wants-to-load-libcrypt-so-1-but-it-is-missing).
