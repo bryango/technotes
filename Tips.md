@@ -16,6 +16,7 @@ See https://github.blog/2020-12-21-get-up-to-speed-with-partial-clone-and-shallo
 
 ```bash
 git clone --filter=blob:none # --single-branch --branch=...
+git submodule update --init --filter=blob:none --recursive
 ```
 
 ## dconf
