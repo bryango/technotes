@@ -32,11 +32,18 @@ $HOME/apps/texlive/latest/bin/x86_64-linux
 # ... unrelated entries removed
 ```
 
-## launch tlmgr without interference from miktex
+## texlive install
+
+- Use `texlive-installer` from AUR, [with `tk` GUI](https://github.com/bryango/aur/tree/texlive-installer). This also sets up dependencies in pacman. 
+- Install minimal components (portable, infrastructure-only), at `$HOME/apps/texlive/$YEAR`
+- Link `latest -> $YEAR`
+- Next time try to remove `$YEAR` from the installation path (risk: system-breaking annual update).
+
+### launch tlmgr without interference from miktex
 
 See [`~/bin/env-tl`](https://github.com/bryango/cheznous/blob/-/bin/env-tl). Link `tlmgr -> env-tl` in `$PATH` and run `tlmgr` directly.
 
-## let miktex know about the tlmgr tree
+### let miktex know about the tlmgr tree
 
 Add `texlive/latest/texmf-dist/` to `$TEXMF` in miktex console. See:
 - https://miktex.org/faq/local-additions
