@@ -2,7 +2,7 @@
 
 - install from pacman, following [the wiki](https://wiki.archlinux.org/title/Nix)
 - `profiles` are like virtual environments, managed with `nix-env`
-- `channels` are special `profiles`; they are snapshots of the package repo
+- `channels` are managed as special `profiles`; they are snapshots of the package repo
 
 See: https://nixos.org/manual/nix/unstable/package-management/profiles.html
 
@@ -35,7 +35,9 @@ nix-channel --add https://mirrors.tuna.tsinghua.edu.cn/nix-channels/nixpkgs-unst
 nix-channel -v --update
 ```
 
-Channels are managed just like profiles. Each `--update` creates a `generation` for easy `rollback`.
+- Channels are managed just like profiles. Each `--update` creates a `generation` for easy `rollback`
+- Channels are sets of `expressions`, or functions
+- Package building is `derivation`, i.e. acting `expressions` onto some inputs
 
 ## `profiles`
 
@@ -54,8 +56,10 @@ lrwxrwxrwx 1 $USER $USER  60  profile-1-link -> /nix/store/#some-hash
 - `channel` is the channel profile
 - `profile` is the default user profile
 
-**Note:** per-user profile is located at `per-user/"$USER"/profile`.
-- This is documented in [`nix profile`](https://nixos.org/manual/nix/unstable/command-ref/new-cli/nix3-profile.html)
-- ... but _not_ documented in [`nix-env`](https://nixos.org/manual/nix/unstable/command-ref/nix-env.html)
+**Note:** The default _per-user_ profile is `per-user/"$USER"/profile`.
+- This is documented in [`man nix3-profile`](https://nixos.org/manual/nix/unstable/command-ref/new-cli/nix3-profile.html)
+- ... but _not_ documented in [`man nix-env`](https://nixos.org/manual/nix/unstable/command-ref/nix-env.html)
 
-However this is indeed the default.
+However this is indeed the default _per-user_ profile. The default system profile, as is documented in [`man nix-env`](https://nixos.org/manual/nix/unstable/command-ref/nix-env.html), is `/nix/var/nix/profiles/default`
+
+
