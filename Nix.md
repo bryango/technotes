@@ -13,6 +13,28 @@ drwxr-xr-x 1 $USER $USER 42  .nix-defexpr/
 lrwxrwxrwx 1 $USER $USER 44  .nix-profile -> /nix/var/nix/profiles/per-user/$USER/profile/
 ```
 
+## quick start
+
+```bash
+nix-env -v \
+  --profile "/nix/var/nix/profiles/per-user/$USER/$profile" \
+  --file "channel:$channel" \
+  --query  # or: --install, --dry-run, ...
+```
+
+- `file` is the `expression` to use for the package build (`derivation`). It defaults to `~/.nix-defexpr`.
+- `~/.nix-defexpr` in turn defaults to the channel set up by `nix-channel`.
+- One can also specify the expression / channel manually, with `--file / -f`.
+
+```bash
+$ ls -alF --time-style=+ .nix-defexpr | sed -E "s/$USER/\$USER/g"  
+total 8
+drwxr-xr-x 1 $USER $USER   42  ./
+drwx------ 1 $USER $USER 1500  ../
+lrwxrwxrwx 1 $USER $USER   45  channels -> /nix/var/nix/profiles/per-user/$USER/channels/
+lrwxrwxrwx 1 $USER $USER   44  channels_root -> /nix/var/nix/profiles/per-user/root/channels
+```
+
 ## binary cache `substituters`
 
 Here we follow the guidance of [**tuna**](https://mirrors.tuna.tsinghua.edu.cn/help/nix/).
@@ -24,7 +46,7 @@ _Note:_ either `trusted-users` or `trusted-substituters` has to be declared in t
 
 ## _optional:_ `channel`
 
-**Note:** one does **_not_** have to set up a `channel` to install packages. See later sections.
+**Note:** one does **_not_** have to set up a `channel` to install packages. One can then install packages without keeping the `channel` cache; use `nix-env -f` as shown before in the _quick start_ section.
 
 ```bash
 nix-channel --add https://mirrors.tuna.tsinghua.edu.cn/nix-channels/nixpkgs-unstable
