@@ -42,7 +42,7 @@ lrwxrwxrwx 1 $USER $USER 44  .nix-profile -> /nix/var/nix/profiles/per-user/$USE
 
 ### nix mirrors
 
-Set up `channel` and binary cache (`substituters`), following [**tuna**](https://mirrors.tuna.tsinghua.edu.cn/help/nix/). 
+- set up `channel`, following [**tuna**](https://mirrors.tuna.tsinghua.edu.cn/help/nix/). 
 
 ```bash
 nix-channel --add https://mirrors.tuna.tsinghua.edu.cn/nix-channels/nixpkgs-unstable
@@ -51,6 +51,13 @@ nix-channel --add https://mirrors.tuna.tsinghua.edu.cn/nix-channels/nixpkgs-unst
 
 nix-channel -v --update
 ```
+
+- binary cache `substituters`, see:
+
+  - [`~/.config/nix/nix.conf`](https://github.com/bryango/cheznous/blob/-/.config/nix/nix.conf)
+  - [`/etc/nix/nix.conf`](https://github.com/bryango/chezroot/blob/-/etc/nix/nix.conf)
+
+**Note:** either `trusted-users` or `trusted-substituters` has to be declared in the root config [`/etc/nix/nix.conf`](https://github.com/bryango/chezroot/blob/-/etc/nix/nix.conf). Otherwise `substituters` will be ignored.
 
 ## dconf
 
