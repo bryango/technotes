@@ -24,7 +24,6 @@ nix-env -v \
 
 - `file` is the `expression` to use for the package build (`derivation`). It defaults to `~/.nix-defexpr`.
 - `~/.nix-defexpr` in turn defaults to the channel set up by `nix-channel`.
-- One can also specify the expression / channel manually, with `--file / -f`.
 
 ```bash
 $ ls -alF --time-style=+ .nix-defexpr | sed -E "s/$USER/\$USER/g"  
@@ -34,6 +33,12 @@ drwx------ 1 $USER $USER 1500  ../
 lrwxrwxrwx 1 $USER $USER   45  channels -> /nix/var/nix/profiles/per-user/$USER/channels/
 lrwxrwxrwx 1 $USER $USER   44  channels_root -> /nix/var/nix/profiles/per-user/root/channels
 ```
+
+- One can also specify the expression / channel manually, with `--file / -f`.
+- The list of channels are found in:
+
+  - mirror: https://mirrors.tuna.tsinghua.edu.cn/nix-channels/
+  - upstream: https://nixos.org/channels/
 
 ## binary cache `substituters`
 
@@ -50,10 +55,6 @@ _Note:_ either `trusted-users` or `trusted-substituters` has to be declared in t
 
 ```bash
 nix-channel --add https://mirrors.tuna.tsinghua.edu.cn/nix-channels/nixpkgs-unstable
-
-# more channels: https://mirrors.tuna.tsinghua.edu.cn/nix-channels/
-# .... upstream: https://nixos.org/channels/
-
 nix-channel -v --update
 ```
 
