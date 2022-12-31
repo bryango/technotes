@@ -19,7 +19,7 @@ lrwxrwxrwx 1 $USER $USER 44  .nix-profile -> /nix/var/nix/profiles/per-user/$USE
 nix-env -v \
   --profile "/nix/var/nix/profiles/per-user/$USER/$profile" \
   --file "channel:$channel" \
-  --prebuilt-only --install --attr # or: --query, --dry-run, ...
+  --install --prebuilt-only --attr # -ibA, or: --query, --dry-run, ...
 ```
 
 - `file` is the `expression` to use for the package build (`derivation`). It defaults to `~/.nix-defexpr`.
