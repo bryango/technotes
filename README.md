@@ -17,3 +17,11 @@ Why?
 > **Note:** for btrfs, CoW has long been the glib default!
 > See: https://gitlab.gnome.org/GNOME/glib/-/issues/2151. 
 > So CoW works natively in nautilus! No need to `cp --reflink=always`!
+
+## [Nix: more pacman beyond pacman](./Nix.md)
+
+Why?
+- Arch & AUR is perfect.
+- Unfortunately, Real Life is messy.
+
+Multiple versions are sometimes a requirement, which pacman refuses to handle. Fortunately, we have nix, which is also perfect!
