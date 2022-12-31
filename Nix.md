@@ -19,7 +19,7 @@ lrwxrwxrwx 1 $USER $USER 44  .nix-profile -> /nix/var/nix/profiles/per-user/$USE
 nix-env -v \
   --profile "/nix/var/nix/profiles/per-user/$USER/$profile" \
   --file "channel:$channel" \
-  --query  # or: --install, --dry-run, ...
+  --prebuilt-only --install --attr # or: --query, --dry-run, ...
 ```
 
 - `file` is the `expression` to use for the package build (`derivation`). It defaults to `~/.nix-defexpr`.
@@ -37,6 +37,31 @@ lrwxrwxrwx 1 $USER $USER   44  channels_root -> /nix/var/nix/profiles/per-user/r
 One can specify the expression / channel manually, with `-f "channel:$channel"`. The list of channels are found in:
 - mirror: https://mirrors.tuna.tsinghua.edu.cn/nix-channels/
 - upstream: https://nixos.org/channels/
+
+## garbage collection
+
+See https://nixos.org/manual/nix/unstable/package-management/garbage-collection.html.
+
+```bash
+# check access points (roots)
+nix-store --gc --print-roots
+
+# actual garbage collection
+nix-store -v --gc
+
+# further optimisation
+nix-store --optimise
+```
+
+More AGRESSIVE:
+
+```bash
+# delete old generations
+nix-env -p "$profile" --delete-generations old  # or, specify $gen
+
+# all-in-one util
+nix-collect-garbage  # --delete-older-than, --max-freed, --dry-run
+```
 
 ## binary cache `substituters`
 
@@ -58,7 +83,7 @@ nix-channel -v --update
 
 - Channels are managed just like profiles. Each `--update` creates a `generation` for easy `rollback`
 - Channels are sets of `expressions`, or functions
-- Package building is `derivation`, i.e. acting `expressions` onto some inputs
+- Package building is doing `derivations`, i.e. acting `expressions` onto some inputs
 
 ## `profiles`
 
