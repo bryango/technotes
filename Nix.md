@@ -34,11 +34,9 @@ lrwxrwxrwx 1 $USER $USER   45  channels -> /nix/var/nix/profiles/per-user/$USER/
 lrwxrwxrwx 1 $USER $USER   44  channels_root -> /nix/var/nix/profiles/per-user/root/channels
 ```
 
-- One can also specify the expression / channel manually, with `--file / -f`.
-- The list of channels are found in:
-
-  - mirror: https://mirrors.tuna.tsinghua.edu.cn/nix-channels/
-  - upstream: https://nixos.org/channels/
+One can specify the expression / channel manually, with `-f "channel:$channel"`. The list of channels are found in:
+- mirror: https://mirrors.tuna.tsinghua.edu.cn/nix-channels/
+- upstream: https://nixos.org/channels/
 
 ## binary cache `substituters`
 
