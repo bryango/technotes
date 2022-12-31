@@ -53,3 +53,9 @@ lrwxrwxrwx 1 $USER $USER  60  profile-1-link -> /nix/store/#some-hash
 - The number `$gen` in `$profile-$gen-link` is the `generation`.
 - `channel` is the channel profile
 - `profile` is the default user profile
+
+**Note:** per-user profile is located at `per-user/"$USER"/profile`.
+- This is documented for [`nix profile`](https://nixos.org/manual/nix/unstable/command-ref/new-cli/nix3-profile.html)
+- ... but _not_ documented for [`nix-env`](https://nixos.org/manual/nix/unstable/command-ref/nix-env.html)
+
+However this is indeed the default.
