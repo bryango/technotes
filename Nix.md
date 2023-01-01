@@ -141,4 +141,4 @@ nix-env --profile "/nix/var/nix/profiles/per-user/$USER/biber-2.17" \
   
   > https://github.com/NixOS/nixpkgs/tree/master/pkgs/tools/typesetting/tex/texlive/pkgs.nix
 
-  We can then locate the commit with `biber-2.17`. Check the git tag that contains this commit; the _earliest_ release tag probably contains the desired version (but this is not guaranteed). The binary cache may then be similarly installed.
+  We can then locate the commit with `biber-2.17`. Check the git tags that contain this commit; the _earliest_ release tag probably contains the desired version (but this is not always guaranteed). The binary cache may then be similarly installed.
