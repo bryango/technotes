@@ -113,7 +113,7 @@ lrwxrwxrwx 1 $USER $USER  60  profile-1-link -> /nix/store/#some-hash
 
 However this is indeed the default _per-user_ profile. The default system profile, as is documented in [`man nix-env`](https://nixos.org/manual/nix/unstable/command-ref/nix-env.html), is `/nix/var/nix/profiles/default`
 
-## install old packages, from the binary cache
+## install old versions, from the binary cache
 
 The guide is here: https://lazamar.github.io/download-specific-package-version-with-nix/. Also we prefer installing the package with binary cache, which is a lot easier than compiling from source.
 
@@ -141,4 +141,4 @@ nix-env --profile "/nix/var/nix/profiles/per-user/$USER/biber-2.17" \
   
   > https://github.com/NixOS/nixpkgs/tree/master/pkgs/tools/typesetting/tex/texlive/pkgs.nix
 
-  We can then locate the commit with `biber-2.17`. Check the git tags that contain this commit; the _earliest_ release tag probably contains the desired version (but this is not always guaranteed). The binary cache may then be similarly installed.
+  We can then locate the commit with `biber-2.17`. Check the git tags that contain this commit; the _earliest_ release tag probably contains the desired version (but this is not always guaranteed). 
