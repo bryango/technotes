@@ -119,14 +119,15 @@ The guide is here: https://lazamar.github.io/download-specific-package-version-w
 
 Here we work with an explicit example: `tectonic-0.12.0` is bundled with `biblatex-3.17`, as of 2023-01-01. The compatible `biber` version is `biber-2.17`. 
 
-- First, check if `biber-2.17` is contained in a recent release: https://search.nixos.org/packages. It turns out that we are lucky, as `biber-2.17` is part of the `22.11` and `unstable` release and we can simply install that with:
+- First, check if `biber-2.17` is contained in a recent stable release: https://search.nixos.org/packages. It turns out that we are lucky, as `biber-2.17` is part of the `22.11` release and we can simply install that with:
 
 ```bash
 nix-env --profile "/nix/var/nix/profiles/per-user/$USER/biber-2.17" \
-        -ibA nixpkgs.biber # -f channel:nixos-22.11
+        --file https://mirrors.tuna.tsinghua.edu.cn/nix-channels/nixos-22.11/nixexprs.tar.xz \ 
+        -ibA biber
 ```
 
-- If we were not able to locate the desired version in a recent release, we have to do some git repo archeology. This is aided by the tool
+- If we were not able to locate the desired version in a recent stable release, we have to do some git repo archeology. This is aided by the tool
   > https://lazamar.co.uk/nix-versions/
   
   Basically, to install `biber-2.17`, we first locate `biber` in the nixpkgs repo:
@@ -140,10 +141,4 @@ nix-env --profile "/nix/var/nix/profiles/per-user/$USER/biber-2.17" \
   
   > https://github.com/NixOS/nixpkgs/tree/master/pkgs/tools/typesetting/tex/texlive/pkgs.nix
 
-  We can then locate the commit with `biber-2.17`. Check the git tag that contains this commit; the _earliest_ release tag probably contains the desired version (but this is not guaranteed). The binary cache may then be installed with:
-
-```bash
-nix-env --profile "/nix/var/nix/profiles/per-user/$USER/biber-2.17" \
-        --file channel:nixos-22.11
-        -ibA nixpkgs.biber
-```
+  We can then locate the commit with `biber-2.17`. Check the git tag that contains this commit; the _earliest_ release tag probably contains the desired version (but this is not guaranteed). The binary cache may then be similarly installed.
