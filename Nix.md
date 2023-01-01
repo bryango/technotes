@@ -63,6 +63,11 @@ nix-env -p "$profile" --delete-generations old  # or, specify $gen
 nix-collect-garbage  # --delete-older-than, --max-freed, --dry-run
 ```
 
+To get an overview of package sizes,
+```bash
+du -h --max-depth=1 /nix/store --exclude=/nix/store/.links | sort -h
+```
+
 ## binary cache `substituters`
 
 Here we follow the guidance of [**tuna**](https://mirrors.tuna.tsinghua.edu.cn/help/nix/).
@@ -108,4 +113,22 @@ lrwxrwxrwx 1 $USER $USER  60  profile-1-link -> /nix/store/#some-hash
 
 However this is indeed the default _per-user_ profile. The default system profile, as is documented in [`man nix-env`](https://nixos.org/manual/nix/unstable/command-ref/nix-env.html), is `/nix/var/nix/profiles/default`
 
+## install old packages
+
+The guide is here: https://lazamar.github.io/download-specific-package-version-with-nix/. Also we prefer installing the package with binary cache, which is a lot easier than compiling from source.
+
+Here we work with an explicit example: `tectonic-0.12.0` is bundled with `biblatex-3.17`, as of 2023-01-01. The compatible `biber` version is `biber-2.17`. 
+
+- First, check if `biber-2.17` is contained in a recent release: https://search.nixos.org/packages. It turns out that we are lucky, as `biber-2.17` is part of the `22.11` and `unstable` release and we can simply install that with:
+
+```bash
+nix-env --profile "/nix/var/nix/profiles/per-user/$USER/biber-2.17" \
+        -ibA nixpkgs.biber # -f channel:nixos-22.11
+```
+
+- If we were not able to locate the desired version in a recent release, we have to do some git repo archeology. This is helped by the tool https://lazamar.co.uk/nix-versions/. Basically, to install `biber-2.17`, we first locate it in the nixpkgs repo:
+
+  > https://github.com/NixOS/nixpkgs/blob/master/pkgs/tools/typesetting/biber/default.nix
+
+  In this case we are slightly unlucky as the `biber` version is not explicit, but inherited from `texlive.biber.pkgs`. 
 
