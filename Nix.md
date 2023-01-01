@@ -113,7 +113,7 @@ lrwxrwxrwx 1 $USER $USER  60  profile-1-link -> /nix/store/#some-hash
 
 However this is indeed the default _per-user_ profile. The default system profile, as is documented in [`man nix-env`](https://nixos.org/manual/nix/unstable/command-ref/nix-env.html), is `/nix/var/nix/profiles/default`
 
-## install old packages
+## install old packages, from the binary cache
 
 The guide is here: https://lazamar.github.io/download-specific-package-version-with-nix/. Also we prefer installing the package with binary cache, which is a lot easier than compiling from source.
 
@@ -126,9 +126,24 @@ nix-env --profile "/nix/var/nix/profiles/per-user/$USER/biber-2.17" \
         -ibA nixpkgs.biber # -f channel:nixos-22.11
 ```
 
-- If we were not able to locate the desired version in a recent release, we have to do some git repo archeology. This is helped by the tool https://lazamar.co.uk/nix-versions/. Basically, to install `biber-2.17`, we first locate it in the nixpkgs repo:
-
+- If we were not able to locate the desired version in a recent release, we have to do some git repo archeology. This is aided by the tool
+  > https://lazamar.co.uk/nix-versions/
+  
+  Basically, to install `biber-2.17`, we first locate `biber` in the nixpkgs repo:
   > https://github.com/NixOS/nixpkgs/blob/master/pkgs/tools/typesetting/biber/default.nix
 
-  In this case we are slightly unlucky as the `biber` version is not explicit, but inherited from `texlive.biber.pkgs`. 
+  This can also be done locally by inspecting `~/.nix-defexpr/channels/nixpkgs`. In this case we are slightly unlucky as the `biber` version is not explicit, but rather inherited from `texlive.biber.pkgs`. The `texlive` variable is defined in
+  
+  > https://github.com/NixOS/nixpkgs/blob/master/pkgs/top-level/all-packages.nix
+  
+  ... which points us to:
+  
+  > https://github.com/NixOS/nixpkgs/tree/master/pkgs/tools/typesetting/tex/texlive/pkgs.nix
 
+  We can then locate the commit with `biber-2.17`. Check the git tag that contains this commit; the _earliest_ release tag probably contains the desired version (but this is not guaranteed). The binary cache may then be installed with:
+
+```bash
+nix-env --profile "/nix/var/nix/profiles/per-user/$USER/biber-2.17" \
+        --file channel:nixos-22.11
+        -ibA nixpkgs.biber
+```
