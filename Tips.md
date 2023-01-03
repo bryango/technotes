@@ -24,6 +24,7 @@ git submodule update --init --filter=blob:none --recursive
 ```gitignore
 # ignore itself so it will not be committed
 /.gitignore
+# ... so one does not have to go to `.git/info/exclude`
 ```
 
 ## dconf
@@ -84,7 +85,7 @@ The sign-in should proceed with no issue!
 
 ## dmesg: no audits
 
-`audit` spams dmesg. To exclude unneeded messages, see [`chezroot: /etc/audit/rules.d/quiet.rules`](https://github.com/bryango/chezroot/blob/-/etc/audit/rules.d/quiet.rules)
+`audit` spams dmesg. To exclude unneeded messages, see [`/etc/audit/rules.d/quiet.rules`](https://github.com/bryango/chezroot/blob/-/etc/audit/rules.d/quiet.rules)
 
 - To refresh the rules, follow the wiki: https://wiki.archlinux.org/title/Audit_framework. 
 - For more on the rules, see: https://man.archlinux.org/man/auditctl.8.en. 
@@ -104,7 +105,7 @@ To drop incomings by default,
 ```bash
 sudo firewall-cmd --set-default-zone=drop
 ```
-Further customizations can be found at [`chezroot: /etc/firewalld`](https://github.com/bryango/chezroot/blob/-/etc/firewalld)
+Further customizations can be found at [`/etc/firewalld`](https://github.com/bryango/chezroot/blob/-/etc/firewalld)
 
 ## /etc/resolv.conf
 
@@ -116,3 +117,7 @@ Apps like `tailscale` will attempt to write to `/etc/resolv.conf` which results 
 
 See [**chezroot: 67e84a9**](https://github.com/bryango/chezroot/commit/67e84a9) for more information.
 The symlink tells NetworkManager to give control of `/etc/resolv.conf` to systemd. This is the default behavior built in Arch but this may differ in other distros. If the app, in this case `tailscale`, fails to pick up the change, then stop `systemd-resolved` `NetworkManager` `tailscaled` and restart each of them in sequence.
+
+## invalid `$XDG_DATA_DIRS` is catastrophic
+
+An invalid `$XDG_DATA_DIRS` will prevent gnome from starting. See https://wiki.archlinux.org/title/XDG_Base_Directory for the default, and see [`~/.profile`](https://github.com/bryango/cheznous/blob/-/.profile) for my config.
