@@ -73,4 +73,4 @@ Default terminal emulators are hard coded in glib. This is the terminal that gno
 gnome-terminal -> xdg-terminal-exec -> x-terminal-emulator
 ```
 
-Eventually the symlink for `gnome-terminal` will no longer be necessary, as `xdg-terminal-exec` becomes standard. See the links to the glib repo in [`x-terminal-emulator`](https://github.com/bryango/cheznous/blob/-/bin/x-terminal-emulator) for more details. 
+Eventually the symlink for `gnome-terminal` will no longer be necessary, as `xdg-terminal-exec` becomes standard for glib 2.75; see [`glib:22e1b9b`](https://github.com/GNOME/glib/commit/22e1b9bcc0ca7cd1ba2457ddf5b5545752f9c7ea). See also the links to the glib repo in [`x-terminal-emulator`](https://github.com/bryango/cheznous/blob/-/bin/x-terminal-emulator) for more details. 
