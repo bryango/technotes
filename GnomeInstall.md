@@ -92,3 +92,32 @@ manjaro-asian-input-support-fcitx5
 ```
 
 The default input panel looks horrible, but don't worry. Install the [gnome-shell kimpanel extension](https://extensions.gnome.org/extension/261/kimpanel/) and we are good to go!
+
+## Themes
+
+The themes are composed from a bunch of other established themes with symlinks. See:
+
+- [`~/.local/share/themes`](https://github.com/bryango/cheznous/blob/-/.local/share/themes)
+- [`~/.local/share/xdg-data-light`](https://github.com/bryango/cheznous/blob/-/.local/share/xdg-data-light)
+- [`~/bin/env-light`](https://github.com/bryango/cheznous/blob/-/bin/env-light)
+
+## Spell check
+
+Fulfill the optional dependencies of `enchant`
+
+```bash
+$ pactree --depth=1 --optional=1 enchant | grep -v unresolvable 
+enchant
+├─glib2
+├─aspell: for aspell based spell checking support (optional)
+├─hunspell: for hunspell based spell checking support (optional)
+└─nuspell: for nuspell based spell checking support (optional)
+
+$ pacman -Qe | grep -E 'spell|hyphen'                          
+aspell-en 2020.12.07-1
+hunspell-en_us 2020.12.07-4
+hyphen-en 2.8.8-5
+nuspell 5.1.2-2
+```
+
+For more personalized tweaks, see `$DICPATH` in [`~/.profile`](https://github.com/bryango/cheznous/blob/-/.profile) which points to [`~/apps/dicts`](https://github.com/bryango/cheznous/blob/-/apps/dicts). 
