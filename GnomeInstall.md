@@ -84,7 +84,7 @@ $ pacman -Qe | grep fcitx | sort -r
 manjaro-asian-input-support-fcitx5 2022.04-1
 fcitx5-chinese-addons 5.0.16-1
 
-$ pactree --depth=1 manjaro-asian-input-support-fcitx5  
+$ pactree --depth=1 manjaro-asian-input-support-fcitx5
 manjaro-asian-input-support-fcitx5
 ├─fcitx5-qt
 ├─fcitx5-gtk
@@ -106,14 +106,14 @@ The themes are composed from a bunch of other established themes with symlinks. 
 Fulfill the optional dependencies of `enchant`
 
 ```bash
-$ pactree --depth=1 --optional=1 enchant | grep -v unresolvable 
+$ pactree --depth=1 --optional=1 enchant | grep -v unresolvable
 enchant
 ├─glib2
 ├─aspell: for aspell based spell checking support (optional)
 ├─hunspell: for hunspell based spell checking support (optional)
 └─nuspell: for nuspell based spell checking support (optional)
 
-$ pacman -Qe | grep -E 'spell|hyphen'                          
+$ pacman -Qe | grep -E 'spell|hyphen'
 aspell-en 2020.12.07-1
 hunspell-en_us 2020.12.07-4
 hyphen-en 2.8.8-5
