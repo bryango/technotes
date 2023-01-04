@@ -67,10 +67,28 @@ The automatic color profile is weirdly purple on my laptop. `sRGB` seems to be t
 
 ## Terminals
 
-Default terminal emulators are hard coded in glib. This is the terminal that gnome uses to open the `.desktop` files (those including the setting `Terminal=true`). I've hence created a default terminal wrapper for tilix to fool glib; see [`~/bin/x-terminal-emulator`](https://github.com/bryango/cheznous/blob/-/bin/x-terminal-emulator). For it to work, symlink:
+Default terminal emulators are hard coded in glib ([#338](https://gitlab.gnome.org/GNOME/glib/-/issues/338)). These are the terminals that gnome uses to open the `.desktop` files (those including the setting `Terminal=true`), among other things. I've hence created a default terminal wrapper for tilix to fool glib; see [`~/bin/x-terminal-emulator`](https://github.com/bryango/cheznous/blob/-/bin/x-terminal-emulator). For it to work, symlink:
 
 ```bash
 gnome-terminal -> xdg-terminal-exec -> x-terminal-emulator
 ```
 
 Eventually the symlink for `gnome-terminal` will no longer be necessary, as `xdg-terminal-exec` becomes standard for glib 2.75; see [`glib:22e1b9b`](https://github.com/GNOME/glib/commit/22e1b9bcc0ca7cd1ba2457ddf5b5545752f9c7ea). See also the links to the glib repo in [`x-terminal-emulator`](https://github.com/bryango/cheznous/blob/-/bin/x-terminal-emulator) for more details. 
+
+## Input method: `fcitx5`
+
+Version 5 of fcitx is great! Install with the meta package `manjaro-asian-input-support-fcitx5`
+
+```bash
+$ pacman -Qe | grep fcitx | sort -r
+manjaro-asian-input-support-fcitx5 2022.04-1
+fcitx5-chinese-addons 5.0.16-1
+
+$ pactree --depth=1 manjaro-asian-input-support-fcitx5  
+manjaro-asian-input-support-fcitx5
+├─fcitx5-qt
+├─fcitx5-gtk
+└─fcitx5-configtool
+```
+
+The default input panel looks horrible, but don't worry. Install the [gnome-shell kimpanel extension](https://extensions.gnome.org/extension/261/kimpanel/) and we are good to go!
