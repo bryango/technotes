@@ -60,7 +60,7 @@ To blacklist the file, simply create an empty `ubbold.fd` and then lock it with 
 
 `biber` is tightly coupled with `biblatex`. See https://github.com/plk/biber/issues/427. 
 
-- one can use `nix` to install a matching biber release. 
+- one can use `nix` to install a matching biber release; see [**Nix.md**](./Nix.md).
 - ... or, simply use `miktex` which should include matching versions.
 
 `biber` also wants `libcrypt.so.1`, which is not installed by default. This seems to be an Arch issue; the solution is provided [here](https://stackoverflow.com/questions/71171446/biber-wants-to-load-libcrypt-so-1-but-it-is-missing).
