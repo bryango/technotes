@@ -268,4 +268,4 @@ vim 9.0.0814-1
 ```
 
 Boot into the new system. <br>
-Proceed to [GnomeInstall.md](./GnomeInstall.md) for basic & GUI setup.
+Proceed to [GnomeInstall.md](./GnomeInstall.md) for basic setup & GUI.
