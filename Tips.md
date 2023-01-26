@@ -46,6 +46,12 @@ dconf load / < dconf-dump.conf
 ```
 
 ## pacman
+Management strategies:
+
+- install optional deps explicitly
+- know all explicitly installed packages
+- `pacman -Qe` `>` [`~/backup/pacman/explicit.log`](https://github.com/bryango/cheznous/blob/-/backup/pacman/explicit.log)
+- `pacman -Q` `>` [`~/backup/pacman/all.log`](https://github.com/bryango/cheznous/blob/-/backup/pacman/all.log)
 
 ### check dependencies
 
