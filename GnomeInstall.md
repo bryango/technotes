@@ -95,7 +95,7 @@ The default input panel looks horrible, but don't worry. Install the [gnome-shel
 
 ## Themes
 
-The themes are composed from a bunch of other established themes with symlinks. See:
+My themes are composed from a bunch of other established themes with symlinks. See:
 
 - [`~/.local/share/themes`](https://github.com/bryango/cheznous/blob/-/.local/share/themes)
 - [`~/.local/share/xdg-data-light`](https://github.com/bryango/cheznous/blob/-/.local/share/xdg-data-light)
