@@ -1,4 +1,15 @@
-# Install Mathematica on Manjaro / Arch Linux
+# Mathematica cookbook
+
+## Tips & tricks
+
+- _Symbolize_ an expression, just like the <code>Notation`</code> Package.
+```wolfram
+{SubPlus[r], SubMinus[r]} = {rp, rm};
+MakeBoxes[rp, StandardForm] ^= MakeBoxes[SubPlus[r]]
+MakeBoxes[rm, StandardForm] ^= MakeBoxes[SubMinus[r]]
+```
+
+## Installation on Manjaro / Arch Linux
 
 - See [`bryango/aur: mathematica*`](https://github.com/bryango/aur/tree/mathematica) which is based on [`aur: mathematica`](https://aur.archlinux.org/packages/mathematica).
 - The suffix, e.g. `-13.2` in `mathematica-13.2`, indicates the version.
