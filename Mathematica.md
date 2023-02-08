@@ -10,6 +10,11 @@ MakeBoxes[rm, StandardForm] ^= MakeBoxes[SubMinus[r]]
 ```
 In this case $r_\pm$ is treated internally as `{rp, rm}`, but is displayed as $r_\pm$.
 
+- Use `Unevaluated` to pass argument as held:
+```wolfram
+(ClearAll[#]; Remove[#]) & @ Unevaluated[logZ]
+```
+
 ## Installation on Manjaro / Arch Linux
 
 - See [`bryango/aur: mathematica*`](https://github.com/bryango/aur/tree/mathematica) which is based on [`aur: mathematica`](https://aur.archlinux.org/packages/mathematica).
