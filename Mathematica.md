@@ -4,10 +4,11 @@
 
 - _Symbolize_ an expression, just like the <code>Notation`</code> Package.
 ```wolfram
-{SubPlus[r], SubMinus[r]} = {rp, rm};
+{SubPlus[r], SubMinus[r]} := {rp, rm};
 MakeBoxes[rp, StandardForm] ^= MakeBoxes[SubPlus[r]]
 MakeBoxes[rm, StandardForm] ^= MakeBoxes[SubMinus[r]]
 ```
+In this case $r_\pm$ is treated internally as `{rp, rm}`, but is displayed as $r_\pm$.
 
 ## Installation on Manjaro / Arch Linux
 
