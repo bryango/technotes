@@ -2,6 +2,8 @@
 
 ## Tips & tricks
 
+Here we collect misc tips & tricks that are less than universal; more universal tricks are bundled in the repo [**bryango/Physica**](https://github.com/bryango/Physica), in particular, [`MathUtils.wl`](https://github.com/bryango/Physica/blob/-/MathUtils.wl) and [`GRUtils.wl`](https://github.com/bryango/Physica/blob/-/GRUtils.wl) therein.
+
 - _Symbolize_ an expression, just like the <code>Notation`</code> Package.
 ```wolfram
 {SubPlus[r], SubMinus[r]} := {rp, rm};
