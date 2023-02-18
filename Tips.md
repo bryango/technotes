@@ -10,6 +10,10 @@ https://en.wikipedia.org/wiki/Naming_convention_(programming)
 - use `CamelCase` to maximize readability, use `camelCase` if necessary
 - prefer `-` over `_`, also to minize <kbd>Shift</kbd> ing
 
+## `pushd` and `popd`
+
+Temporary `cd` by pushing the target into a directory stack, then return to the previous directory by poping it.
+
 ## `djvu -> pdf`
 
 ```bash
