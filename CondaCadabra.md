@@ -16,7 +16,10 @@ Create a new environment (env) to contain cadabra2:
 conda create --name cadabra2
 conda activate cadabra2
 ```
-Now configure conda. Note that **`conda config` by default always reads and writes to `~/.condarc`, even if an env is activated!** This is bad, bad ui. Nevertheless, we can write to the env config `$CONDA_PREFIX/.condarc` using
+Now configure conda. I would suggest going through the official intro of conda config:
+> https://www.anaconda.com/blog/conda-configuration-engine-power-users
+
+before continuing. In particular, note that **`conda config` by default always reads and writes to `~/.condarc`, even if an env is activated!** This is bad, bad ui. Nevertheless, we can write to the env config `$CONDA_PREFIX/.condarc` using
 ```bash
 conda config --env
 ```
@@ -30,12 +33,12 @@ Let us see the result:
 ```bash
 conda config --get channel_priority
 ```
-Huh? Nothing shows up. What happened? **Jokes on you, you forget the `--env`!** This is finally correct:
+Huh? Nothing shows up. What happened? **Jokes on you, you forgot the `--env`!** This is finally correct:
 ```bash
 conda config --env --get channel_priority
 # --set channel_priority strict
 ```
-One would naturally assume that `config --get` would print the resolved config, but no, it knows only about `~/.condarc`. The correct keyword is `--show`:
+One would naturally assume that `config --get` would print the resolved config, but no, it knows only about `~/.condarc`. Maybe I am assuming too much. The correct keyword, as it turns out, is `--show`:
 ```
 $ conda config --show channels channel_priority 
 channels:
@@ -43,3 +46,4 @@ channels:
   - defaults
 channel_priority: strict
 ```
+The config sources are shown with `--show-sources`. This is bad, bad ui. I would suggest using `read` instead of the current `get`, and `get` in place of the current `show`.
