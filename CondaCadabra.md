@@ -35,3 +35,11 @@ Huh? Nothing shows up. What happened? **Jokes on you, you forget the `--env`!** 
 conda config --env --get channel_priority
 # --set channel_priority strict
 ```
+One would naturally assume that `config --get` would print the resolved config, but no, it knows only about `~/.condarc`. The correct keyword is `--show`:
+```
+$ conda config --show channels channel_priority 
+channels:
+  - conda-forge
+  - defaults
+channel_priority: strict
+```
