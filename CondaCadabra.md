@@ -1,6 +1,8 @@
 # Cadabra2 in conda
 
-Too many pitfalls!
+Cadabra is a powerful computer algebra system maintained by ``our people'', i.e. the `hep-th` clan.
+However, it is very difficult to install, since it involves multiple (programming) languages, including python, which is notorious for its environmental issues.
+There are far too many pitfalls during the install, so it's useful to document it here.
 
 ## refs
 
@@ -18,7 +20,7 @@ Now configure conda. Note that **`conda config` by default always reads and writ
 ```bash
 conda config --env
 ```
-For cadabra2, following the [official guide](https://cadabra.science/download.html)
+For cadabra2, following the [official guide](https://cadabra.science/download.html),
 ```bash
 conda config --env --add channels conda-forge
 conda config --env --set channel_priority strict
