@@ -6,7 +6,7 @@ Here we document the _far too many_ pitfalls during this install, for future con
 
 ## conda
 
-Initialize conda; this is set up with [`conda-setup`](https://github.com/bryango/cheznous/blob/c0af2526dfa71a60ba2d81e785e894fd0bec63b6/.shrc#L305) in my system. 
+Initialize conda; this is done with [`conda-setup`](https://github.com/bryango/cheznous/blob/c0af2526dfa71a60ba2d81e785e894fd0bec63b6/.shrc#L305) in my system. 
 My global config is given by [`~/.condarc`](https://github.com/bryango/cheznous/blob/-/.condarc).
 Create a new environment (env) to contain cadabra2, in which the base environment is cloned (so that we have access to e.g. jupyter):
 ```bash
