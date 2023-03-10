@@ -11,15 +11,22 @@ Mamba is a drop-in replacement for conda written in C++. Documentations:
 
 The installer is call `Mambaforge` and it's quite similar to anaconda. I've chosen to set it up in `~/apps/mambaforge`. We also need to source some shell snippets to initialize the environment. This is done with [`conda-setup`](https://github.com/bryango/cheznous/blob/c0af2526dfa71a60ba2d81e785e894fd0bec63b6/.shrc#L305) in my system.
 
-My global config is given by [`~/.condarc`](https://github.com/bryango/cheznous/blob/-/.condarc).
+My global config is provided by [`~/.condarc`](https://github.com/bryango/cheznous/blob/-/.condarc). Install jupyter globally so that it can be used by others:
+```bash
+mamba install jupyterlab
+```
+To access jupyter in other pristine environments, use env **_stacking_**:
+```bash
+mamba activate base
+mamba activate --stack <env>
+```
 
 ## conda
 
-Create a new environment (env) to contain cadabra2, stacked on top of the `base` env so that we have access to e.g. jupyter:
+Create a new environment (env) to contain cadabra2:
 ```bash
 mamba create --name cadabra2
-mamba activate base
-mamba activate --stack cadabra2  ## TODO: defer stacking after install
+mamba activate cadabra2
 ```
 Now configure conda. I would suggest going through the official intro of conda config:
 > https://www.anaconda.com/blog/conda-configuration-engine-power-users
