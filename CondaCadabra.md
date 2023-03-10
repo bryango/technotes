@@ -1,17 +1,25 @@
-# Cadabra2 in conda
+# Cadabra2 in mamba
 
 Cadabra is a powerful computer algebra system maintained by _our people_, i.e. the `hep-th` clan.
 However, it is very difficult to install, since it involves multiple (programming) languages, including python, which is notorious for its environmental issues.
 Here we document the _far too many_ pitfalls during this install, for future convenience.
 
+## mamba & jupyter
+
+Mamba is a drop-in replacement for conda written in C++. Documentations:
+> https://mamba.readthedocs.io/en/latest/index.html
+
+The installer is call `Mambaforge` and it's quite similar to anaconda. I've chosen to set it up in `~/apps/mambaforge`. We also need to source some shell snippets to initialize the environment. This is done with [`conda-setup`](https://github.com/bryango/cheznous/blob/c0af2526dfa71a60ba2d81e785e894fd0bec63b6/.shrc#L305) in my system.
+
+My global config is given by [`~/.condarc`](https://github.com/bryango/cheznous/blob/-/.condarc).
+
 ## conda
 
-Initialize conda; this is done with [`conda-setup`](https://github.com/bryango/cheznous/blob/c0af2526dfa71a60ba2d81e785e894fd0bec63b6/.shrc#L305) in my system. 
-My global config is given by [`~/.condarc`](https://github.com/bryango/cheznous/blob/-/.condarc).
-Create a new environment (env) to contain cadabra2, in which the base environment is cloned (so that we have access to e.g. jupyter):
+Create a new environment (env) to contain cadabra2, stacked on top of the `base` env so that we have access to e.g. jupyter:
 ```bash
-conda create --name cadabra2 --clone base
-conda activate cadabra2
+mamba create --name cadabra2
+mamba activate base
+mamba activate --stack cadabra2  ## TODO: defer stacking after install
 ```
 Now configure conda. I would suggest going through the official intro of conda config:
 > https://www.anaconda.com/blog/conda-configuration-engine-power-users
