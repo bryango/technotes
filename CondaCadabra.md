@@ -15,13 +15,15 @@ My global config is provided by [`~/.condarc`](https://github.com/bryango/chezno
 ```bash
 mamba install jupyterlab
 ```
+Although `conda` is available in a `mamba` install, **always use the `mamba` command to install things.** It is lightning fast compared to `conda`. Well actually, `mamba` is not _that_ fast; the thing is that `conda` is just horrendously slow. To install something on top of a system `anaconda` release, it would take like _a few hours_ to resolve dependencies. Updating the `anaconda` release beforehand will greatly improve the speed, but this defeats the whole purpose of having a system level `anaconda` release: to delegate the package management to the system `pacman`. I've hence given up the system level `anaconda` install and settled for a user level `mambaforge` mini-environment, in which jupyter has to be manully installed.
+
 To access jupyter in other pristine environments, use env **_stacking_**:
 ```bash
 mamba activate base
 mamba activate --stack <env>
 ```
 
-## conda
+## conda config
 
 Create a new environment (env) to contain cadabra2:
 ```bash
@@ -68,5 +70,5 @@ The config sources are shown with `--show-sources`. This is bad, bad ui. I would
 
 We can finally install cadabra:
 ```bash
-conda install -v cadabra2 cadabra2-gtk cadabra2-jupyter-kernel
+mamba install cadabra2 cadabra2-gtk cadabra2-jupyter-kernel
 ```
