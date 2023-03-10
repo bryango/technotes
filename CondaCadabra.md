@@ -17,20 +17,25 @@ mamba install jupyterlab
 ```
 Although `conda` is available in a `mamba` system, **always use the `mamba` command to install things.** It is lightning fast compared to `conda`. Well actually, mamba is not _that_ fast; the thing is that conda is just horrendously slow. To install something on top of a system `anaconda` release, it would take like _a few hours_ to resolve dependencies. Updating the anaconda release beforehand will greatly smooth out the process, but this defeats the whole purpose of having a system level anaconda release: to delegate the package management to the system `pacman`. I've hence given up the system level anaconda install and settled for a user level `mambaforge` mini-environment, in which jupyter has to be manully installed.
 
-To access jupyter in other pristine environments, use environment **_stacking_**:
-```bash
-mamba activate base
-mamba activate --stack # $OTHER_ENV
-```
-
-## conda config
-
-Create a new environment (env) to contain cadabra2:
+We will create a new environment (env) to contain cadabra2:
 ```bash
 mamba create --name cadabra2
 mamba activate cadabra2
 ```
-Now configure conda. I would suggest going through the official intro of conda config:
+To access jupyter in this pristine environments, use environment **_stacking_:**
+```bash
+mamba activate base
+mamba activate --stack cadabra2
+```
+However, during setup we would like the env to be minimal, so no stacking for now:
+```bash
+mamba deactivate
+mamba activate cadabra2
+```
+
+## conda config
+
+We then switch back to the `conda config` command for configuration. I would suggest going through the official intro of conda config:
 > https://www.anaconda.com/blog/conda-configuration-engine-power-users
 
 before continuing. In particular, note that **`conda config` by default always reads and writes to `~/.condarc`, even if an env is activated!** This is bad, bad ui. Nevertheless, we can write to the env config `$CONDA_PREFIX/.condarc` using
