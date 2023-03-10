@@ -77,3 +77,7 @@ We can finally install cadabra:
 ```bash
 mamba install cadabra2 cadabra2-gtk cadabra2-jupyter-kernel
 ```
+Clean up the cache afterwards:
+```bash
+mamba clean --all
+```
