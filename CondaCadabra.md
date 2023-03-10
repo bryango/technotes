@@ -35,7 +35,7 @@ mamba activate cadabra2
 
 ## conda config
 
-We then switch back to the `conda config` command for configuration. I would suggest going through the official intro of conda config:
+We then switch back to the `conda config` command for configuration. I would suggest going through the official intro:
 > https://www.anaconda.com/blog/conda-configuration-engine-power-users
 
 before continuing. In particular, note that **`conda config` by default always reads and writes to `~/.condarc`, even if an env is activated!** This is bad, bad ui. Nevertheless, we can write to the env config `$CONDA_PREFIX/.condarc` using
