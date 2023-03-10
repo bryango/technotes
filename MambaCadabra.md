@@ -13,11 +13,11 @@ The installer is call `Mambaforge` and it's quite similar to anaconda. I've chos
 
 My global config is provided by [`~/.condarc`](https://github.com/bryango/cheznous/blob/-/.condarc). Install jupyter globally so that it can be used by others:
 ```bash
-mamba install jupyterlab
+mamba install -n base jupyterlab
 ```
 Although `conda` is available in a `mamba` system, **always use the `mamba` command to install things.** It is lightning fast compared to `conda`. Well actually, mamba is not _that_ fast; the thing is that conda is just horrendously slow. To install something on top of a system `anaconda` release, it would take like _a few hours_ to resolve dependencies. Updating the anaconda release beforehand will greatly smooth out the process, but this defeats the whole purpose of having a system level anaconda release: to delegate the package management to the system `pacman`. I've hence given up the system level anaconda install and settled for a user level `mambaforge` mini-environment, in which jupyter has to be manully installed. As a fallback one can also set `libmamba` to be the solver backend of conda:
 ```bash
-conda install -n base conda-libmamba-solver
+mamba install -n base conda-libmamba-solver
 conda config --set solver libmamba
 ```
 See https://www.anaconda.com/blog/a-faster-conda-for-a-growing-community. 
