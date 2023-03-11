@@ -20,6 +20,12 @@ Best to ensure that hostname, time & stuff is properly set up. Then:
 ```
 pacman -S networkmanager nm-connection-editor
 ```
+For bluetooth support,
+```
+pacman -S bluez-utils \
+          blueman  # ... for a nice gui
+systemctl enable bluetooth.service
+```
 
 ## Gnome
 
