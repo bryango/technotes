@@ -86,3 +86,19 @@ Clean up the cache afterwards:
 ```bash
 mamba clean --all
 ```
+
+## conda mambabuild
+
+Recipes:
+
+- https://github.com/kpeeters/cadabra2/tree/master/conda
+- https://github.com/conda-forge/cadabra2-feedstock/tree/main/recipe
+
+Flags:
+
+- https://github.com/kpeeters/cadabra2/blob/master/CMakeLists.txt
+- 
+
+Tool:
+
+`boa` and `conda mambabuild`
