@@ -1,8 +1,10 @@
 # Cadabra2 in mamba
 
 Cadabra is a powerful computer algebra system maintained by _our people_, i.e. the `hep-th` clan.
-However, it is very difficult to install, since it involves multiple (programming) languages, including python, which is notorious for its environmental issues.
+However, it is very difficult to install, since it involves multiple (programming) languages, including python, which is notorious for its environmental pollution.
 Here we document the _far too many_ pitfalls during this install, for future convenience.
+
+**Note:** The following passage contains too many complaints on the conda ecosystem. This is not targeted at the wonderful community, nor the volunteers that are doing invaluable work maintaining it. This document is created for my personal use, and I simply need to let out my frustration, perhaps towards Anaconda Inc., who has been profiting from the project but hasn't put enough effort into improving it.
 
 ## mamba & jupyter
 
@@ -85,9 +87,19 @@ mamba install cadabra2 cadabra2-gtk cadabra2-jupyter-kernel
 Clean up the cache afterwards:
 ```bash
 mamba clean --all
+conda clean --all
 ```
 
 ## conda mambabuild
+
+To use the latest version, build from source in the conda environment. I haven't succeeded in this endeavor, but I've learned things along the way; e.g. `conda-build` is equally awful for the same reasons as `conda`. A replacement called `boa` is provided by the mamba team, but it is still experimental; after installing `boa`, one can run:
+```bash
+conda mambabuild
+```
+As a replacement for `conda build`. The build cache is cleared with
+```bash
+conda build purge
+```
 
 Recipes:
 
@@ -97,8 +109,4 @@ Recipes:
 Flags:
 
 - https://github.com/kpeeters/cadabra2/blob/master/CMakeLists.txt
-- 
-
-Tool:
-
-`boa` and `conda mambabuild`
+- https://github.com/conda-forge/cadabra2-feedstock/issues/36
