@@ -4,7 +4,8 @@ Cadabra is a powerful computer algebra system maintained by _our people_, i.e. t
 However, it is very difficult to install, since it involves multiple (programming) languages, including python, which is notorious for its environmental pollution.
 Here we document the _far too many_ pitfalls during this install, for future convenience.
 
-**Note:** The following passage contains too many complaints on the conda ecosystem. This is not targeted at the wonderful community, nor the volunteers that are doing invaluable work maintaining it. This document is created for my personal use, and I simply need to let out my frustration, perhaps towards Anaconda Inc., who has been profiting from the project but hasn't put enough effort into improving it.
+**Note:** The following passage contains too many complaints on the conda ecosystem. This is not targeted at the wonderful community, nor the volunteers that are doing invaluable work maintaining it. This document is created for my personal use, and I simply need to let out my frustration.
+> Although, after reviewing parts of the conda source (written in python), it seems to me that the code is of high quality. Maybe the problem is design: perhaps python is simply not suitable for this kind of workload. 
 
 ## mamba & jupyter
 
