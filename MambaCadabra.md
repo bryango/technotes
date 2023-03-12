@@ -83,9 +83,10 @@ The config sources are shown with `--show-sources`. This is bad, bad ui. I would
 
 We can finally install cadabra:
 ```bash
-mamba install cadabra2 cadabra2-gtk cadabra2-jupyter-kernel
+mamba install cadabra2-gtk cadabra2-jupyter-kernel
 ```
-Clean up the cache afterwards:
+The main program `cadabra2` will be installed as a dependency.
+We can clean up the cache afterwards:
 ```bash
 mamba clean --all
 conda clean --all
@@ -111,3 +112,12 @@ Flags:
 
 - https://github.com/kpeeters/cadabra2/blob/master/CMakeLists.txt
 - https://github.com/conda-forge/cadabra2-feedstock/issues/36
+
+## revisions
+
+After nuking the environment one may want to restore to a previous revision. This is achieved by:
+```bash
+conda list --revisions
+conda install --revision # <number>
+```
+To restore the pristine env, without removing `--all` and recreating one, simply specify `--revision 0`. Note that switching to `--revision n` with `n > 0` is usually slow, as always with conda. Revisions are not yet implemented in mamba (see https://github.com/mamba-org/mamba/issues/803).
