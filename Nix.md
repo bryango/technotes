@@ -13,6 +13,10 @@ drwxr-xr-x 1 $USER $USER 42  .nix-defexpr/
 lrwxrwxrwx 1 $USER $USER 44  .nix-profile -> /nix/var/nix/profiles/per-user/$USER/profile/
 ```
 
+## note on flake
+
+`nix flake` is the future, and one should replace `nix-env` with `nix profile` which is based on flake. However, as of March 2023 the documentation is so poorly written that there is no way for me to make a smooth transition. So I will stick to `nix-env` and `nix-channel` for now.
+
 ## quick start
 
 ```bash
@@ -26,7 +30,7 @@ nix-env -v \
 - `~/.nix-defexpr` in turn defaults to the channel set up by `nix-channel`.
 
 ```bash
-$ ls -alF --time-style=+ .nix-defexpr | sed -E "s/$USER/\$USER/g"  
+$ ls -alF --time-style=+ ~/.nix-defexpr | sed -E "s/$USER/\$USER/g"  
 total 8
 drwxr-xr-x 1 $USER $USER   42  ./
 drwx------ 1 $USER $USER 1500  ../
@@ -142,3 +146,16 @@ nix-env --profile "/nix/var/nix/profiles/per-user/$USER/biber-2.17" \
   > https://github.com/NixOS/nixpkgs/tree/master/pkgs/tools/typesetting/tex/texlive/pkgs.nix
 
   We can then locate the commit with `biber-2.17`. Check the git tags that contain this commit; the _earliest_ release tag probably contains the desired version (but this is not always guaranteed). 
+
+## packageOverrides
+
+Example: gimp-with-plugins
+
+- meta package: https://github.com/NixOS/nixpkgs/blob/master/pkgs/applications/graphics/gimp/wrapper.nix
+- actual plugins: https://github.com/NixOS/nixpkgs/blob/master/pkgs/applications/graphics/gimp/plugins/default.nix
+- python2: https://github.com/NixOS/nixpkgs/issues/205742
+- overriding: https://nixos.org/guides/nix-pills/nixpkgs-overriding-packages.html
+- `~/.defexpr` doc: https://nixos.org/manual/nix/unstable/command-ref/nix-env.html#files
+- related: https://nixos.org/guides/nix-pills/nix-search-paths.html
+- declarative package managements: https://nixos.wiki/wiki/FAQ#How_can_I_manage_software_with_nix-env_like_with_configuration.nix.3F
+- overlays: https://nixos.wiki/wiki/Overlays
