@@ -81,6 +81,10 @@ Here we follow the guidance of [**tuna**](https://mirrors.tuna.tsinghua.edu.cn/h
 
 _Note:_ either `trusted-users` or `trusted-substituters` has to be declared in the root config [`/etc/nix/nix.conf`](https://github.com/bryango/chezroot/blob/-/etc/nix/nix.conf). Otherwise `substituters` will be ignored. This is not emphasized, neither in the manual nor the error message. See https://github.com/NixOS/nix/issues/6672. 
 
+The nixpkgs config (incl. overrides & overlays) is located at:
+
+- [`~/.config/nixpkgs/`](https://github.com/bryango/cheznous/blob/-/.config/nixpkgs)
+
 ## _optional:_ `channel`
 
 **Note:** one does **_not_** have to set up a `channel` to install packages. One can then install packages without keeping the `channel` cache; use `nix-env -f` as shown before in the _quick start_ section.
