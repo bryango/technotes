@@ -152,7 +152,7 @@ nix-env --profile "/nix/var/nix/profiles/per-user/$USER/biber-2.17" \
 Sometimes we need to overwrite some default behavior of packages. The guides are here:
 
 - overlays: https://nixos.wiki/wiki/Overlays
-- overriding: https://nixos.org/guides/nix-pills/nixpkgs-overriding-packages.html
+- overrides: https://nixos.org/guides/nix-pills/nixpkgs-overriding-packages.html
 - declarative package managements: https://nixos.wiki/wiki/FAQ#How_can_I_manage_software_with_nix-env_like_with_configuration.nix.3F
 
 Again we work with an explicit example: I want to install `gimp` with a single plugin: `resynthesizer`. This is achieved with the meta package `gimp-with-plugins`, according to:
@@ -160,7 +160,7 @@ Again we work with an explicit example: I want to install `gimp` with a single p
 - meta wrapper: https://github.com/NixOS/nixpkgs/blob/master/pkgs/applications/graphics/gimp/wrapper.nix
 - actual plugins: https://github.com/NixOS/nixpkgs/blob/master/pkgs/applications/graphics/gimp/plugins/default.nix
 
-When we invoke `nix-env` locally, the files are read from `~/.defexpr`, as is documented by:
+When we invoke `nix-env` locally, these expressions are read locally from `~/.nix-defexpr`, as is documented by:
 
 - https://nixos.org/manual/nix/unstable/command-ref/nix-env.html#files
 - https://nixos.org/guides/nix-pills/nix-search-paths.html
