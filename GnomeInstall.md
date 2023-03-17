@@ -23,7 +23,7 @@ pacman -S networkmanager nm-connection-editor
 For bluetooth support,
 ```
 pacman -S bluez-utils \
-          blueman  # ... for a nice gui
+          blueman  # this is a nice gui
 systemctl enable bluetooth.service
 ```
 
