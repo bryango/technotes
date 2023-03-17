@@ -12,7 +12,10 @@ https://en.wikipedia.org/wiki/Naming_convention_(programming)
 
 ## flatpak
 
-Don't use flatpak, unless you have many flatpak packages, because the runtimes are HUGE. To clean up the install, see: https://github.com/flatpak/flatpak/issues/3542.
+Don't use flatpaks, unless you intend to use many of them. The reason is that the runtimes are HUGE. However, if you install many flatpak apps then the runtimes are shared between apps, so the size issue is averaged out. 
+
+- cleanup: https://github.com/flatpak/flatpak/issues/3542.
+- mirror: https://github.com/flathub/flathub/issues/813#issuecomment-753815626. 
 
 ## `pushd` and `popd`
 
