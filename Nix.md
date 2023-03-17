@@ -149,13 +149,49 @@ nix-env --profile "/nix/var/nix/profiles/per-user/$USER/biber-2.17" \
 
 ## packageOverrides
 
-Example: gimp-with-plugins
+Sometimes we need to overwrite some default behavior of packages. The guides are here:
 
-- meta package: https://github.com/NixOS/nixpkgs/blob/master/pkgs/applications/graphics/gimp/wrapper.nix
-- actual plugins: https://github.com/NixOS/nixpkgs/blob/master/pkgs/applications/graphics/gimp/plugins/default.nix
-- python2: https://github.com/NixOS/nixpkgs/issues/205742
-- overriding: https://nixos.org/guides/nix-pills/nixpkgs-overriding-packages.html
-- `~/.defexpr` doc: https://nixos.org/manual/nix/unstable/command-ref/nix-env.html#files
-- related: https://nixos.org/guides/nix-pills/nix-search-paths.html
-- declarative package managements: https://nixos.wiki/wiki/FAQ#How_can_I_manage_software_with_nix-env_like_with_configuration.nix.3F
 - overlays: https://nixos.wiki/wiki/Overlays
+- overriding: https://nixos.org/guides/nix-pills/nixpkgs-overriding-packages.html
+- declarative package managements: https://nixos.wiki/wiki/FAQ#How_can_I_manage_software_with_nix-env_like_with_configuration.nix.3F
+
+Again we work with an explicit example: I want to install `gimp` with a single plugin: `resynthesizer`. This is achieved with the meta package `gimp-with-plugins`, according to:
+
+- meta wrapper: https://github.com/NixOS/nixpkgs/blob/master/pkgs/applications/graphics/gimp/wrapper.nix
+- actual plugins: https://github.com/NixOS/nixpkgs/blob/master/pkgs/applications/graphics/gimp/plugins/default.nix
+
+When we invoke `nix-env` locally, the files are read from `~/.defexpr`, as is documented by:
+
+- https://nixos.org/manual/nix/unstable/command-ref/nix-env.html#files
+- https://nixos.org/guides/nix-pills/nix-search-paths.html
+
+As documented in `plugins/default.nix` and implemented in `wrapper.nix`, this can be achieved with the following `packageOverrides`:
+```nix
+# cat ~/.config/nixpkgs/config.nix 
+{
+  packageOverrides = pkgs: with pkgs; {
+    gimp-with-plugins = gimp-with-plugins.override {
+      plugins = with gimpPlugins; [ resynthesizer ];
+    };
+  };
+}
+```
+However, this doesn't work out of the box: one needs to override `gimp` to include python2 bindings; see:
+
+- https://github.com/NixOS/nixpkgs/issues/221599
+- https://github.com/NixOS/nixpkgs/issues/205742
+
+So the final result is:
+```nix
+# cat ~/.config/nixpkgs/config.nix 
+{
+  packageOverrides = pkgs: with pkgs; {
+    gimp-with-plugins = gimp-with-plugins.override {
+      plugins = with gimpPlugins; [ resynthesizer ];
+    };
+    gimp = gimp.override {
+      withPython = true;
+    };
+  };
+}
+```
