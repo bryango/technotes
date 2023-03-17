@@ -10,6 +10,10 @@ https://en.wikipedia.org/wiki/Naming_convention_(programming)
 - use `CamelCase` to maximize readability, use `camelCase` if necessary
 - prefer `-` over `_`, also to minize <kbd>Shift</kbd> ing
 
+## flatpak
+
+Don't use flatpak, unless you have many flatpak packages, because the runtimes are HUGE. To clean up the install, see: https://github.com/flatpak/flatpak/issues/3542.
+
 ## `pushd` and `popd`
 
 Temporary `cd` by pushing the target into a directory stack, then return to the previous directory by poping it.
