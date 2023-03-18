@@ -200,3 +200,7 @@ So the final result is:
 }
 ```
 One can then complete the installation with `nix-env -iA nixpkgs.gimp-with-plugins`. Note that `nix-env -ibA` may fail silently because there is no binary cache of gimp where `withPython = true`, so a local rebuild is required.
+
+## shell profile
+
+One should probably have an `export` here at: https://github.com/NixOS/nix/blob/master/scripts/nix-profile-daemon.sh.in#L3
