@@ -11,6 +11,8 @@ There are many ways to manage python packages. My principles:
 
 The issue with pip is that it pollutes the environment. If that's okay or you are in a throw-away virtualenv, then _do_ use pip because it's much more efficient than mamba (conda).
 
+`pip` is more of a package _installer_ rather than a package `manager`. It cares little about dependency resolution & environmental protection. On the other hand, `mamba` (conda) is a full-fledged package manager, albeit an extremely slow one.
+
 ## pip & conda skeleton
 
 - always use `pip` in a virtual environment! In such cases, never use `--user`!
