@@ -1,0 +1,47 @@
+{% set name = "nbopen" %}
+{% set version = "0.6" %}
+
+package:
+  name: "{{ name|lower }}"
+  version: "{{ version }}"
+
+source:
+  url: "https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz"
+  sha256: 0aa53525a6ec3de403635dd91bab7607c451a67b275492947d6934963902ffa1
+
+build:
+  number: 0
+  entry_points:
+    - nbopen = nbopen:main
+  script: "{{ PYTHON }} -m pip install . -vv"
+
+requirements:
+  host:
+    - nbformat
+    - notebook
+    - pip
+    - flit
+    - python
+  run:
+    - nbformat
+    - notebook
+    - python
+
+test:
+  imports:
+    - nbopen
+  commands:
+    - nbopen --help
+
+about:
+  home: "https://github.com/takluyver/nbopen"
+  license: BSD
+  license_family: BSD
+  license_file: 
+  summary: "Open a notebook from the command line in the best available server"
+  doc_url: 
+  dev_url: 
+
+extra:
+  recipe-maintainers:
+    - bryango
