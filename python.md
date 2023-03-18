@@ -18,7 +18,11 @@ The issue with pip is that it pollutes the environment. If that's okay or you ar
 - always use `pip` in a virtual environment! In such cases, never use `--user`!
 - when thinking about `pip --user` try to use `pipx` instead!
 
-It is easy to convert `pip` to `conda` packages:
+`venv` is built into python>=3.3:
+- https://docs.python.org/3/library/venv.html
+
+It is also easy to create one with conda.
+On the other hand, one can convert `pip` packages to `conda` packages:
 
 - https://www.anaconda.com/blog/using-pip-in-a-conda-environment
 - https://docs.conda.io/projects/conda-build/en/latest/user-guide/tutorials/build-pkgs-skeleton.html
