@@ -9,7 +9,7 @@ There are many ways to manage python packages. My principles:
 - for scientific / interactive project, use `mamba` (conda). See also [**MambaCadabra.md**](./MambaCadabra.md).
 - whenever possible, avoid `pip`!
 
-The issue with `pip` is that it pollutes the environment. If that's okay or you are in a throw-away virtualenv, then _do_ use pip because it's much more efficient than `mamba` (conda).
+The issue with pip is that it pollutes the environment. If that's okay or you are in a throw-away virtualenv, then _do_ use pip because it's much more efficient than mamba (conda).
 
 ## pip & conda skeleton
 
