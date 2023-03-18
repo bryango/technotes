@@ -14,6 +14,7 @@ build:
   entry_points:
     - nbopen = nbopen:main
   script: "{{ PYTHON }} -m pip install . -vv"
+  script: "{{ PYTHON }} -m pip install . -vv; env XDG_DATA_HOME={{ PREFIX }}/share {{ PYTHON }} -m nbopen.install_xdg" # [not win]
 
 requirements:
   host:
