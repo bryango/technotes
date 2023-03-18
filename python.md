@@ -16,3 +16,7 @@
 
 - https://github.com/mamba-org/boa/issues/213#issuecomment-1474621395
 - 
+
+
+Always use `pip` in a virtual env! In such cases never use `--user`!
+When thinking about `pip --user` try to use `pipx` instead!
