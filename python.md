@@ -35,7 +35,7 @@ conda skeleton pypi nbopen
 ```
 > There is a bug in `libmamba` such that the build crashes when using custom channel mirrors; a workaround is found in https://github.com/mamba-org/boa/issues/213#issuecomment-1474621395.
 
-`conda skeleton` generates a `meta.yaml` that is almost usable; some tweaks are manually added, this includes the following:
+`conda skeleton` generates a `meta.yaml` that is close to success; although some manual tweaks are still necessary, including:
 - critical fix: https://github.com/bryango/technotes/blob/45b6d900177e33c103e97c52e32c31bd16537776/nbopen.meta.yaml#L24
 - nice improvement: https://github.com/bryango/technotes/blob/45b6d900177e33c103e97c52e32c31bd16537776/nbopen.meta.yaml#L17
 
