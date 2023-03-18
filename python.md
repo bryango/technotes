@@ -12,3 +12,7 @@
 - https://docs.conda.io/projects/conda-build/en/latest/user-guide/tutorials/build-pkgs-skeleton.html
 - https://docs.conda.io/projects/conda-build/en/latest/resources/define-metadata.html
 - 
+
+
+- https://github.com/mamba-org/boa/issues/213#issuecomment-1474621395
+- 
