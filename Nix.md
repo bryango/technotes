@@ -17,6 +17,8 @@ lrwxrwxrwx 1 $USER $USER 44  .nix-profile -> /nix/var/nix/profiles/per-user/$USE
 
 `nix flake` is the future, and one should replace `nix-env` with `nix profile` which is based on flake. However, as of March 2023 the documentation is so poorly written that there is no way for me to make a smooth transition. So I will stick to `nix-env` and `nix-channel` for now.
 
+**Note:** although the documentations are sparse and scattered, I tried to consult Bing Chat AI and it seems to generate some very useful instructions for the transition! In particular, it tells me that `nix-channel` is replaced by `nix registry`. I will try to do it next time with Bing's help.
+
 ## quick start
 
 ```bash
