@@ -10,6 +10,22 @@ https://en.wikipedia.org/wiki/Naming_convention_(programming)
 - use `CamelCase` to maximize readability, use `camelCase` if necessary
 - prefer `-` over `_`, also to minize <kbd>Shift</kbd> ing
 
+## upstream renaming & downstream symlinking
+
+I want to rename `~/apps/Mathematica` to `~/apps/wolfram`. To find all the symlinks pointing at `~/apps/Mathematica`,
+```bash
+$ fd --hidden --no-ignore --type=symlink --list-details | grep Mathematica | grep -v aur-mathematica | sed -E "s|$USER|\$USER|g"
+lrwxrwxrwx 1 $USER $USER  31 11月30日 10:38 ./apps/Mathematica/Applications -> ../../.Mathematica/Applications
+lrwxrwxrwx 1 $USER $USER  43 12月28日 10:29 ./docs/archive/ThermalFieldTheory2020/thermal5/plots/MathUtils.wl -> ../../../Templates/Mathematica/MathUtils.wl
+lrwxrwxrwx 1 $USER $USER  18 11月30日 10:42 ./.Mathematica/Applications/diffgeo.m -> diffgeoM/diffgeo.m
+lrwxrwxrwx 1 $USER $USER  31 11月30日 10:39 ./.Mathematica/Applications/diffgeoM -> ../../apps/Mathematica/diffgeoM
+lrwxrwxrwx 1 $USER $USER  30 11月30日 10:40 ./.Mathematica/Applications/Physica -> ../../apps/Mathematica/Physica
+lrwxrwxrwx 1 $USER $USER  33 11月30日 10:40 ./.Mathematica/Applications/Spelunking -> ../../apps/Mathematica/Spelunking
+lrwxrwxrwx 1 $USER $USER  27  3月12日 18:19 ./.Mathematica/Applications/xAct -> ../../apps/Mathematica/xAct
+lrwxrwxrwx 1 $USER $USER  33 11月30日 10:41 ./.Mathematica/Autoload/FrontEnd/init.m -> ../../Applications/Physica/init.m
+```
+I need only fix the links within `~/.Mathematica/Applications/` using `ln -sf`. Done!
+
 ## reset qt theming
 
 `unset QT_QPA_PLATFORMTHEME`
