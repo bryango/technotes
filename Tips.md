@@ -12,7 +12,9 @@ https://en.wikipedia.org/wiki/Naming_convention_(programming)
 
 ## latex `\skew` accent
 
-Compare: $j \wedge \bar{j}$ vs $j \wedge \skew{4}{\bar}{j}$
+e.g. `\skew{4}{\bar}{j}`. Compare:
+
+$$ j \wedge \bar{j} \qquad\textit{vs.}\qquad j \wedge \skew{4}{\bar}{j} $$
 
 ## upstream renaming & downstream symlinking
 
