@@ -10,6 +10,10 @@ https://en.wikipedia.org/wiki/Naming_convention_(programming)
 - use `CamelCase` to maximize readability, use `camelCase` if necessary
 - prefer `-` over `_`, also to minize <kbd>Shift</kbd> ing
 
+## latex `\skew` accent
+
+Compare: $j \wedge \bar{j}$ vs $j \wedge \skew{4}{\bar}{j}$
+
 ## upstream renaming & downstream symlinking
 
 I want to rename `~/apps/Mathematica` to `~/apps/wolfram`. To find all the symlinks pointing at `~/apps/Mathematica`,
