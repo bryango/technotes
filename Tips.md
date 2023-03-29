@@ -16,6 +16,8 @@ e.g. `\skew{4}{\bar}{j}`. Compare:
 
 $$ j \wedge \bar{j} \qquad\textit{vs.}\qquad j \wedge \skew{4}{\bar}{j} $$
 
+See: https://tex.stackexchange.com/questions/4192/bad-positioning-of-math-accents-for-the-beamer-standard-font
+
 ## upstream renaming & downstream symlinking
 
 I want to rename `~/apps/Mathematica` to `~/apps/wolfram`. To find all the symlinks pointing at `~/apps/Mathematica`,
