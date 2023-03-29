@@ -4,12 +4,13 @@
 - **Result:** fallback chain:
 ```bash
 tectonic (xelatex) > miktex (pdflatex, ...) > tlmgr (--usermode, infra-only)
-                   > nix (biber)            > pacman (texlive-{bin,installer})
+                   > nix (biber)            > pacman (texlive-{installer,bin})
 ```
+Currently `tectonic` is installed but unused (see below), and I use `texlive-installer` without `texlive-bin` in pacman.
 
 ## `xelatex-tectonic`
 
-A wrapper script to parse `xelatex` flags and pass to `tectonic`, written with python's argparse. See [`~/bin/xelatex-tectonic`](https://github.com/bryango/cheznous/blob/-/bin/xelatex-tectonic). I was hoping to replace `xelatex` completely with `tectonic`. 
+A wrapper script to parse `xelatex` flags and pass to `tectonic`, written with python's argparse. See [`~/bin/xelatex-tectonic`](https://github.com/bryango/cheznous/blob/-/bin/xelatex-tectonic). I am hoping to replace `xelatex` completely with `tectonic`. 
 
 Unfortunately, `tectonic` is not perfect yet:
 - https://github.com/tectonic-typesetting/tectonic/issues/859: pipe input not available
@@ -31,6 +32,16 @@ $HOME/apps/texlive/latest/bin/x86_64-linux
 
 # ... unrelated entries removed
 ```
+
+## miktex
+
+miktex on linux is wonderful! It is extremely convenient and I heavily rely on it. However there are several potential issues:
+- it is mostly maintained by a single person
+- it is a windows-centric app and it feels like linux is an afterthought
+- the documentation is sparse
+- although based on texlive, it has a completely different structure & content delivery system
+
+Some of the above shortcomings are shared by tectonic. For now I am using miktex but I am hoping to switch to tectonic some day.
 
 ## texlive install
 
