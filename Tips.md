@@ -10,6 +10,14 @@ https://en.wikipedia.org/wiki/Naming_convention_(programming)
 - use `CamelCase` to maximize readability, use `camelCase` if necessary
 - prefer `-` over `_`, also to minize <kbd>Shift</kbd> ing
 
+## `atom -> pulsar`
+
+I really don't want to use vscode... TODO: write a PKGBUILD from source:
+
+- https://pulsar-edit.dev/docs/launch-manual/sections/core-hacking/#building-pulsar
+- https://github.com/pulsar-edit/pulsar/blob/master/.cirrus.yml
+- https://github.com/atom/github/pull/2538: diff with syntax highlighting
+
 ## latex `\skew` accent
 
 e.g. `\skew{4}{\bar}{j}`. Compare:
