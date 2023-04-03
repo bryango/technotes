@@ -178,7 +178,7 @@ Basically,
 - resolve with a given server: `drill @nameserver`
 
 `dig` seems to be the traditional utility, but `drill` is usually built in:
-```
+```bash
 $ which drill | pacman -Qo -
 /usr/bin/drill is owned by ldns 1.8.3-2
 
