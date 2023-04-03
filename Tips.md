@@ -167,6 +167,26 @@ sudo firewall-cmd --set-default-zone=drop
 ```
 Further customizations can be found at [`/etc/firewalld`](https://github.com/bryango/chezroot/blob/-/etc/firewalld)
 
+## dns lookup
+
+See:
+- https://wiki.archlinux.org/title/Domain_name_resolution#Name_Service_Switch
+- https://wiki.archlinux.org/title/Domain_name_resolution#Lookup_utilities
+
+Basically,
+- resolve using system dns (NSS): `getent hosts`
+- resolve with a given server: `drill @nameserver`
+
+`dig` seems to be the traditional utility, but `drill` is usually built in:
+```
+$ which drill | pacman -Qo -
+/usr/bin/drill is owned by ldns 1.8.3-2
+
+$ pactree --reverse ldns --depth=1
+ldns
+└─openssh
+```
+
 ## /etc/resolv.conf
 
 Apps like `tailscale` will attempt to write to `/etc/resolv.conf` which results in conflicts. `resolvconf` is an interface (standard?) to manage `/etc/resolv.conf`. Unsurprisingly, systemd has a built-in `resolvconf`. To make use of that,
