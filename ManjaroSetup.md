@@ -29,32 +29,6 @@ pacman -S bluez-utils \
 systemctl enable bluetooth.service
 ```
 
-### DNS & `resolv{.conf,ed,ed.conf,conf}`
-
-By default the DNS is handled by NetworkManager alone. The control can be handed over to `systemd-resolved`, which seems to provide more features. To make use of that,
-- `systemctl enable --now systemd-resolved`
-- `ln -sf /run/systemd/resolve/stub-resolv.conf /etc/resolv.conf`
-- finally, install `systemd-resolvconf` (must do this at the very last)
-- reload: stop `systemd-resolved` `NetworkManager` and restart in sequence
-
-The symlink tells NetworkManager to give control of `/etc/resolv.conf` to systemd. This is the default behavior built in Arch but this may differ in other distros. 
-See [**chezroot: 67e84a9**](https://github.com/bryango/chezroot/commit/67e84a9) for more information.
-
-### about resolvconf
-
-Apps like `tailscale` will attempt to write to `/etc/resolv.conf` which results in conflicts. `resolvconf` is an interface (standard?) to manage `/etc/resolv.conf`. Unsurprisingly, systemd has a built-in `resolvconf`. This is enabled in the very last step above.
-If the app, in this case `tailscale`, fails to pick up the change, then stop `systemd-resolved` `NetworkManager` `tailscaled` and restart each of them in sequence.
-
-### global DNS setup
-
-Global DNS setup across links (interfaces):
-- https://wiki.archlinux.org/title/systemd-resolved#Manually
-- https://github.com/bryango/chezroot/commit/0ee7849
-
-### check DNS lookup
-
-https://github.com/bryango/technotes/blob/525f3e817e53f78b8dd04431e03becdcabf136a1/Tips.md?plain=1#L176-L178
-
 ## Gnome
 
 - Install minimal group of packages based on the `gnome` group. <br>
@@ -155,3 +129,59 @@ nuspell 5.1.2-2
 ```
 
 For more personalized tweaks, see `$DICPATH` in [`~/.profile`](https://github.com/bryango/cheznous/blob/-/.profile) which points to [`~/apps/dicts`](https://github.com/bryango/cheznous/blob/-/apps/dicts). 
+
+## DNS & `resolv{.conf,ed,ed.conf,conf}`
+
+By default the DNS is handled by NetworkManager alone. The control can be handed over to `systemd-resolved`, which seems to provide more features. To make use of that,
+- `systemctl enable --now systemd-resolved`
+- `ln -sf /run/systemd/resolve/stub-resolv.conf /etc/resolv.conf`
+- finally, install `systemd-resolvconf` (must do this at the very last)
+- reload: stop `systemd-resolved` `NetworkManager` and restart in sequence
+
+The symlink tells NetworkManager to give control of `/etc/resolv.conf` to systemd. This is the default behavior built in Arch but this may differ in other distros. 
+See [**chezroot: 67e84a9**](https://github.com/bryango/chezroot/commit/67e84a9) for more information.
+
+### about resolvconf
+
+Apps like `tailscale` will attempt to write to `/etc/resolv.conf` which results in conflicts. `resolvconf` is an interface (standard?) to manage `/etc/resolv.conf`. Unsurprisingly, systemd has a built-in `resolvconf`. This is enabled in the very last step above.
+If the app, in this case `tailscale`, fails to pick up the change, then stop `systemd-resolved` `NetworkManager` `tailscaled` and restart each of them in sequence.
+
+### global DNS setup
+
+Global DNS setup across links (interfaces):
+- https://wiki.archlinux.org/title/systemd-resolved#Manually
+- https://github.com/bryango/chezroot/commit/0ee7849
+
+### check DNS lookup
+
+https://github.com/bryango/technotes/blob/525f3e817e53f78b8dd04431e03becdcabf136a1/Tips.md?plain=1#L176-L178
+
+## firewalld
+
+To me `firewalld` _feels_ like the best choice for modern firewall configurations.
+
+- It _feels_ more powerful than `ufw`
+- It works with the next gen `nftables`
+- It has nice integrations with NetworkManager
+- It has an official GUI
+- It has a nice CLI with zsh completions
+- It is actively maintained by Fedora / Red Hat
+
+To drop incomings by default,
+```bash
+sudo firewall-cmd --set-default-zone=drop
+```
+Further customizations can be found at [`/etc/firewalld`](https://github.com/bryango/chezroot/blob/-/etc/firewalld)
+
+## dmesg: no audits
+
+`audit` spams dmesg. To exclude unneeded messages, see [`/etc/audit/rules.d/quiet.rules`](https://github.com/bryango/chezroot/blob/-/etc/audit/rules.d/quiet.rules)
+
+- To refresh the rules, follow the wiki: https://wiki.archlinux.org/title/Audit_framework. 
+- For more on the rules, see: https://man.archlinux.org/man/auditctl.8.en. 
+
+## invalid `$XDG_DATA_DIRS` is catastrophic
+
+An invalid `$XDG_DATA_DIRS` will prevent gnome from starting. See https://wiki.archlinux.org/title/XDG_Base_Directory for the default, and see [`~/.profile`](https://github.com/bryango/cheznous/blob/-/.profile) for my config. The issue is mentioned here:
+
+https://unix.stackexchange.com/questions/471327/whats-the-right-way-to-add-directories-to-xdg-data-dirs
