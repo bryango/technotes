@@ -43,7 +43,7 @@ I need only fix the links within `~/.Mathematica/Applications/` using `ln -sf`. 
 
 ## reset qt theming
 
-`unset QT_QPA_PLATFORMTHEME`
+`unset QT_QPA_PLATFORMTHEME`; see [**cheznous:** `~/bin/env-light`](https://github.com/bryango/cheznous/blob/-/bin/env-light)
 
 ## flatpak
 
