@@ -142,30 +142,6 @@ window.location.replace("...")
 ```
 The sign-in should proceed with no issue!
 
-## dmesg: no audits
-
-`audit` spams dmesg. To exclude unneeded messages, see [`/etc/audit/rules.d/quiet.rules`](https://github.com/bryango/chezroot/blob/-/etc/audit/rules.d/quiet.rules)
-
-- To refresh the rules, follow the wiki: https://wiki.archlinux.org/title/Audit_framework. 
-- For more on the rules, see: https://man.archlinux.org/man/auditctl.8.en. 
-
-## firewalld
-
-To me `firewalld` _feels_ like the best choice for modern firewall configurations.
-
-- It _feels_ more powerful than `ufw`
-- It works with the next gen `nftables`
-- It has nice integrations with NetworkManager
-- It has an official GUI
-- It has a nice CLI with zsh completions
-- It is actively maintained by Fedora / Red Hat
-
-To drop incomings by default,
-```bash
-sudo firewall-cmd --set-default-zone=drop
-```
-Further customizations can be found at [`/etc/firewalld`](https://github.com/bryango/chezroot/blob/-/etc/firewalld)
-
 ## dns lookup
 
 See:
@@ -185,9 +161,3 @@ $ pactree --reverse ldns --depth=1
 ldns
 └─openssh
 ```
-
-## invalid `$XDG_DATA_DIRS` is catastrophic
-
-An invalid `$XDG_DATA_DIRS` will prevent gnome from starting. See https://wiki.archlinux.org/title/XDG_Base_Directory for the default, and see [`~/.profile`](https://github.com/bryango/cheznous/blob/-/.profile) for my config. The issue is mentioned here:
-
-https://unix.stackexchange.com/questions/471327/whats-the-right-way-to-add-directories-to-xdg-data-dirs
