@@ -29,39 +29,32 @@ pacman -S bluez-utils \
 systemctl enable bluetooth.service
 ```
 
-### dns & resolv{.conf,ed,ed.conf}
+### dns & `resolv{.conf,ed,ed.conf,conf}`
 
-## dns lookup
-
-See:
-- https://wiki.archlinux.org/title/Domain_name_resolution#Name_Service_Switch
-- https://wiki.archlinux.org/title/Domain_name_resolution#Lookup_utilities
-
-Basically,
-- resolve using system dns (NSS): `getent hosts`
-- resolve with a given server: `drill @nameserver`
-
-`dig` seems to be the traditional utility, but `drill` is usually built in:
-```bash
-$ which drill | pacman -Qo -
-/usr/bin/drill is owned by ldns 1.8.3-2
-
-$ pactree --reverse ldns --depth=1
-ldns
-└─openssh
-```
-
-## /etc/resolv.conf
-
-Apps like `tailscale` will attempt to write to `/etc/resolv.conf` which results in conflicts. `resolvconf` is an interface (standard?) to manage `/etc/resolv.conf`. Unsurprisingly, systemd has a built-in `resolvconf`. To make use of that,
-
+By default the DNS is handled by NetworkManager alone. The control can be handed over to `systemd-resolved`, which seems to provide more features. To make use of that,
 - `systemctl enable --now systemd-resolved`
 - `ln -sf /run/systemd/resolve/stub-resolv.conf /etc/resolv.conf`
 - finally, install `systemd-resolvconf` (must do this at the very last)
+- reload: stop `systemd-resolved` `NetworkManager` and restart in sequence
+
+The symlink tells NetworkManager to give control of `/etc/resolv.conf` to systemd. This is the default behavior built in Arch but this may differ in other distros. 
+
+### resolvconf
+
+Apps like `tailscale` will attempt to write to `/etc/resolv.conf` which results in conflicts. `resolvconf` is an interface (standard?) to manage `/etc/resolv.conf`. Unsurprisingly, systemd has a built-in `resolvconf`. This is enabled in the very last step above.
+If the app, in this case `tailscale`, fails to pick up the change, then stop `systemd-resolved` `NetworkManager` `tailscaled` and restart each of them in sequence.
 
 See [**chezroot: 67e84a9**](https://github.com/bryango/chezroot/commit/67e84a9) for more information.
-The symlink tells NetworkManager to give control of `/etc/resolv.conf` to systemd. This is the default behavior built in Arch but this may differ in other distros. If the app, in this case `tailscale`, fails to pick up the change, then stop `systemd-resolved` `NetworkManager` `tailscaled` and restart each of them in sequence.
 
+### global dns setup
+
+Global DNS setup across links (interfaces):
+- https://wiki.archlinux.org/title/systemd-resolved#Manually
+- https://github.com/bryango/chezroot/commit/0ee7849
+
+### check dns lookup
+
+https://github.com/bryango/technotes/blob/525f3e817e53f78b8dd04431e03becdcabf136a1/Tips.md?plain=1#L176-L178
 
 ## Gnome
 
