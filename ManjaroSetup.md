@@ -23,11 +23,45 @@ Best to ensure that hostname, time & stuff is properly set up. Then:
 pacman -S networkmanager nm-connection-editor
 ```
 For bluetooth support,
-```
+```bash
 pacman -S bluez-utils \
           blueman  # this is a nice gui
 systemctl enable bluetooth.service
 ```
+
+### dns & resolv{.conf,ed,ed.conf}
+
+## dns lookup
+
+See:
+- https://wiki.archlinux.org/title/Domain_name_resolution#Name_Service_Switch
+- https://wiki.archlinux.org/title/Domain_name_resolution#Lookup_utilities
+
+Basically,
+- resolve using system dns (NSS): `getent hosts`
+- resolve with a given server: `drill @nameserver`
+
+`dig` seems to be the traditional utility, but `drill` is usually built in:
+```bash
+$ which drill | pacman -Qo -
+/usr/bin/drill is owned by ldns 1.8.3-2
+
+$ pactree --reverse ldns --depth=1
+ldns
+└─openssh
+```
+
+## /etc/resolv.conf
+
+Apps like `tailscale` will attempt to write to `/etc/resolv.conf` which results in conflicts. `resolvconf` is an interface (standard?) to manage `/etc/resolv.conf`. Unsurprisingly, systemd has a built-in `resolvconf`. To make use of that,
+
+- `systemctl enable --now systemd-resolved`
+- `ln -sf /run/systemd/resolve/stub-resolv.conf /etc/resolv.conf`
+- finally, install `systemd-resolvconf` (must do this at the very last)
+
+See [**chezroot: 67e84a9**](https://github.com/bryango/chezroot/commit/67e84a9) for more information.
+The symlink tells NetworkManager to give control of `/etc/resolv.conf` to systemd. This is the default behavior built in Arch but this may differ in other distros. If the app, in this case `tailscale`, fails to pick up the change, then stop `systemd-resolved` `NetworkManager` `tailscaled` and restart each of them in sequence.
+
 
 ## Gnome
 
