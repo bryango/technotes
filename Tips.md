@@ -187,17 +187,6 @@ ldns
 └─openssh
 ```
 
-## /etc/resolv.conf
-
-Apps like `tailscale` will attempt to write to `/etc/resolv.conf` which results in conflicts. `resolvconf` is an interface (standard?) to manage `/etc/resolv.conf`. Unsurprisingly, systemd has a built-in `resolvconf`. To make use of that,
-
-- `systemctl enable --now systemd-resolved`
-- `ln -sf /run/systemd/resolve/stub-resolv.conf /etc/resolv.conf`
-- finally, install `systemd-resolvconf` (must do this at the very last)
-
-See [**chezroot: 67e84a9**](https://github.com/bryango/chezroot/commit/67e84a9) for more information.
-The symlink tells NetworkManager to give control of `/etc/resolv.conf` to systemd. This is the default behavior built in Arch but this may differ in other distros. If the app, in this case `tailscale`, fails to pick up the change, then stop `systemd-resolved` `NetworkManager` `tailscaled` and restart each of them in sequence.
-
 ## invalid `$XDG_DATA_DIRS` is catastrophic
 
 An invalid `$XDG_DATA_DIRS` will prevent gnome from starting. See https://wiki.archlinux.org/title/XDG_Base_Directory for the default, and see [`~/.profile`](https://github.com/bryango/cheznous/blob/-/.profile) for my config. The issue is mentioned here:
