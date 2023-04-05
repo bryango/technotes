@@ -1,6 +1,6 @@
 # Set up Manjaro with Gnome & more, the Arch way
 
-I hate where gnome is going (with a complete disregard for the user feedback), but I am enchanted by its superior aesthetic and I am totally trapped and screwed. Here is my desperate to make it better, along with some other basic OS configurations.
+I hate where gnome is going (with a complete disregard for user feedbacks), but I am deeply enchanted by its superior aesthetic. I am totally trapped and screwed. Here is my desperate attempt to make it better, along with some other basic OS configurations.
 
 [Altercation]: https://wiki.archlinux.org/title/Installation_guide
 [Arch]: https://wiki.archlinux.org/title/Installation_guide
