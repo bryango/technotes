@@ -10,6 +10,20 @@ https://en.wikipedia.org/wiki/Naming_convention_(programming)
 - use `CamelCase` to maximize readability, use `camelCase` if necessary
 - prefer `-` over `_`, also to minize <kbd>Shift</kbd> ing
 
+## list all (listening) ports
+
+`ss -tunlp`
+- `-t` shows TCP ports.
+- `-u` shows UDP ports.
+- `-n` shows numerical addresses instead of resolving hosts.
+- `-l` shows only listening ports.
+- `-p` shows the PID and name of the listener’s process.
+- `-a` shows all connections, not just the listening ones.
+
+`netstat` is deprecated and `ss` is the sucessor.
+- https://wiki.archlinux.org/title/Network_configuration#Investigate_sockets
+- https://archlinux.org/news/deprecation-of-net-tools
+
 ## `atom` > `pulsar`, goodbye `vscode`
 
 I really don't like `vscode`... `pulsar` is a fork of `atom` that works almost perfect! The binary is available from AUR. I would like to build it from source. Here are some preliminary research:
