@@ -10,6 +10,15 @@ https://en.wikipedia.org/wiki/Naming_convention_(programming)
 - use `CamelCase` to maximize readability, use `camelCase` if necessary
 - prefer `-` over `_`, also to minize <kbd>Shift</kbd> ing
 
+## seat.lib.tsinghua.edu.cn
+
+https://seat.lib.tsinghua.edu.cn/api.php/v3areas
+
+```
+curl "https://seat.lib.tsinghua.edu.cn/api.php/v3areas/" > seat.lib.tsinghua.json
+cat seat.lib.tsinghua.json | jq '.data.list.seatinfo | map(select(.name == "文科图书馆")) | .[0].id '
+```
+
 ## systemd-resolved is broken fundamentally, by design
 
 See this hateful thread: https://github.com/systemd/systemd/issues/5755
