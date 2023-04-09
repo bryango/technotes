@@ -10,6 +10,15 @@ https://en.wikipedia.org/wiki/Naming_convention_(programming)
 - use `CamelCase` to maximize readability, use `camelCase` if necessary
 - prefer `-` over `_`, also to minize <kbd>Shift</kbd> ing
 
+## systemd-resolved is broken fundamentally, by design
+
+See this hateful thread: https://github.com/systemd/systemd/issues/5755
+
+After much research I think I might switch to the following setup:
+- openresolv for `resolvconf`
+- networkmanager in `resolvconf` mode
+- `unbound` for global DNS setup
+
 ## list all (listening) ports
 
 `ss -tunlp`
