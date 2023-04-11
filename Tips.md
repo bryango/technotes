@@ -10,6 +10,12 @@ https://en.wikipedia.org/wiki/Naming_convention_(programming)
 - use `CamelCase` to maximize readability, use `camelCase` if necessary
 - prefer `-` over `_`, also to minize <kbd>Shift</kbd> ing
 
+## play a simple sound from the terminal
+
+https://unix.stackexchange.com/questions/681289/play-sound-when-command-finishes
+
+`paplay /usr/share/sounds/freedesktop/stereo/complete.oga`
+
 ## seat.lib.tsinghua.edu.cn
 
 https://seat.lib.tsinghua.edu.cn/api.php/v3areas
