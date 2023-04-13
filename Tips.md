@@ -10,6 +10,19 @@ https://en.wikipedia.org/wiki/Naming_convention_(programming)
 - use `CamelCase` to maximize readability, use `camelCase` if necessary
 - prefer `-` over `_`, also to minize <kbd>Shift</kbd> ing
 
+## shadowsocks uri scheme
+
+https://github.com/shadowsocks/shadowsocks-org/wiki/SIP002-URI-Scheme
+
+The `userinfo` field is base64 encoded with javascript `btoa()`. It seems that this is required by the _outline_ app. `btoa()` may fail if `password` contains non-ascii characters, so don't do that!
+
+```javascript
+function ssuri(method, password, hostname, port, tag) {
+  userinfo = btoa(method + ":" + password)
+  return "ss://" + userinfo + "@" + hostname + ":" + port + "/" + "#" + tag
+} 
+```
+
 ## play a simple sound from the terminal
 
 https://unix.stackexchange.com/questions/681289/play-sound-when-command-finishes
