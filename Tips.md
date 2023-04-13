@@ -18,8 +18,8 @@ The `userinfo` field is base64 encoded with javascript `btoa()`. It seems that t
 
 ```javascript
 function ssuri(method, password, hostname, port, tag) {
-  userinfo = btoa(method + ":" + password)
-  return "ss://" + userinfo + "@" + hostname + ":" + port + "/" + "#" + tag
+  const userinfo = btoa(method + ":" + password)
+  return `ss://${userinfo}@${hostname}:${port}/#${tag}`
 } 
 ```
 
