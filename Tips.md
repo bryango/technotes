@@ -21,7 +21,7 @@ press `ctrl-v` and then hit `tab`!
 
 ## python language server
 
-The builtin one is `pylance` but the hint is not very readable.
+The one built into vscode is `pylance` but the hint is not very readable.
 This is worse than what I remembered back in the days of atom.
 I would like to test:
 - https://github.com/python-lsp/python-lsp-server
