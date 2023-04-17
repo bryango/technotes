@@ -12,8 +12,8 @@ https://en.wikipedia.org/wiki/Naming_convention_(programming)
 
 ## bash builtins
 
-### array:
-https://github.com/bryango/seatlib/blob/4478d0eb0bd1ca62afbf2ec90b880b37735068ba/daemon.sh#L18-L19
+- array: `IFS=$'\t' read -r -a outputs <<< "$inputs"`, `-r` for non-escaping
+- directory stack: `pushd` and `popd`, for a temporary `cd`
 
 ## literal `\t` in terminal
 
@@ -111,10 +111,6 @@ Don't use flatpaks, unless you intend to use many of them. The reason is that th
 
 - cleanup: https://github.com/flatpak/flatpak/issues/3542.
 - mirror: https://github.com/flathub/flathub/issues/813#issuecomment-753815626. 
-
-## `pushd` and `popd`
-
-Temporary `cd` by pushing the target into a directory stack, then return to the previous directory by poping it.
 
 ## `djvu -> pdf`
 
