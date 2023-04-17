@@ -38,15 +38,6 @@ https://unix.stackexchange.com/questions/681289/play-sound-when-command-finishes
 
 `paplay /usr/share/sounds/freedesktop/stereo/complete.oga`
 
-## seat.lib.tsinghua.edu.cn
-
-https://seat.lib.tsinghua.edu.cn/api.php/v3areas
-
-```
-curl "https://seat.lib.tsinghua.edu.cn/api.php/v3areas/" > seat.lib.tsinghua.json
-cat seat.lib.tsinghua.json | jq '.data.list.seatinfo | map(select(.name == "文科图书馆")) | .[0].id '
-```
-
 ## systemd-resolved is broken fundamentally, by design
 
 See this hateful thread: https://github.com/systemd/systemd/issues/5755
