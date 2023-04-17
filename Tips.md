@@ -19,6 +19,14 @@ https://en.wikipedia.org/wiki/Naming_convention_(programming)
 
 press `ctrl-v` and then hit `tab`!
 
+## python language server
+
+The builtin one is `pylance` but the hint is not very readable.
+This is worse than what I remembered back in the days of atom.
+I would like to test:
+- https://github.com/python-lsp/python-lsp-server
+- https://github.com/pappasam/jedi-language-server
+
 ## shadowsocks uri scheme
 
 https://github.com/shadowsocks/shadowsocks-org/wiki/SIP002-URI-Scheme
