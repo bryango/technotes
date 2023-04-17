@@ -10,6 +10,15 @@ https://en.wikipedia.org/wiki/Naming_convention_(programming)
 - use `CamelCase` to maximize readability, use `camelCase` if necessary
 - prefer `-` over `_`, also to minize <kbd>Shift</kbd> ing
 
+## bash builtins
+
+### array:
+https://github.com/bryango/seatlib/blob/4478d0eb0bd1ca62afbf2ec90b880b37735068ba/daemon.sh#L18-L19
+
+## literal `\t` in terminal
+
+press `ctrl-v` and then hit `tab`!
+
 ## shadowsocks uri scheme
 
 https://github.com/shadowsocks/shadowsocks-org/wiki/SIP002-URI-Scheme
