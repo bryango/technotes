@@ -26,6 +26,7 @@ Example: ruff-lsp & ruff
 ```bash
 pipx install ruff-lsp
 pipx inject --include-apps ruff-lsp ruff
+pipx inject --include-apps ruff-lsp flake8-to-ruff
 ```
 
 ## literal `\t` in terminal
