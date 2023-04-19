@@ -15,6 +15,11 @@ https://en.wikipedia.org/wiki/Naming_convention_(programming)
 - array: `IFS=$'\t' read -r -a outputs <<< "$inputs"`, `-r` for non-escaping
 - directory stack: `pushd` and `popd`, for a temporary `cd`
 
+## chezmoi forget deleted files
+
+- reveal the deleted files in the git tree by `chezmoi apply --interactive`
+- run `chezmoi forget` on the targets
+
 ## pipx inject dependencies
 
 Example: ruff-lsp & ruff
