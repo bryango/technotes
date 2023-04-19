@@ -15,6 +15,14 @@ https://en.wikipedia.org/wiki/Naming_convention_(programming)
 - array: `IFS=$'\t' read -r -a outputs <<< "$inputs"`, `-r` for non-escaping
 - directory stack: `pushd` and `popd`, for a temporary `cd`
 
+## pipx inject dependencies
+
+Example: ruff-lsp & ruff
+```bash
+pipx install ruff-lsp
+pipx inject --include-apps ruff-lsp ruff
+```
+
 ## literal `\t` in terminal
 
 press `ctrl-v` and then hit `tab`!
