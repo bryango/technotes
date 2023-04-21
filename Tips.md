@@ -23,6 +23,13 @@ The offending process is `WeChatAppEx.exe`, this is related to 小程序.
 
 The executable is located under `/home/$USER/.deepinwine/Deepin-WeChat/drive_c/users/$USER/Application Data/Tencent/WeChat/XPlugin/Plugins/RadiumWMPF`. Removing the directory seems to help temporarily. If the issue reappears I plan to use `chattr +i`.
 
+**Update:** well the issue resurfaces. So I did:
+```bash
+chmod a-x WeChatAppEx.exe 
+sudo chattr +i WeChatAppEx.exe 
+```
+We'll see.
+
 ## chezmoi forget deleted files
 
 - reveal the deleted files in the git tree by `chezmoi apply --interactive`
