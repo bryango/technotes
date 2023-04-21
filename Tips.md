@@ -30,6 +30,18 @@ sudo chattr +i WeChatAppEx.exe
 ```
 We'll see.
 
+## python packaging
+
+Due to historical reasons, poetry is [not yet compliant](https://stackoverflow.com/questions/75408641/whats-difference-between-tool-poetry-and-project-in-pyproject-toml) with [PEP-621](https://packaging.python.org/en/latest/specifications/declaring-project-metadata/), so one has to follow its own syntax to define an entry point:
+
+- https://python-poetry.org/docs/master/pyproject/#scripts
+
+Only after poetry becomes PEP-621 compliant can one follow the official guides:
+
+- https://pypa.github.io/pipx/how-pipx-works/#developing-for-pipx
+- https://setuptools.pypa.io/en/latest/userguide/quickstart.html#entry-points-and-automatic-script-creation
+- https://setuptools.pypa.io/en/latest/userguide/entry_point.html
+
 ## chezmoi forget deleted files
 
 - reveal the deleted files in the git tree by `chezmoi apply --interactive`
