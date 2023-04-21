@@ -15,6 +15,14 @@ https://en.wikipedia.org/wiki/Naming_convention_(programming)
 - array: `IFS=$'\t' read -r -a outputs <<< "$inputs"`, `-r` for non-escaping
 - directory stack: `pushd` and `popd`, for a temporary `cd`
 
+## wine wechat high cpu usage
+
+The offending process is `WeChatAppEx.exe`, this is related to 小程序.
+- https://bbs.kanxue.com/thread-276281.htm
+- https://bbs.kanxue.com/thread-275034.htm
+
+The executable is located under `/home/$USER/.deepinwine/Deepin-WeChat/drive_c/users/$USER/Application Data/Tencent/WeChat/XPlugin/Plugins/RadiumWMPF`. Removing the directory seems to help temporarily. If the issue reappears I plan to use `chattr +i`.
+
 ## chezmoi forget deleted files
 
 - reveal the deleted files in the git tree by `chezmoi apply --interactive`
