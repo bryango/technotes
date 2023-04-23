@@ -15,6 +15,10 @@ https://en.wikipedia.org/wiki/Naming_convention_(programming)
 - array: `IFS=$'\t' read -r -a outputs <<< "$inputs"`, `-r` for non-escaping
 - directory stack: `pushd` and `popd`, for a temporary `cd`
 
+## python oneliners
+
+- copy files: `shutils.copy2`, https://stackoverflow.com/questions/123198/how-to-copy-files
+
 ## wine wechat high cpu usage
 
 The offending process is `WeChatAppEx.exe`, this is related to 小程序.
