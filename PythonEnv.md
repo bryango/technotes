@@ -1,11 +1,13 @@
 # [A World without Pythons would be so Simple](https://arxiv.org/abs/2102.07774)
 
+Some notes on python environment protection
+
 ## package management
 
 There are many ways to manage python packages. My principles:
 
 - when the dependencies are managable, trust the system: `pacman -S pipx`
-- when used as general utils (python agnostic), try pipx:  `pipx install poetry`
+- when used as general utils (environment agnostic), try pipx:  `pipx install poetry`
 - for scientific / interactive project, use `mamba` (conda). See also [**MambaCadabra.md**](./MambaCadabra.md).
 - whenever possible, avoid `pip`!
 
