@@ -15,6 +15,15 @@ The issue with pip is that it pollutes the environment. If that's okay or you ar
 
 `pip` is more of a package _installer_ than a package _manager_. It cares little about dependency resolution & environmental protection. On the other hand, `mamba` (conda) is a full-fledged package manager, albeit an extremely slow one.
 
+## pipx inject dependencies
+
+For example, to install the ruff suite:
+```bash
+pipx install ruff-lsp
+pipx inject --include-apps ruff-lsp ruff
+pipx inject --include-apps ruff-lsp flake8-to-ruff
+```
+
 ## packaging
 
 Due to historical reasons, poetry is [not yet compliant](https://stackoverflow.com/questions/75408641/whats-difference-between-tool-poetry-and-project-in-pyproject-toml) with [PEP-621](https://packaging.python.org/en/latest/specifications/declaring-project-metadata/), so one has to follow its own syntax to define an entry point:
