@@ -15,6 +15,18 @@ The issue with pip is that it pollutes the environment. If that's okay or you ar
 
 `pip` is more of a package _installer_ than a package _manager_. It cares little about dependency resolution & environmental protection. On the other hand, `mamba` (conda) is a full-fledged package manager, albeit an extremely slow one.
 
+## packaging
+
+Due to historical reasons, poetry is [not yet compliant](https://stackoverflow.com/questions/75408641/whats-difference-between-tool-poetry-and-project-in-pyproject-toml) with [PEP-621](https://packaging.python.org/en/latest/specifications/declaring-project-metadata/), so one has to follow its own syntax to define an entry point:
+
+- https://python-poetry.org/docs/master/pyproject/#scripts
+
+Only after poetry becomes PEP-621 compliant can one follow the official guides:
+
+- https://pypa.github.io/pipx/how-pipx-works/#developing-for-pipx
+- https://setuptools.pypa.io/en/latest/userguide/quickstart.html#entry-points-and-automatic-script-creation
+- https://setuptools.pypa.io/en/latest/userguide/entry_point.html
+
 ## pip & conda skeleton
 
 - always use `pip` in a virtual environment! In such cases, never use `--user`!
