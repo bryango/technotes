@@ -132,25 +132,7 @@ For more personalized tweaks, see `$DICPATH` in [`~/.profile`](https://github.co
 
 ## DNS & `resolv{.conf,ed,ed.conf,conf}`
 
-By default the DNS is handled by NetworkManager alone. The control can be handed over to `systemd-resolved`, which seems to provide more features. To make use of that,
-- `systemctl enable --now systemd-resolved`
-- `ln -sf /run/systemd/resolve/stub-resolv.conf /etc/resolv.conf`
-- finally, install `systemd-resolvconf` (must do this at the very last)
-- reload: stop `systemd-resolved` `NetworkManager` and restart in sequence
-
-The symlink tells NetworkManager to give control of `/etc/resolv.conf` to systemd. This is the default behavior built in Arch but this may differ in other distros. 
-See [**chezroot: 67e84a9**](https://github.com/bryango/chezroot/commit/67e84a9) for more information.
-
-### about resolvconf
-
-Apps like `tailscale` will attempt to write to `/etc/resolv.conf` which results in conflicts. `resolvconf` is an interface (standard?) to manage `/etc/resolv.conf`. Unsurprisingly, systemd has a built-in `resolvconf`. This is enabled in the very last step above.
-If the app, in this case `tailscale`, fails to pick up the change, then stop `systemd-resolved` `NetworkManager` `tailscaled` and restart each of them in sequence.
-
-### global DNS setup
-
-Global DNS setup across links (interfaces):
-- https://wiki.archlinux.org/title/systemd-resolved#Manually
-- https://github.com/bryango/chezroot/commit/0ee7849
+See https://github.com/bryango/chezroot/wiki/DNS.
 
 ### check DNS lookup
 
@@ -172,13 +154,6 @@ To drop incomings by default,
 sudo firewall-cmd --set-default-zone=drop
 ```
 Further customizations can be found at [`/etc/firewalld`](https://github.com/bryango/chezroot/blob/-/etc/firewalld)
-
-## dmesg: no audits
-
-`audit` spams dmesg. To exclude unneeded messages, see [`/etc/audit/rules.d/quiet.rules`](https://github.com/bryango/chezroot/blob/-/etc/audit/rules.d/quiet.rules)
-
-- To refresh the rules, follow the wiki: https://wiki.archlinux.org/title/Audit_framework. 
-- For more on the rules, see: https://man.archlinux.org/man/auditctl.8.en. 
 
 ## invalid `$XDG_DATA_DIRS` is catastrophic
 
