@@ -62,19 +62,6 @@ https://unix.stackexchange.com/questions/681289/play-sound-when-command-finishes
 
 `paplay /usr/share/sounds/freedesktop/stereo/complete.oga`
 
-## systemd-resolved is broken fundamentally, by design
-
-See this hateful thread: https://github.com/systemd/systemd/issues/5755
-
-After much research I think I might switch to the following setup:
-- openresolv for `resolvconf`: uninstall `systemd-resolvconf`
-- networkmanager in `resolvconf` mode
-- `unbound` for global DNS setup
-
-https://wiki.archlinux.org/title/NetworkManager#Use_openresolv
-
-**Update:** the setup is realized in https://github.com/bryango/chezroot/compare/772036f...master
-
 ## list all (listening) ports
 
 `ss -tunlp`
