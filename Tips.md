@@ -25,7 +25,7 @@ The offending process is `WeChatAppEx.exe`, this is related to 小程序.
 - https://bbs.kanxue.com/thread-276281.htm
 - https://bbs.kanxue.com/thread-275034.htm
 
-The executables are located under `/home/$USER/.deepinwine/Deepin-WeChat/drive_c/users/$USER/Application\ Data/Tencent/WeChat/XPlugin/Plugins/*WMPF*`. Removing the directories do not work, as they will be recreated when wechat is restarted. So I did:
+The executables are located under `/home/$USER/.deepinwine/Deepin-WeChat/drive_c/users/$USER/Application\ Data/Tencent/WeChat/XPlugin/Plugins/*WMPF*`. Removing the directories does not work, as they will be recreated when wechat is restarted. So I did:
 
 ```bash
 chmod a-x WeChatAppEx.exe
