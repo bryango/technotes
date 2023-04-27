@@ -25,11 +25,11 @@ The offending process is `WeChatAppEx.exe`, this is related to 小程序.
 - https://bbs.kanxue.com/thread-276281.htm
 - https://bbs.kanxue.com/thread-275034.htm
 
-The executable is located under `/home/$USER/.deepinwine/Deepin-WeChat/drive_c/users/$USER/Application Data/Tencent/WeChat/XPlugin/Plugins/RadiumWMPF`. Removing the directory seems to help temporarily. If the issue reappears I plan to use `chattr +i`.
+The executables are located under `/home/$USER/.deepinwine/Deepin-WeChat/drive_c/users/$USER/Application\ Data/Tencent/WeChat/XPlugin/Plugins/*WMPF*`. Removing the directories do not work, as they will be recreated when wechat is restarted. So I did:
 
-**Update:** well the issue resurfaces. So I did:
 ```bash
-chmod a-x WeChatAppEx.exe 
+chmod a-x WeChatAppEx.exe
+chmod a-r WeChatAppEx.exe 
 sudo chattr +i WeChatAppEx.exe 
 ```
 We'll see.
