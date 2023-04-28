@@ -36,7 +36,7 @@ We'll see.
 
 ## chezmoi forget deleted files
 
-- reveal the deleted files in the git tree by `chezmoi apply --interactive`
+- reveal the deleted files in the git tree by `chezmoi status`
 - run `chezmoi forget` on the targets
 
 ## literal `\t` in terminal
