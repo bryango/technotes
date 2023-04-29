@@ -19,6 +19,10 @@ https://en.wikipedia.org/wiki/Naming_convention_(programming)
 
 - copy files: `shutils.copy2`, https://stackoverflow.com/questions/123198/how-to-copy-files
 
+## (n)vim tricks
+
+- correct syntax highlighting for `;` commented config file such as [redshift.conf](https://raw.githubusercontent.com/jonls/redshift/master/redshift.conf.sample): `; vim: ft=dosini`
+
 ## wine wechat high cpu usage
 
 The offending process is `WeChatAppEx.exe`, this is related to 小程序.
