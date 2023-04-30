@@ -1,6 +1,7 @@
 # [A World without Pythons would be so Simple](https://arxiv.org/abs/2102.07774)
 
-Some notes on python environment protection
+Some notes on python environment protection. See also:
+- https://bitecode.substack.com/p/why-not-tell-people-to-simply-use?
 
 ## package management
 
