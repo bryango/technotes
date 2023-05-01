@@ -2,6 +2,12 @@
 
 Some notes on python environment protection. See also:
 - https://bitecode.substack.com/p/why-not-tell-people-to-simply-use?
+- https://github.com/mitsuhiko/rye
+
+## python runtimes
+
+This can be managed by mamba or [rtx](https://github.com/jdxcode/rtx).
+I've chosen rtx for now.
 
 ## package management
 
