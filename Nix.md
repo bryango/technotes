@@ -159,7 +159,11 @@ Sometimes we need to overwrite some default behavior of packages. The guides are
 
 - overlays: https://nixos.wiki/wiki/Overlays
 - overrides: https://nixos.org/guides/nix-pills/nixpkgs-overriding-packages.html
-- declarative package managements: https://nixos.wiki/wiki/FAQ#How_can_I_manage_software_with_nix-env_like_with_configuration.nix.3F
+
+For declarative package managements, see:
+- https://nixos.wiki/wiki/FAQ#How_can_I_manage_software_with_nix-env_like_with_configuration.nix.3F
+- https://nixos.org/manual/nixpkgs/stable/#sec-declarative-package-management
+- https://github.com/knedlsepp/nix-cheatsheet/blob/master/examples/nixpkgs-config.nix/declarative-user-environments/config.nix
 
 Again we work with an explicit example: I want to install `gimp` with a single plugin: `resynthesizer`. This is achieved with the meta package `gimp-with-plugins`, according to:
 
