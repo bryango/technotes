@@ -23,6 +23,16 @@ https://en.wikipedia.org/wiki/Naming_convention_(programming)
 
 - correct syntax highlighting for `;` commented config file such as [redshift.conf](https://raw.githubusercontent.com/jonls/redshift/master/redshift.conf.sample): `; vim: ft=dosini`
 
+## rust & cargo
+
+- install rustup from pacman
+- lib.rs is functionally equivalent to crates.io, but looks nicer
+- install [cargo-binstall](https://lib.rs/crates/cargo-binstall) from pacman
+- install [cargo-quickinstall](https://lib.rs/crates/cargo-quickinstall) using binstall
+
+`binstall` & `quickinstall` find and install prebuilt binaries.
+What's the difference? I am a bit confused. Maybe `binstall` is for binaries only while `quickinstall` covers libaries as well. One can simply replace `cargo install` with `cargo quickinstall`.
+
 ## wine wechat high cpu usage
 
 The offending process is `WeChatAppEx.exe`, this is related to 小程序.
