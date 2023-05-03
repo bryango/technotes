@@ -11,6 +11,16 @@ MakeBoxes[rp, StandardForm] ^= MakeBoxes[SubPlus[r]]
 MakeBoxes[rm, StandardForm] ^= MakeBoxes[SubMinus[r]]
 ```
 In this case $r_\pm$ is treated internally as `{rp, rm}`, but is displayed as $r_\pm$.
+A version of this on steroids:
+```wolfram
+ClearAll[x]
+x /: Subscript[x, i_] := 
+ With[{xi = ToString /@ {x, i} // StringJoin // ToExpression},
+  xi /: MakeBoxes[xi, StandardForm] = MakeBoxes[Subscript[x, i]];
+  x /: Subscript[x, i] = xi
+ ]
+```
+This displays all `xi` as $x_i$ but still stores them internally as `xi`.
 
 - Use `Unevaluated` to pass argument as held:
 ```wolfram
