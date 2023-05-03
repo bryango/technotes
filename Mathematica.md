@@ -22,6 +22,7 @@ x /: Subscript[x, i_] :=
 ```
 This displays all `xi` as $x_i$ but still stores them internally as `xi`.
 Here `With` is necessary to inject the symbol `xi` into `MakeBoxes` which has Attribute `HoldAllComplete`.
+See the wonderful explanations here: https://mathematica.stackexchange.com/questions/559/what-are-the-use-cases-for-different-scoping-constructs
 
 - Use `Unevaluated` to pass argument as held:
 ```wolfram
