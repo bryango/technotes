@@ -18,6 +18,7 @@ https://en.wikipedia.org/wiki/Naming_convention_(programming)
 ## python oneliners
 
 - copy files: `shutils.copy2`, https://stackoverflow.com/questions/123198/how-to-copy-files
+- [access nested dict](https://stackoverflow.com/a/14692747): `functools.reduce(operator.getitem, key_sequence, data_dict)`
 
 ## (n)vim tricks
 
