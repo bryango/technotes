@@ -2,11 +2,6 @@
 
 Here we collect some random thoughts.
 
-## dynamics & time derivatives
-
-- Usually, dynamical EoMs are >= 2nd order in time. The initial data is given by the position $x$ and the momentum $p\sim\dot{x}$, upon which one can construct a phase space endowed with a symplectic structure.
-- Schrodinger & Dirac equation are 1st order in time. However, a phase space is still present because the initial data $\psi$ is complex. In these cases we actually have a coupled system of 1st order equations, which can be re-written into 2nd order ones.
-
 ## class inheritance is bad
 
 The first full fledged programming languages that I studied in school are python (which I enjoy a lot) and C++ (which I never actually learned), both of them follows traditional class inheritance OOP paradigm. Naturally I assume that this is the way to write a modern program. I was deceived and I suffered from it.
@@ -26,3 +21,11 @@ This forces the design of [_composition over inheritance_](https://en.wikipedia.
 
 - class methods are tightly coupled
 - only simple inheritances are required
+
+# previous thoughts
+
+## dynamics & time derivatives
+
+- Usually, dynamical EoMs are >= 2nd order in time. The initial data is given by the position $x$ and the momentum $p\sim\dot{x}$, upon which one can construct a phase space endowed with a symplectic structure.
+- Schrodinger & Dirac equation are 1st order in time. However, a phase space is still present because the initial data $\psi$ is complex. In these cases we actually have a coupled system of 1st order equations, which can be re-written into 2nd order ones.
+
