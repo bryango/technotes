@@ -6,7 +6,7 @@ Here we collect some random thoughts.
 
 The first full fledged programming languages that I studied in school are python (which I enjoy a lot) and C++ (which I never actually learned), both of which follow traditional class inheritance OOP paradigm. Naturally I assume that this is the way to write a modern program. I was deceived and I suffered from it.
 
-Once upon a time I was curious why the linux kernel thrives with plain C without classes. Had I looked closer, I would have found out the secret a couple years earlier, but I did not. Hence much of my youth was wasted juggling class inheritance. The recent revelation came when I discover that the milestone for modern language, rust, does not have traditional classes. I find out that:
+Once upon a time I was curious why the linux kernel thrives with plain C without classes. Had I looked closer, I would have found out the secret a couple years earlier. But I did not, hence much of my youth was wasted juggling class inheritance. The recent revelation came when I discover that the milestone for modern language, rust, does not have traditional classes. I find out that:
 
 - often we do not need classes at all, and we should follow the more naive paradigm of functional programming
 - or we should use a better way to do OOP.
