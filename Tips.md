@@ -19,6 +19,9 @@ https://en.wikipedia.org/wiki/Naming_convention_(programming)
 
 - [copy files](https://stackoverflow.com/questions/123198/how-to-copy-files): `shutils.copy2`
 - [access nested dict](https://stackoverflow.com/a/14692747): `functools.reduce(operator.getitem, key_sequence, data_dict)`
+- [currying](https://docs.python.org/3/library/functools.html#functools.partial): `functools.partial`
+- [static method](https://docs.python.org/3/library/functions.html#staticmethod): `@staticmethod`
+- [generic function](https://docs.python.org/3/library/functools.html#functools.singledispatch): `@functools.singledispatch`
 
 ## (n)vim tricks
 
