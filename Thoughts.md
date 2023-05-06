@@ -22,6 +22,11 @@ This forces the design of [_composition over inheritance_](https://en.wikipedia.
 - class methods are tightly coupled
 - only simple inheritances are required
 
+See more on the Rosetta code:
+
+- realization of classes in languages: https://rosettacode.org/wiki/Classes
+- type system: https://rosettacode.org/wiki/Category:Type_System
+
 # previous thoughts
 
 ## dynamics & time derivatives
