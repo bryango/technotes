@@ -94,7 +94,13 @@ https://unix.stackexchange.com/questions/681289/play-sound-when-command-finishes
 - https://wiki.archlinux.org/title/Network_configuration#Investigate_sockets
 - https://archlinux.org/news/deprecation-of-net-tools
 
-## `atom` > `pulsar`, goodbye `vscode`
+## `vscode` shenanigans
+
+### language server provides `outline`
+
+See: https://microsoft.github.io/language-server-protocol/specifications/lsp/3.17/specification/#textDocument_documentSymbol
+
+### `atom` > `pulsar`, goodbye `vscode`
 
 I really don't like `vscode`... `pulsar` is a fork of `atom` that works almost perfect! The binary is available from AUR. I would like to build it from source. Here are some preliminary research:
 - https://pulsar-edit.dev/docs/launch-manual/sections/core-hacking/#building-pulsar
