@@ -22,6 +22,12 @@ https://en.wikipedia.org/wiki/Naming_convention_(programming)
 - [currying](https://docs.python.org/3/library/functools.html#functools.partial): `functools.partial`
 - [static method](https://docs.python.org/3/library/functions.html#staticmethod): `@staticmethod`
 - [generic function](https://docs.python.org/3/library/functools.html#functools.singledispatch): `@functools.singledispatch`
+- [is instance of class / type](https://docs.python.org/3/library/functions.html#isinstance): `isinstance`
+
+Stuff:
+- https://stackoverflow.com/questions/53845024/defining-a-recursive-type-hint-in-python
+- https://peps.python.org/pep-3102/
+- https://peps.python.org/pep-0484/#forward-references
 
 ## (n)vim tricks
 
