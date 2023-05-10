@@ -15,6 +15,14 @@ https://en.wikipedia.org/wiki/Naming_convention_(programming)
 - array: `IFS=$'\t' read -r -a outputs <<< "$inputs"`, `-r` for non-escaping
 - directory stack: `pushd` and `popd`, for a temporary `cd`
 
+## nix channel location change
+
+It seems that the channel does not update, unless I remove:
+- /nix/var/nix/profiles/per-user/bryan/channels-2-link
+
+The new location seems to be:
+- /home/bryan/.local/state/nix/profiles/channels-1-link
+
 ## python oneliners
 
 - [copy files](https://stackoverflow.com/questions/123198/how-to-copy-files): `shutils.copy2`
