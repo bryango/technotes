@@ -14,9 +14,10 @@ lrwxrwxrwx 1 $USER $USER 45  .nix-profile -> /home/$USER/.local/state/nix/profil
 ```
 
 Note: the profiles' location have changed! See https://github.com/NixOS/nix/pull/5226. 
-- /nix/var/nix/profiles: previous default
-- /home/$USER/.local/state/nix/profiles: current default
-Manual intervention might be required for commands such as `nix-channel` to work properly.
+- `/nix/var/nix/profiles`: previous default
+- `/home/$USER/.local/state/nix/profiles`: current default
+
+Manual migration might be required for commands such as `nix-channel` to work properly.
 
 ## note on flake
 
