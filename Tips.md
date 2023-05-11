@@ -23,6 +23,8 @@ It seems that the channel does not update, unless I remove:
 The new location seems to be:
 - /home/bryan/.local/state/nix/profiles/channels-1-link
 
+See: https://github.com/NixOS/nix/pull/5226
+
 ## python oneliners
 
 - [copy files](https://stackoverflow.com/questions/123198/how-to-copy-files): `shutils.copy2`
