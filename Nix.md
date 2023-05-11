@@ -9,9 +9,14 @@ See: https://nixos.org/manual/nix/unstable/package-management/profiles.html
 ```bash
 $ ls -alF --time-style=+ --directory .nix* | sed -E "s/$USER/\$USER/g" 
 -rw-r--r-- 1 $USER $USER 75  .nix-channels
-drwxr-xr-x 1 $USER $USER 42  .nix-defexpr/
-lrwxrwxrwx 1 $USER $USER 44  .nix-profile -> /nix/var/nix/profiles/per-user/$USER/profile/
+drwxr-xr-x 1 $USER $USER 16  .nix-defexpr/
+lrwxrwxrwx 1 $USER $USER 45  .nix-profile -> /home/$USER/.local/state/nix/profiles/profile/
 ```
+
+Note: the profiles' location have changed! See https://github.com/NixOS/nix/pull/5226. 
+- /nix/var/nix/profiles: previous default
+- /home/$USER/.local/state/nix/profiles: current default
+Manual intervention might be required for commands such as `nix-channel` to work properly.
 
 ## note on flake
 
