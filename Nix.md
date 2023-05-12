@@ -1,8 +1,8 @@
 # Nix: more pacman beyond pacman
 
 - install from pacman, following [the wiki](https://wiki.archlinux.org/title/Nix)
-- `profiles` are like virtual environments, managed with `nix-env`
-- `channels` are managed as special `profiles`; they are snapshots of the package repo
+- `profiles` are like virtual environments, managed with `nix-env` $\to$ `nix profile` for the new interface
+- `channels` are managed as special `profiles`; they are snapshots of the package repo $->$ `nix registry`
 
 See: https://nixos.org/manual/nix/unstable/package-management/profiles.html
 
@@ -14,18 +14,37 @@ lrwxrwxrwx 1 $USER $USER 45  .nix-profile -> /home/$USER/.local/state/nix/profil
 ```
 
 Note: the profiles' location have changed! See https://github.com/NixOS/nix/pull/5226. 
-- `/nix/var/nix/profiles`: previous default
-- `/home/$USER/.local/state/nix/profiles`: current default
+- `/nix/var/nix/profiles/per-user/$USER`: previous default
+- `~/.local/state/nix/profiles`: current default
 
-Manual migration might be required for commands such as `nix-channel` to work properly.
+Manual migration might be required for commands such as `nix-channel` to work properly. For now I have:
+- `/nix/var/nix/profiles/per-user/$USER/channels` $\to$ `~/.local/state/nix/profiles`
 
-## note on flake
+## ongoing transition to nix flake
 
-`nix flake` is the future, and one should replace `nix-env` with `nix profile` which is based on flake. However, as of March 2023 the documentation is so poorly written that there is no way for me to make a smooth transition. So I will stick to `nix-env` and `nix-channel` for now.
+`nix flake` is the future, and one should replace `nix-env` with `nix profile` which is based on flake. However, as of March 2023 the documentation is so poorly written that it is very hard to perform a smooth transition.
 
-**Note:** although the documentations are sparse and scattered, I tried to consult Bing Chat AI and it seems to generate some very useful instructions for the transition! In particular, it tells me that `nix-channel` is replaced by `nix registry`. I will try to do it next time with Bing's help.
+**Update:** although the documentations are sparse and scattered, I tried to consult Bing Chat AI and it seems to generate some very useful instructions! In particular, it tells me that `nix-channel` is replaced by `nix registry`.
 
-## quick start
+**Update:** I've transitioned my packages setup to `home-manager` with flake. To be documented!
+
+## flake registry
+
+```bash
+nix registry list
+nix registry pin nixpkgs  ## refresh package cache
+nix registry add nixpkgs github:NixOS/nixpkgs/dc6263a3028cb06a178c16a0dd11e271752e537b  ## pin to commit hash
+```
+
+## install prebuilt binary
+
+https://hydra.nixos.org/jobset/nixpkgs/trunk/evals
+
+- pick a _finished_ jobset
+- search for packages with successful build
+- pin nix registry to a nice commit
+
+## dirty quick start
 
 ```bash
 nix-env -v \
