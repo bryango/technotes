@@ -18,6 +18,7 @@ https://en.wikipedia.org/wiki/Naming_convention_(programming)
 ## nix functions
 
 - builtins.trace
+- modules are evaluated recursively until a fixed point
 
 ## python oneliners
 
