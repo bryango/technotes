@@ -22,7 +22,20 @@ The issue with pip is that it pollutes the environment. If that's okay or you ar
 
 `pip` is more of a package _installer_ than a package _manager_. It cares little about dependency resolution & environmental protection. On the other hand, `mamba` (conda) is a full-fledged package manager, albeit an extremely slow one.
 
-## pipx inject dependencies
+## pipx
+
+### manage itself
+
+`pipx` mostly works fine without a system `pip` installation.
+However, `pipx reinstall-all` requires a parent `pip`.
+One can trick `pipx` into using its own `pip` for upgrading:
+```
+pipx install pipx
+which pipx
+pipx reinstall-all --python /usr/bin/python
+```
+
+### inject dependencies
 
 For example, to install the ruff suite:
 ```bash
