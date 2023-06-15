@@ -8,6 +8,10 @@ tectonic (xelatex) > miktex (pdflatex, ...) > tlmgr (--usermode, infra-only)
 ```
 Currently `tectonic` is installed but unused (see below), and I use `texlive-installer` without `texlive-bin` in pacman.
 
+## tectonic from nix
+
+One can easily take care of the biber issue mentioned below; see: https://github.com/bryango/cheznix/commit/81dc61694782f62b9341801243f128e9796faf70
+
 ## `xelatex-tectonic`
 
 A wrapper script to parse `xelatex` flags and pass to `tectonic`, written with python's argparse. See [`~/bin/xelatex-tectonic`](https://github.com/bryango/cheznous/blob/-/bin/xelatex-tectonic). I am hoping to replace `xelatex` completely with `tectonic`. 
@@ -50,10 +54,17 @@ Some of the above shortcomings are shared by tectonic. For now I am using miktex
 - Link `latest -> $YEAR`
 - Next time try to remove `$YEAR` from the installation path (risk: system-breaking annual update).
 
+### when install-tl hangs
+
+- check `$PATH` for interference, e.g. miktex
+- use cli with flags `-v -v` for more info
+
+It may refuse to continue due to pre-existing install.
+
 ### final snapshot of $YEAR
 
 Using the final snapshot ensures maximal stability. See:
-- https://www.tug.org/historic
+- `https://www.tug.org/historic`
 - `https://mirrors.tuna.tsinghua.edu.cn/tex-historic-archive/systems/texlive/$YEAR/tlnet-final` 
 
 ### launch tlmgr without interference from miktex
