@@ -10,7 +10,9 @@ Currently `tectonic` is installed but unused (see below), and I use `texlive-ins
 
 ## tectonic from nix
 
-One can easily take care of the biber issue mentioned below; see: https://github.com/bryango/cheznix/commit/81dc61694782f62b9341801243f128e9796faf70
+One can easily take care of the biber issue mentioned below; see:
+- https://github.com/bryango/cheznix/commit/81dc61694782f62b9341801243f128e9796faf70
+- https://github.com/NixOS/nixpkgs/issues/88067#issuecomment-1592592840
 
 ## `xelatex-tectonic`
 
