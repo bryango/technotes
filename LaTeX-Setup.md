@@ -50,6 +50,12 @@ Some of the above shortcomings are shared by tectonic. For now I am using miktex
 - Link `latest -> $YEAR`
 - Next time try to remove `$YEAR` from the installation path (risk: system-breaking annual update).
 
+### final snapshot of $YEAR
+
+Using the final snapshot ensures maximal stability. See:
+- https://www.tug.org/historic
+- `https://mirrors.tuna.tsinghua.edu.cn/tex-historic-archive/systems/texlive/$YEAR/tlnet-final` 
+
 ### launch tlmgr without interference from miktex
 
 See [`~/bin/env-tl`](https://github.com/bryango/cheznous/blob/-/bin/env-tl). Link `tlmgr -> env-tl` in `$PATH` and run `tlmgr` directly.
