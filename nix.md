@@ -1,8 +1,16 @@
 # Nix: more pacman beyond pacman
 
+Current strategy for package management:
+
+- use nix at the user level, as much as possible
+- fall back to pacman & AUR for system / incompatible packages
+- try to avoid `~/bin` for packages
+
+## intro
+
 - install from pacman, following [the wiki](https://wiki.archlinux.org/title/Nix)
 - `profiles` are like virtual environments, managed with `nix-env` $\to$ `nix profile` for the new interface
-- `channels` are managed as special `profiles`; they are snapshots of the package repo $->$ `nix registry`
+- `channels` are managed as special `profiles`; they are snapshots of the package repo $\to$ `nix registry`
 
 See: https://nixos.org/manual/nix/unstable/package-management/profiles.html
 
