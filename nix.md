@@ -6,6 +6,10 @@ Current strategy for package management:
 - fall back to pacman & AUR for system / incompatible packages
 - try to avoid `~/bin` for packages
 
+## limits
+
+- gui apps are often faulty: lack of graphics, theming, audio, input method...
+
 ## intro
 
 - install from pacman, following [the wiki](https://wiki.archlinux.org/title/Nix)
