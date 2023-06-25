@@ -5,6 +5,7 @@ Current strategy for package management:
 - use nix at the user level, as much as possible
 - fall back to pacman & AUR for system / incompatible packages
 - try to avoid `~/bin` for packages
+- migrate non-secret config from `~/.secrets` to `home.nix`
 
 ## limits
 
