@@ -54,6 +54,13 @@ nix registry add nixpkgs-config github:bryango/nixpkgs-config
 nix registry pin github:bryango/nixpkgs-config
 ```
 
+Even local ones:
+
+```bash
+nix registry add nixpkgs-local $HOME/.config/home-manager/nixpkgs-config
+nix registry add nixpkgs-config nixpkgs-local  ## link to local clone
+```
+
 ## ongoing transition to nix flake
 
 `nix flake` is the future, and one should replace `nix-env` with `nix profile` which is based on flake. However, as of March 2023 the documentation is so poorly written that it is very hard to perform a smooth transition.
