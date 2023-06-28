@@ -15,23 +15,24 @@ Current strategy for package management:
 ## intro
 
 - install from pacman, following [the wiki](https://wiki.archlinux.org/title/Nix)
-- `profiles` are like virtual environments, managed with `nix-env` $\to$ `nix profile` for the new interface
-- `channels` are managed as special `profiles`; they are snapshots of the package repo $\to$ `nix registry`
+- `profile`: virtual environments, managed with `nix profile`
+- `registry`: index of packages (flakes), managed with `nix registry`
+- `channels` (deprecated): special `profiles` which contain snapshots of the `nixpkgs` repo 
 
 See: https://nixos.org/manual/nix/unstable/package-management/profiles.html
 
 ```bash
 $ ls -alF --time-style=+ --directory .nix* | sed -E "s/$USER/\$USER/g" 
--rw-r--r-- 1 $USER $USER 75  .nix-channels
-drwxr-xr-x 1 $USER $USER 16  .nix-defexpr/
-lrwxrwxrwx 1 $USER $USER 45  .nix-profile -> /home/$USER/.local/state/nix/profiles/profile/
+.nix-channels  ## deprecated, removed
+.nix-defexpr/
+.nix-profile -> /home/$USER/.local/state/nix/profiles/profile/
 ```
 
 Note: the profiles' location have changed! See https://github.com/NixOS/nix/pull/5226. 
 - `/nix/var/nix/profiles/per-user/$USER`: previous default
 - `~/.local/state/nix/profiles`: current default
 
-Manual migration might be required for commands such as `nix-channel` to work properly. For now I have:
+Manual migration might be required for some commands to work properly. For now I have:
 - `/nix/var/nix/profiles/per-user/$USER/channels` $\to$ `~/.local/state/nix/profiles`
 
 ## ongoing transition to nix flake
