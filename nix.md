@@ -111,13 +111,16 @@ _Note:_ either `trusted-users` or `trusted-substituters` has to be declared in t
 
 The nixpkgs config (incl. overrides & overlays) is located at `~/.config/nixpkgs/`.
 
-**Update:** the `~/.config/nix**` files are now managed by home-manager at [**cheznix**](https://github.com/bryango/cheznix/blob/-/home.nix)
+**Update:** the `~/.config/nix**` files are now managed by home-manager at [**cheznix**](https://github.com/bryango/cheznix/blob/-/home.nix).
 
 ## _optional:_ `channel`
 
-**Note:** `channel` is deprecated but we can set up a backward compatible layer with the flake registry; see the relevant settings in [**cheznix**](https://github.com/bryango/cheznix/blob/-/home.nix).
+**Note:** `channel` is deprecated but we can set up a backward compatible layer with the flake registry; see the relevant settings in [**cheznix**](https://github.com/bryango/cheznix/blob/-/home.nix). One can specify:
+- `$NIX_PATH`, or
+- `--include nixpkgs=channel:$channel`, or
+- `-I nixpkgs=flake:$channel`
 
-One can specify `$NIX_PATH` or `--include nixpkgs=channel:$channel` or `-I flake:$channel` such that nixpkgs is easily available via `import <nixpkgs> {}`. The list of channels are found in:
+such that nixpkgs is easily available via `import <nixpkgs> {}`. The list of channels are found in:
 - registry: `nix registry list`
 - mirror: https://mirrors.tuna.tsinghua.edu.cn/nix-channels/
 - upstream: https://nixos.org/channels/
