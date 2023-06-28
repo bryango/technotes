@@ -3,13 +3,14 @@
 Current strategy for package management:
 
 - use nix at the user level, as much as possible
-- fall back to pacman & AUR for system / incompatible packages
-- try to avoid `~/bin` for packages
+- fall back to pacman & AUR for system / graphical / incompatible packages
+- try to migrate `~/bin` to nix packages
 - migrate non-secret config from `~/.secrets` to `home.nix`
 
 ## limits
 
 - gui apps are often faulty: lack of graphics, theming, audio, input method...
+- apps that rely on system bin / lib may have troubles
 
 ## intro
 
