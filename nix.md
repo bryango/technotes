@@ -32,8 +32,7 @@ Note: the profiles' location have changed! See https://github.com/NixOS/nix/pull
 - `/nix/var/nix/profiles/per-user/$USER`: previous default
 - `~/.local/state/nix/profiles`: current default
 
-Manual migration might be required for some commands to work properly. For now I have:
-- `/nix/var/nix/profiles/per-user/$USER/channels` $\to$ `~/.local/state/nix/profiles`
+Manual migration might be required for some commands to work properly. 
 
 ## registry
 
@@ -80,25 +79,14 @@ https://hydra.nixos.org/jobset/nixpkgs/trunk/evals
 ## dirty quick start
 
 ```bash
-nix-env -v \
-  --profile "/nix/var/nix/profiles/per-user/$USER/$profile" \
-  --file "channel:$channel" \
-  --install --prebuilt-only --attr # -ibA, or: --query, --dry-run, ...
+nix search nixpkgs pulsar
+nix profile install nixpkgs#pulsar
+  ## --profile "~/.local/state/nix/profiles/$profile"
 ```
 
-- `file` is the `expression` to use for the package build (`derivation`). It defaults to `~/.nix-defexpr`.
-- `~/.nix-defexpr` in turn defaults to the channel set up by `nix-channel`.
+## repl
 
-```bash
-$ ls -alF --time-style=+ ~/.nix-defexpr | sed -E "s/$USER/\$USER/g"  
-total 8
-drwxr-xr-x 1 $USER $USER   42  ./
-drwx------ 1 $USER $USER 1500  ../
-lrwxrwxrwx 1 $USER $USER   45  channels -> /nix/var/nix/profiles/per-user/$USER/channels/
-lrwxrwxrwx 1 $USER $USER   44  channels_root -> /nix/var/nix/profiles/per-user/root/channels
-```
-
-One can specify the expression / channel manually, with `-f "channel:$channel"`. The list of channels are found in:
+One can specify `$NIX_PATH` or `--include nixpkgs=channel:$channel` or `-I flake:$channel` such that nixpkgs is easily available via `import <nixpkgs> {}`. The list of channels are found in:
 - mirror: https://mirrors.tuna.tsinghua.edu.cn/nix-channels/
 - upstream: https://nixos.org/channels/
 
@@ -121,7 +109,7 @@ More AGRESSIVE:
 
 ```bash
 # delete old generations
-nix-env -p "$profile" --delete-generations old  # or, specify $gen
+nix profile wipe-history --older-than "$num"d
 
 # all-in-one util
 nix-collect-garbage  # --delete-older-than, --max-freed, --dry-run
