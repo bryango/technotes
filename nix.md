@@ -35,6 +35,25 @@ Note: the profiles' location have changed! See https://github.com/NixOS/nix/pull
 Manual migration might be required for some commands to work properly. For now I have:
 - `/nix/var/nix/profiles/per-user/$USER/channels` $\to$ `~/.local/state/nix/profiles`
 
+## registry
+
+This is the package index for nix, analogous to that of a traditional package manager such as pacman, but made reproducible via version pinning, just like a modern build system such as cargo. 
+
+```bash
+nix registry list
+
+## refresh index & pin (to latest / to hash)
+nix registry pin nixpkgs
+nix registry add nixpkgs github:NixOS/nixpkgs/dc6263a3028cb06a178c16a0dd11e271752e537b
+```
+
+One can also add user repositories:
+
+```bash
+nix registry add nixpkgs-config github:bryango/nixpkgs-config
+nix registry pin github:bryango/nixpkgs-config
+```
+
 ## ongoing transition to nix flake
 
 `nix flake` is the future, and one should replace `nix-env` with `nix profile` which is based on flake. However, as of March 2023 the documentation is so poorly written that it is very hard to perform a smooth transition.
@@ -42,14 +61,6 @@ Manual migration might be required for some commands to work properly. For now I
 **Update:** although the documentations are sparse and scattered, I tried to consult Bing Chat AI and it seems to generate some very useful instructions! In particular, it tells me that `nix-channel` is replaced by `nix registry`.
 
 **Update:** I've transitioned my packages setup to `home-manager` with flake. To be documented!
-
-## flake registry
-
-```bash
-nix registry list
-nix registry pin nixpkgs  ## refresh package cache
-nix registry add nixpkgs github:NixOS/nixpkgs/dc6263a3028cb06a178c16a0dd11e271752e537b  ## pin to commit hash
-```
 
 ## install prebuilt binary
 
