@@ -54,6 +54,8 @@ nix registry add nixpkgs-local $HOME/.config/home-manager/nixpkgs-config
 nix registry add nixpkgs-config nixpkgs-local  ## link to local clone
 ```
 
+**Update:** user repo is now added automatically in [**cheznix:modules/flake-channels.nix**](https://github.com/bryango/cheznix/blob/-/modules/flake-channels.nix).
+
 ## install prebuilt binary
 
 https://hydra.nixos.org/jobset/nixpkgs/trunk/evals
