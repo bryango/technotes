@@ -54,7 +54,7 @@ nix registry add nixpkgs-local $HOME/.config/home-manager/nixpkgs-config
 nix registry add nixpkgs-config nixpkgs-local  ## link to local clone
 ```
 
-**Update:** user repo is now added automatically in [**cheznix:modules/flake-channels.nix**](https://github.com/bryango/cheznix/blob/-/modules/flake-channels.nix).
+**Update:** user repo is now added automatically in [**cheznix:** modules/flake-channels.nix](https://github.com/bryango/cheznix/blob/-/modules/flake-channels.nix).
 
 ## install prebuilt binary
 
@@ -62,7 +62,9 @@ https://hydra.nixos.org/jobset/nixpkgs/trunk/evals
 
 - pick a _finished_ jobset
 - search for packages with successful build
-- pin nix registry to a nice commit
+- pin nix registry / flake inputs to a nice commit
+
+CLI tool: `hydra-check`.
 
 ## dirty quick start
 
