@@ -232,3 +232,7 @@ One should probably have an `export` here at: https://github.com/NixOS/nix/blob/
 **Update:** although the documentations are sparse and scattered, I tried to consult Bing Chat AI and it seems to generate some very useful instructions! In particular, it tells me that `nix-channel` is replaced by `nix registry`.
 
 **Update:** I've transitioned my packages setup to `home-manager` with flake. To be documented!
+
+## issues
+
+- https://github.com/NixOS/nixpkgs/issues/199162: `replaceDependency` is awesome but broken in pure mode
