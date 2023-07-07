@@ -66,11 +66,18 @@ https://hydra.nixos.org/jobset/nixpkgs/trunk/evals
 
 CLI tool: `hydra-check`.
 
-## dirty quick start
+## quick start
 
 ```bash
-nix search nixpkgs pulsar
-nix profile install nixpkgs#pulsar
+nix search nixpkgs neovim
+
+## check output store path & size
+nix eval --raw nixpkgs#neovim.outPath \
+| xargs nix path-info --store https://cache.nixos.org -sh
+                   ## -r: recurse closure, -S: closure size
+
+## dirty install
+nix profile install nixpkgs#neovim
   ## --profile "~/.local/state/nix/profiles/$profile"
 ```
 
