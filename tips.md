@@ -6,9 +6,9 @@ This is the place to dump various snippets.
 
 https://en.wikipedia.org/wiki/Naming_convention_(programming)
 
-- use `lowercase` for frequently used items, to minize <kbd>Shift</kbd> ing
+- use `lowercase` for frequently used items, to minimize <kbd>Shift</kbd> ing
 - use `CamelCase` to maximize readability, use `camelCase` if necessary
-- prefer `-` over `_`, also to minize <kbd>Shift</kbd> ing
+- prefer `-` over `_`, also to minimize <kbd>Shift</kbd> ing
 
 ## bash builtins
 
