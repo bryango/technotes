@@ -73,8 +73,9 @@ nix search nixpkgs neovim
 
 ## check output store path & size
 nix eval --raw nixpkgs#neovim.outPath \
-| xargs nix path-info --store https://cache.nixos.org -sh
-                   ## -r: recurse closure, -S: closure size
+| xargs nix path-info --store https://cache.nixos.org \
+   -sh ## human readable size
+## -r: recurse closure, -S: closure size
 
 ## dirty install
 nix profile install nixpkgs#neovim
