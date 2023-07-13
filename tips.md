@@ -34,6 +34,12 @@ Stuff:
 - https://peps.python.org/pep-3102/
 - https://peps.python.org/pep-0484/#forward-references
 
+## set env
+
+Environment variables can be set non-transparently via dbus: https://eklitzke.org/down-the-ssh-auth-sock-rabbit-hole-a-gnome-adventure
+
+This is a bad idea!
+
 ## (n)vim tricks
 
 - correct syntax highlighting for `;` commented config file such as [redshift.conf](https://raw.githubusercontent.com/jonls/redshift/master/redshift.conf.sample): `; vim: ft=dosini`
