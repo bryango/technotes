@@ -10,10 +10,11 @@ https://en.wikipedia.org/wiki/Naming_convention_(programming)
 - use `CamelCase` to maximize readability, use `camelCase` if necessary
 - prefer `-` over `_`, also to minimize <kbd>Shift</kbd> ing
 
-## bash builtins
+## bash
 
 - array: `IFS=$'\t' read -r -a outputs <<< "$inputs"`, `-r` for non-escaping
 - directory stack: `pushd` and `popd`, for a temporary `cd`
+- use json & jq: `ip -json route show default | jq '.[].gateway' --raw-output`
 
 ## nix functions
 
