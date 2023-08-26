@@ -8,7 +8,7 @@ Probably outdated; see some updated notes at [**cheznix**](https://github.com/br
 
 - https://github.com/NixOS/nixpkgs/issues/199162: `replaceDependency` is awesome but broken in pure mode
 
-## note on transition to nix flake
+## on transition to nix flake
 
 `nix flake` is the future, and one should replace `nix-env` with `nix profile` which is based on flake. However, as of March 2023 the documentation is so poorly written that it is very hard to perform a smooth transition.
 
