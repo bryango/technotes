@@ -12,7 +12,8 @@ https://en.wikipedia.org/wiki/Naming_convention_(programming)
 
 ## bash
 
-- array from **the first line:** `IFS=$'\t' read -r -a outputs <<< "$inputs"`, `-r` for non-escaping
+- get help: `help mapfile`
+- array from **a single line:** `IFS=$'\t' read -r -a outputs <<< "$inputs"`, `-r` for non-escaping
 - multiline: `readarray -t array`
 - directory stack: `pushd` and `popd`, for a temporary `cd`
 - use json & jq: `ip -json route show default | jq '.[].gateway' --raw-output`
