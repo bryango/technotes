@@ -3,7 +3,7 @@
 My notes about tech. This note-taking repo is inspired by [WhymustIhaveaname/Notes](https://github.com/WhymustIhaveaname/Notes). 
 
 - Finished notes are indexed here
-- Small tips are found in [**tips.md**](./tips.md)&nbsp;[<kbd>edit</kbd>](https://github.com/bryango/technotes/edit/main/Tips.md)
+- Small tips are found in [**tips.md**](./tips.md)&nbsp;[<kbd>edit</kbd>](../../edit/main/tips.md)
 - Mathemaica tips are found in [**Mathematica.md**](./Mathematica.md)&nbsp;[<kbd>edit</kbd>](https://github.com/bryango/technotes/edit/main/Mathematica.md)
 - Useful scripts are found in [**cheznous**](https://github.com/bryango/cheznix), [**cheznous**](https://github.com/bryango/cheznous) and [**chezroot**](https://github.com/bryango/chezroot)
 - Work in progress are simply scattered in the repo
