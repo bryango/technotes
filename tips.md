@@ -24,6 +24,12 @@ https://en.wikipedia.org/wiki/Naming_convention_(programming)
 - builtins.trace
 - modules are evaluated recursively until a fixed point
 
+## overleaf github APIs
+
+- `https://www.overleaf.com/user/github-sync/status`
+- `https://www.overleaf.com/project/${id}/github-sync/status`
+- `https://www.overleaf.com/project/${id}/github-sync/commits/unmerged`
+
 ## python oneliners
 
 - [copy files](https://stackoverflow.com/questions/123198/how-to-copy-files): `shutils.copy2`
