@@ -176,6 +176,11 @@ djvups input.djvu | ps2pdf - output.pdf
 ```
 See: https://superuser.com/questions/100572/how-do-i-convert-a-djvu-document-to-pdf-in-linux-using-only-command-line-tools/1194757#1194757. 
 
+Optimize PDF: https://askubuntu.com/a/243753
+```
+ps2pdf -dPDFSETTINGS=/ebook input.pdf output.pdf
+```
+
 ## git partial clone
 
 See https://github.blog/2020-12-21-get-up-to-speed-with-partial-clone-and-shallow-clone/
