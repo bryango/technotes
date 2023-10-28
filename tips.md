@@ -24,6 +24,17 @@ https://en.wikipedia.org/wiki/Naming_convention_(programming)
 - builtins.trace
 - modules are evaluated recursively until a fixed point
 
+## a study of the nixpkgs pr-tracker
+
+- the main logic:
+https://git.qyliss.net/pr-tracker/tree/src/tree.rs?h=bcc2379d5b0debd9cdb2a97d845bf39975540eb1#n55
+- the tree of branches:
+https://git.qyliss.net/pr-tracker/tree/src/branches.rs?h=bcc2379d5b0debd9cdb2a97d845bf39975540eb1#n11
+- the tree is rendered as an html table, beautified via css
+  - all children are in fact equivalent: there is no difference between the side branch and the main branch.
+  - the apparent main branch is only an artifact of the css rule wrt the `:last-child`
+- it does not query hydra at all! It only queries the git repo branches.
+
 ## overleaf github APIs
 
 - `https://www.overleaf.com/user/github-sync/status`
