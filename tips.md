@@ -35,6 +35,14 @@ https://git.qyliss.net/pr-tracker/tree/src/branches.rs?h=bcc2379d5b0debd9cdb2a97
   - the apparent main branch is only an artifact of the css rule wrt the `:last-child`
 - it does not query hydra at all! It only queries the git repo branches.
 
+## github api
+
+- pr commit:
+  - https://api.github.com/repos/NixOS/nixpkgs/pulls/262733
+  - https://docs.github.com/en/rest/pulls/pulls#get-a-pull-request
+- see if a branch contains: use /compare/...branch.patch
+
+
 ## overleaf github APIs
 
 - `https://www.overleaf.com/user/github-sync/status`
