@@ -19,6 +19,10 @@ https://en.wikipedia.org/wiki/Naming_convention_(programming)
 - use json & jq: `ip -json route show default | jq '.[].gateway' --raw-output`
 - available memory: `jc free --mebi | jq '.[] | select( .type == "Mem" ) | .available'`
 
+## git dark magic
+
+- merge without checkout: https://stackoverflow.com/questions/3216360/merge-update-and-pull-git-branches-without-using-checkouts
+
 ## nix functions
 
 - builtins.trace
