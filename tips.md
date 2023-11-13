@@ -144,18 +144,26 @@ https://unix.stackexchange.com/questions/681289/play-sound-when-command-finishes
 - https://wiki.archlinux.org/title/Network_configuration#Investigate_sockets
 - https://archlinux.org/news/deprecation-of-net-tools
 
-## `vscode` shenanigans
+## editor shenanigans
 
-### language server provides `outline`
+### `vscode` language server provides `outline`
 
 See: https://microsoft.github.io/language-server-protocol/specifications/lsp/3.17/specification/#textDocument_documentSymbol
 
 ### `atom` > `pulsar`, goodbye `vscode`
 
-I really don't like `vscode`... `pulsar` is a fork of `atom` that works almost perfect! The binary is available from AUR. I would like to build it from source. Here are some preliminary research:
+I really don't like `vscode`... `pulsar` is a fork of `atom` that works almost perfectly! The binary is available from AUR. I would like to build it from source. Here are some preliminary research:
 - https://pulsar-edit.dev/docs/launch-manual/sections/core-hacking/#building-pulsar
 - https://github.com/pulsar-edit/pulsar/blob/master/.cirrus.yml
 - https://github.com/atom/github/pull/2538: diff with syntax highlighting, a patch that I like
+
+Find the automated build from github:
+- go to the release PR
+- go to the release commits
+- select the one `package.json` that does not contain a version with "-dev"
+- download the workflow artifact
+
+See e.g. https://github.com/pulsar-edit/pulsar/actions/runs/6527478252/job/17722380394
 
 ## latex `\skew` accent
 
