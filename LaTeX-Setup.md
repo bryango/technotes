@@ -79,6 +79,15 @@ Add `texlive/latest/texmf-dist/` to `$TEXMF` in miktex console. See:
 - https://miktex.org/faq/local-additions
 - https://miktex.org/kb/texmf-roots
 
+### new: use nix
+
+```bash
+nix shell nixpkgs\#texliveInfraOnly.out --command \
+  tlmgr --repository https://mirrors.tuna.tsinghua.edu.cn/tex-historic-archive/systems/texlive/2022/tlnet-final \
+    dump-tlpdb --remote --json > tlpdb.json
+    ## search --file /ctex.sty --global 2>/dev/null
+```
+
 ## fix file conflicts in miktex
 
 Miktex falsely installs `~/.miktex/texmfs/install/tex/latex/jknappen/ubbold.fd`, a problem described here:
