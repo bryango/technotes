@@ -86,6 +86,7 @@ nix shell nixpkgs\#texliveInfraOnly.out --command \
   tlmgr --repository https://mirrors.tuna.tsinghua.edu.cn/tex-historic-archive/systems/texlive/2022/tlnet-final \
     dump-tlpdb --remote --json > tlpdb.json
     ## search --file /ctex.sty --global 2>/dev/null
+cat tlpdb.json | jq '.main.tlpkgs | map(select(.runfiles[] | contains("/ctex.sty")))'
 ```
 
 ## fix file conflicts in miktex
