@@ -22,6 +22,7 @@ https://en.wikipedia.org/wiki/Naming_convention_(programming)
 ## git dark magic
 
 - merge without checkout: https://stackoverflow.com/questions/3216360/merge-update-and-pull-git-branches-without-using-checkouts
+- delete stale tracking branches: `git branch --remotes --delete origin/stale-branch`
 
 ## nix functions
 
