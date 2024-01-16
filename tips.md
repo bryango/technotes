@@ -10,6 +10,13 @@ https://en.wikipedia.org/wiki/Naming_convention_(programming)
 - use `CamelCase` to maximize readability, use `camelCase` if necessary
 - prefer `-` over `_`, also to minimize <kbd>Shift</kbd> ing
 
+## monad
+
+https://www.youtube.com/watch?v=ENo_B8CZNRQ
+
+- state can be regarded as functors between functions
+- analogy: states in a Hilbert space can be restructed from the operators acting upon it
+
 ## bash
 
 - get help: `help mapfile`
