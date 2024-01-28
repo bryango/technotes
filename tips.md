@@ -53,6 +53,7 @@ https://git.qyliss.net/pr-tracker/tree/src/branches.rs?h=bcc2379d5b0debd9cdb2a97
 - pr commit:
   - https://api.github.com/repos/NixOS/nixpkgs/pulls/262733
   - https://docs.github.com/en/rest/pulls/pulls#get-a-pull-request
+  - a `merged_commit_sha` is available even _before_ the merge! That can be utilized as a convenient rev.
 - see if a branch contains: use /compare/...branch.patch
 
 
