@@ -7,26 +7,26 @@ Some notes on python environment protection. See also:
 ## python runtimes
 
 This can be managed by mamba, nix or [mise](https://github.com/jdx/mise).
-I am currently embracing nix, but mise is kept as a backup.
-
+I am currently embracing nix, as it also takes care of system libraries.
 Recently, some rust-based toolings have emerged, but they are still too immature as of Feb. 2024.
 - https://github.com/mitsuhiko/rye
 - https://github.com/astral-sh/uv
 
-I would not switch to such toolchains unless they are fully compatible with poetry.
+I would not switch to such toolchains unless they are fully compatible with [poetry](https://github.com/python-poetry/poetry). Poetry is getting old but it is still the best in town. For standalone python projects, always use nix, poetry, or [poetry2nix](https://github.com/nix-community/poetry2nix) to manage the environment.
 
 ## package management
 
 There are many ways to manage python packages. My principles:
 
-- when the dependencies are managable, trust the system: `pacman -S pipx`
-- when used as general utils (environment agnostic), try pipx:  `pipx install poetry`
-- for scientific / interactive project, use `mamba` (conda). See also [**MambaCadabra.md**](./MambaCadabra.md).
+- use nix as much as possible: [`~/.config/home-manager/home.nix`](https://github.com/bryango/cheznix/blob/master/home.nix)
+- for packages tightly coupled to the system environment: `sudo pacman -S`
+- for software that are not packaged and when used as isolated utils, try pipx: `pipx install flake8-to-ruff`
+- for large-scale scientific / interactive projects, use `mamba` (conda). See also [**MambaCadabra.md**](./MambaCadabra.md).
 - whenever possible, avoid `pip`!
 
-The issue with pip is that it pollutes the environment. If that's okay or you are in a throw-away virtualenv, then _do_ use pip because it's much more efficient than mamba (conda).
+The issue with pip is that it heavily pollutes the environment. If that's okay or you are in a throw-away venv, then _do_ use pip because it's much more efficient than mamba (conda).
 
-`pip` is more of a package _installer_ than a package _manager_. It cares little about dependency resolution & environmental protection. On the other hand, `mamba` (conda) is a full-fledged package manager, albeit an extremely slow one.
+`pip` is more of a package _installer_ than a package _manager_. It cares little about dependency resolution & environmental protection. On the other hand, `nix` , `pipx` and `mamba` (conda) isolate the environments to keep things sorted. These are full-fledged package managers, although try to avoid `mamba` (conda) as it is an extremely slow one.
 
 ## pipx
 
@@ -49,6 +49,7 @@ pipx install ruff-lsp
 pipx inject --include-apps ruff-lsp ruff
 pipx inject --include-apps ruff-lsp flake8-to-ruff
 ```
+**Update:** I have migrated ruff to be managed by nix. Only `flake8-to-ruff` remains to be managed by `pipx`.
 
 ## language server
 
@@ -57,6 +58,8 @@ This feels worse than what I remember, back in the days of atom.
 I would like to test:
 - https://github.com/python-lsp/python-lsp-server
 - https://github.com/pappasam/jedi-language-server
+
+**Update:** pylance became unreliable under the FOSS vscodium. Have to switch to the less powerful `pyright` for now.
 
 ## packaging
 
