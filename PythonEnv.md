@@ -2,12 +2,18 @@
 
 Some notes on python environment protection. See also:
 - https://bitecode.substack.com/p/why-not-tell-people-to-simply-use?
-- https://github.com/mitsuhiko/rye
+- https://xkcd.com/1987
 
 ## python runtimes
 
-This can be managed by mamba or [rtx](https://github.com/jdxcode/rtx).
-I've chosen rtx for now.
+This can be managed by mamba, nix or [mise](https://github.com/jdx/mise).
+I am currently embracing nix, but mise is kept as a backup.
+
+Recently, some rust-based toolings have emerged, but they are still too immature as of Feb. 2024.
+- https://github.com/mitsuhiko/rye
+- https://github.com/astral-sh/uv
+
+I would not switch to such toolchains unless they are fully compatible with poetry.
 
 ## package management
 
