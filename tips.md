@@ -257,7 +257,7 @@ dconf load / < dconf-dump.conf
 ## pacman
 Management strategies:
 
-- install optional deps explicitly
+- install optional deps explicitly; eliminate `pacman -Qdttq`
 - know all explicitly installed packages
 - `pacman -Qe` `>` [`~/backup/pacman/explicit.log`](https://github.com/bryango/cheznous/blob/-/backup/pacman/explicit.log)
 - `pacman -Q` `>` [`~/backup/pacman/all.log`](https://github.com/bryango/cheznous/blob/-/backup/pacman/all.log)
@@ -297,8 +297,8 @@ sudo tailscale up --advertise-exit-node \
 ## firefox google sign-in
 
 I cannot sign in with my google account on firefox. I cannot figure out why. However, there is a workaround:
-- get the URL for the sign-in page and open it in another brower
-- get the returned URL and then do a manual redirect in the original sign-in page, using the javascript console
+- get the URL for the sign-in page and open it in another browser
+- get the returned URL and then do a manual redirect to the original sign-in page, using the javascript console
 
 ```js
 window.location.replace("...")
