@@ -40,6 +40,7 @@ pipx install pipx
 which pipx
 pipx reinstall-all --python /usr/bin/python
 ```
+**Update:** this seems to have been fixed in https://github.com/pypa/pipx/issues/965, waiting for a release.
 
 ### inject dependencies
 
