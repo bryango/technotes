@@ -324,3 +324,11 @@ $ pactree --reverse ldns --depth=1
 ldns
 └─openssh
 ```
+
+### public wifi issues
+
+Sometimes a public wifi captive portal will redirect to an address with no dns record.
+I have no idea how this happens, but presumably, this is related to some caching issues.
+A workaround is to momentarily connect to some other working hotspot
+(e.g., one served from my cell phone) and then reconnect to the public wifi.
+This probably flushes the erroneous dns cache.
