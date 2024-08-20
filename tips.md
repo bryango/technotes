@@ -40,6 +40,7 @@ https://www.youtube.com/watch?v=ENo_B8CZNRQ
 ## untimely comments
 
 - I could not reproduce the test failure of `python311Packages.pygls.x86_64-linux` (https://hydra.nixos.org/build/248415117) at aac8dcf368a1d57189c4318579eccd8da2e9be13. Maybe it will disappear after a re-run.
+- Before nautilus gtk4 (v43): https://github.com/NixOS/nixpkgs/commit/d618530963a0e1d112c2584e2fc1ae9743cf7b08, which is the parent of https://github.com/NixOS/nixpkgs/pull/182618.
 
 ## a study of the nixpkgs pr-tracker
 
