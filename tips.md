@@ -102,6 +102,10 @@ This is a bad idea!
 `binstall` & `quickinstall` find and install prebuilt binaries.
 What's the difference? I am a bit confused. Maybe `binstall` is for binaries only while `quickinstall` covers libaries as well. One can simply replace `cargo install` with `cargo quickinstall`.
 
+## dedup cargo deps
+
+`cargo tree --duplicates` finds all the duplicated deps with the default features.
+
 ## wine wechat high cpu usage
 
 The offending process is `WeChatAppEx.exe`, this is related to 小程序.
