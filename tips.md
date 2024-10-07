@@ -30,6 +30,7 @@ https://www.youtube.com/watch?v=ENo_B8CZNRQ
 
 - merge without checkout: https://stackoverflow.com/questions/3216360/merge-update-and-pull-git-branches-without-using-checkouts
 - delete stale tracking branches: `git branch --remotes --delete origin/stale-branch`
+- `git fetch --prune-tags` will prune local tags and imply `--tags` so you probably shouldn't do that
 
 ## nix
 
