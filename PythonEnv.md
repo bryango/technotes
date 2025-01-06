@@ -12,7 +12,7 @@ Recently, some rust-based toolings have emerged, but they are still too immature
 - https://github.com/mitsuhiko/rye
 - https://github.com/astral-sh/uv
 
-I would not switch to such toolchains unless they are fully compatible with [poetry](https://github.com/python-poetry/poetry). Poetry is getting old but it is still the best in town. For standalone python projects, always use nix, poetry, or [poetry2nix](https://github.com/nix-community/poetry2nix) to manage the environment.
+I would not switch to such toolchains unless they are fully compatible with [poetry](https://github.com/python-poetry/poetry). Poetry is getting old but it is still the de-facto standard. For standalone python projects, always use nix, poetry, or [poetry2nix](https://github.com/nix-community/poetry2nix) to manage the environment.
 
 ## package management
 
@@ -20,7 +20,7 @@ There are many ways to manage python packages. My principles:
 
 - use nix as much as possible: [`~/.config/home-manager/home.nix`](https://github.com/bryango/cheznix/blob/master/home.nix)
 - for packages tightly coupled to the system environment: `sudo pacman -S`
-- for software that are not packaged and when used as isolated utils, try pipx: `pipx install flake8-to-ruff`
+- for software that is not packaged and when used as isolated utils, try pipx: `pipx install flake8-to-ruff`
 - for large-scale scientific / interactive projects, use `mamba` (conda). See also [**MambaCadabra.md**](./MambaCadabra.md).
 - whenever possible, avoid `pip`!
 
@@ -94,7 +94,7 @@ e.g. [`nbopen.meta.yaml`](./nbopen.meta.yaml) is created with
 ```
 conda skeleton pypi nbopen
 ```
-> There is a bug in `libmamba` such that the build crashes when using custom channel mirrors; a workaround is found in https://github.com/mamba-org/boa/issues/213#issuecomment-1474621395.
+> There is a bug in `libmamba` that causes the build to crash when using custom channel mirrors; a workaround is found in https://github.com/mamba-org/boa/issues/213#issuecomment-1474621395.
 
 `conda skeleton` generates a `meta.yaml` that is close to success; although some manual tweaks are still necessary, including:
 - critical fix: https://github.com/bryango/technotes/blob/45b6d900177e33c103e97c52e32c31bd16537776/nbopen.meta.yaml#L24
