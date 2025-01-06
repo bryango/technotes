@@ -12,7 +12,11 @@ Here we document the _far too many_ pitfalls during this install, for future con
 Mamba is a drop-in replacement for conda written in C++. Documentations:
 > https://mamba.readthedocs.io/en/latest/index.html
 
-The installer is call `Mambaforge` and it's quite similar to anaconda. I've chosen to set it up in `~/apps/mambaforge`. We also need to source some shell snippets to initialize the environment. This is done with [`conda-setup`](https://github.com/bryango/cheznous/blob/c0af2526dfa71a60ba2d81e785e894fd0bec63b6/.shrc#L305) in my system.
+The installer is called `miniforge` and it's quite similar to anaconda, except that it is tied to the community channel `conda-forge`. Basically,
+- the official `anaconda` distribution comes with `conda` and the `defaults` channel
+- while the community `miniforge` comes with `mamba` & `conda` and the `conda-forge` channel
+
+I've chosen to set up the miniforge in `~/apps/mambaforge`. We also need to source some shell snippets to initialize the environment. This is done with [`conda-setup`](https://github.com/bryango/cheznous/blob/c0af2526dfa71a60ba2d81e785e894fd0bec63b6/.shrc#L305) in my system.
 
 My global config is provided by [`~/.condarc`](https://github.com/bryango/cheznous/blob/-/.condarc). Install jupyter globally so that it can be used by others:
 ```bash
@@ -24,6 +28,8 @@ mamba install -n base conda-libmamba-solver
 conda config --set solver libmamba
 ```
 See https://www.anaconda.com/blog/a-faster-conda-for-a-growing-community. This may or may not improve the solver performance of `conda-build`.
+
+**Update:** as of Jan. 2025, `libmamba` is now the default resolver for conda so we may no longer need to do this manually.
 
 We will create a new environment (env) to contain cadabra2:
 ```bash
