@@ -38,6 +38,11 @@ https://www.youtube.com/watch?v=ENo_B8CZNRQ
 - modules are evaluated recursively until a fixed point
 - use github token: `export NIX_CONFIG="access-tokens = github.com=$TOKEN_GITHUB"`
 
+## synology
+
+- global repo: https://payment.synology.com/api/getPackageList.php
+- repositories: https://github.com/szyb/synopackage_dotnet/blob/master/src/Synopackage.Model/Config/sources.json
+
 ## untimely comments
 
 - I could not reproduce the test failure of `python311Packages.pygls.x86_64-linux` (https://hydra.nixos.org/build/248415117) at aac8dcf368a1d57189c4318579eccd8da2e9be13. Maybe it will disappear after a re-run.
