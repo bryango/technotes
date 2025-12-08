@@ -34,3 +34,13 @@ See more on the Rosetta code:
 - Usually, dynamical EoMs are >= 2nd order in time. The initial data is given by the position $x$ and the momentum $p\sim\dot{x}$, upon which one can construct a phase space endowed with a symplectic structure.
 - Schrodinger & Dirac equation are 1st order in time. However, a phase space is still present because the initial data $\psi$ is complex. In these cases we actually have a coupled system of 1st order equations, which can be re-written into 2nd order ones.
 
+## language design for an alternative LaTeX
+
+- types as it reads: instead of `T\bar T`, do `TT.bar`
+  - in general `.command` for associated method
+  - special: `...` means `\dots`
+  - `\frac{}{}` becomes `{ ... }.over{ ... }`
+- `{ ... }` for scoping (behaves like `( ... )` in ordinary languages)
+- delimiters must match, and `\big( ... )` means `\big( ... \big)`
+- spaces: single space ignored, double space means `\,`, triple space means `\ ` etc
+- linebreaks and leading spaces are ignored
