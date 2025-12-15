@@ -50,7 +50,7 @@ More specifically,
 
 ## Trackers
 
-I really hate them!
+I really hate them! **Update:** it seems that now one should replace `tracker-miner-fs` with `localsearch`
 ```
 systemctl --user mask tracker-miner-fs-3.service
 ```
