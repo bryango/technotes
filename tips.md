@@ -347,3 +347,7 @@ This probably flushes the erroneous dns cache.
 ## eduroam troubles
 
 Besides the usual certificate errors, some institutes will limit the number of concurrently connected devices. 比如说，初步测试表明，中国科学院大学 UCAS eduroam 在中关村校区同一热点下的同时连接设备上限可能为两台（在尝试连接第三台设备时出现可复现的错误）。
+
+## nixos-unstable iso images
+
+Look under https://releases.nixos.org/, e.g. https://releases.nixos.org/nixos/unstable/nixos-26.05pre964859.b40629efe5d6. Alternatively, run `hydra-check --releases --channel=nixos-unstable` and look for successful releases.
