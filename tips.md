@@ -355,3 +355,7 @@ Look under https://releases.nixos.org/, e.g. https://releases.nixos.org/nixos/un
 ## cloud service
 京东轻量云在创建系统盘镜像的时候会导致整个系统卡死，无法重启，外部SSH访问也会被阻断，这设计太奇葩了
 首次创建镜像很慢（十几分钟），后面比较快（可能是备份到另一个服务器上，然后增量传输？）
+
+## nix-daemon
+
+Sometimes nix hangs because there are some other thread occupying the store. Try to kill all nix-daemon processes.
