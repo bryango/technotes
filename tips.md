@@ -351,3 +351,6 @@ Besides the usual certificate errors, some institutes will limit the number of c
 ## nixos-unstable iso images
 
 Look under https://releases.nixos.org/, e.g. https://releases.nixos.org/nixos/unstable/nixos-26.05pre964859.b40629efe5d6. Alternatively, run `hydra-check --releases --channel=nixos-unstable` and look for successful releases.
+
+## cloud service
+京东轻量云在创建系统盘镜像的时候会导致整个系统卡死，无法重启，外部SSH访问也会被阻断，这设计太奇葩了
