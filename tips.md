@@ -360,6 +360,13 @@ Look under https://releases.nixos.org/, e.g. https://releases.nixos.org/nixos/un
 
 Sometimes nix hangs because there are some other thread occupying the store. Try to kill all nix-daemon processes.
 
+```bash
+sudo systemctl stop nix-daemon.service nix-daemon.socket
+sudo pkill -9 nix
+sudo pkill -9 nix-daemon
+sudo systemctl restart nix-daemon.service
+```
+
 ## git-branchless in homebrew
 
 within a homebrew tap:
