@@ -359,3 +359,13 @@ Look under https://releases.nixos.org/, e.g. https://releases.nixos.org/nixos/un
 ## nix-daemon
 
 Sometimes nix hangs because there are some other thread occupying the store. Try to kill all nix-daemon processes.
+
+## git-branchless in homebrew
+
+within a homebrew tap:
+
+```gitconfig
+[alias]
+	;; this suppress brew errors: git: 'branchless' is not a git command
+	branchless = !~/.nix-profile/bin/git-branchless
+```
