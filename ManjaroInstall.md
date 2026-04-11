@@ -273,7 +273,6 @@ Proceed to [ManjaroSetup.md](./ManjaroSetup.md) for basic setup & GUI.
 ### arch vm
 
 Similar setup applies for arch VMs.
-
 The first few packages that I would install are:
 - neovim (editor)
 - tailscale (networking)
@@ -294,3 +293,5 @@ qemu-guest-agent 10.2.1-1
 sudo 1.9.17.p2-2
 tailscale 1.96.4-1
 ```
+
+The default account is `arch` and admits password-less sudo. Once `bryan` is set up it should be okay to remove it (and the associated sudoers.d rule) and this should make the VM safer.
