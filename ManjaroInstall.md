@@ -174,11 +174,11 @@ https://wiki.archlinux.org/title/Users_and_groups
 useradd -m -G wheel bryan
 passwd bryan
 cd /etc/sudoers.d
-visudo 10-installer
+visudo 10-wheel
 ```
 https://wiki.archlinux.org/title/Sudo#Example_entries
 ```sudoers
-## /etc/sudoers.d/10-installer
+## /etc/sudoers.d/10-wheel
 %wheel  ALL=(ALL:ALL)  ALL
 ```
 
@@ -269,3 +269,28 @@ vim 9.0.0814-1
 
 Boot into the new system. <br>
 Proceed to [ManjaroSetup.md](./ManjaroSetup.md) for basic setup & GUI.
+
+### arch vm
+
+Similar setup applies for arch VMs.
+
+The first few packages that I would install are:
+- neovim (editor)
+- tailscale (networking)
+- nix (further)
+
+```
+$ pacman -Qe
+base 3-3
+btrfs-progs 6.19-1
+dosfstools 4.2-5
+efibootmgr 18-3
+grub 2:2.14-1
+linux 6.19.8.arch1-1
+neovim 0.11.7-1
+nix 2.34.4-2
+openssh 10.2p1-2
+qemu-guest-agent 10.2.1-1
+sudo 1.9.17.p2-2
+tailscale 1.96.4-1
+```
