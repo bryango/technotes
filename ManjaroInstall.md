@@ -275,8 +275,9 @@ Proceed to [ManjaroSetup.md](./ManjaroSetup.md) for basic setup & GUI.
 Similar setup applies for arch VMs.
 The first few packages that I would install are:
 - neovim (editor)
-- tailscale (networking)
-- nix (further)
+- tailscale (networking), and sudo tailscale login
+- openssh, and configure /etc/ssh/sshd_config.d/{10-security,20-user-specific}.conf
+- nix, and edit /etc/nix/nix.conf
 
 ```
 $ pacman -Qe
