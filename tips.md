@@ -376,3 +376,6 @@ within a homebrew tap:
 	;; this suppress brew errors: git: 'branchless' is not a git command
 	branchless = !~/.nix-profile/bin/git-branchless
 ```
+## tailscale routes conflict with clash (mihomo) tun
+
+In particular, `--accept-routes` (or probably `--exit-node` etc) messes up mihomo routes and needs to be `--reset`.
