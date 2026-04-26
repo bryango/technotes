@@ -379,3 +379,4 @@ within a homebrew tap:
 ## tailscale routes conflict with clash (mihomo) tun
 
 In particular, `--accept-routes` (or probably `--exit-node` etc) messes up mihomo routes and needs to be `--reset`.
+Also, these tools may run their own dns servers and conflict with each other. Better explicitly set different ports to avoid conflicts.
