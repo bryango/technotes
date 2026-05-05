@@ -388,3 +388,11 @@ Also, sometimes tailscale doesn't work and it can be simply fixed by `sudo tails
 nix env shell nixpkgs#poppler-utils
 pdfunite ...
 ```
+
+## nix remote build
+
+```
+nix build --option system x86_64-linux --option max-jobs 0 --option builders ssh://user@host
+```
+
+Nix connects to the remote host via the daemon as **root**. So one should verify that `sudo ssh user@host` works with no issue before continuing.
