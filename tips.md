@@ -396,3 +396,10 @@ nix build --option system x86_64-linux --option max-jobs 0 --option builders ssh
 ```
 
 Nix connects to the remote host via the daemon as **root**. So one should verify that `sudo ssh user@host` works with no issue before continuing.
+
+## chatgpt auth hangs
+
+This often happens because some stale process is occupying the 1455 port. Just free up the port. To check the process:
+```
+sudo lsof -i :1455 # works on darwin
+```
